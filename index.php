@@ -9,7 +9,7 @@ include "header.php";
     <br><br><br><br><br>
     <div class="valign-wrapper">
     <form action="rate.php" method="post" class="col l12">
-      <div class="card">
+      <div class="card">  
         <div class="card-content indigo lighten-4 center-align">
           <div class="row no-margin no-margin-bottom">
             <div class="input-field center-align">
