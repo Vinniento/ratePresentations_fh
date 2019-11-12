@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Grayscale - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Rate Presentations</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+        
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.html">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.html">Help Us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login -->
+
+
+  <header class="masthead">
+
+    </header>
+
+
+
+    <div class="container w-50 h-100 justify-content-center align-items-center text-center">
+
+        <div class="card">
+            <div class="card-body">
+
+    <form action="rate_check.php" method="post">
+
+        <div class="row justify-content-center">
+            <h3>Give your Rating</h3>
+          </div>
+          <div class="row justify-content-center">
+            <h5>(1 is worst and 10 is best)</h5><br>
+          </div>
+            <div class="row">
+              <h5 class="col-6">As a Group:</h5>   
+              <h5 class="col-6">Group3_E</h5>
+            </div>
+    <hr>
+            <header><br>
+              <h5>Content and Structure</h5><br><br>
+            </header>
+
+            <div class="row">
+              <div class="col-4">
+                <p>Introduction</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="intro" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Gave an Overview?</p>
+              </div>
+              <div class="col-8">
+                  <input type="range" name="overview" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Structure of the Presentation itself</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="structure" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Content</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="content" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Conclusion</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="conclusion" min="0" max="10" />
+              </div>
+            </div>
+        
+            <br>
+            <hr>
+            <header><br>
+              <h5>Visualization</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Visualization</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="visualization" min="0" max="10" />
+              </div>
+            </div>
+        
+            <br>
+            <hr>
+            <header><br>
+              <h5>Teamwork</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Acted as a team</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="acted_as_team" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Preparation by the team</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name="preparation_team" min="0" max="10" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <p>Audience felt necessity to participate</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="necessity_participate" min="0" max="10" />
+              </div>
+            </div>
+      
+        
+            <br>
+            <hr>
+            <header><br>
+              <h5">Additional Feedback for the group: (optional)</h5><br><br>
+            </header>
+        
+            <!-- textfeld übergabe name fehlt -->
+
+            <div class="row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Additional Feedback</span>
+                </div>
+                <textarea class="form-control" aria-label="Additional Feedback"></textarea>
+              </div>
+            </div>
+        
+            <br>
+            <header><br>
+              <h5>Individual Feedback for Group Members</h5><br><br>
+            </header>
+            <br>
+        
+            <div class="row">
+              <div class="col-6">
+                <header>
+                  <h5>Group Member:</h5>
+                </header>
+              </div>
+              <h5 class="col-6">Vincent Schauer</h5>
+            </div>
+            <br>
+            <hr>
+            <header><br>
+              <h5>Language</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Articulation</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="articulation" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Talking Speed</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="talking_speed" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Pronunciation</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="pronunciation" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Competence</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="competence" min="0" max="10" />
+              </div>
+            </div>
+        
+            <br>
+            <hr>
+            <header><br>
+              <h5>Body Language</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Presence</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="body_language" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Eye Contact</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="eye_contact" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Posture</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="posture" min="0" max="10" />
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Gesture</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="gesture" min="0" max="10" />
+              </div>
+            </div>
+        
+            <br>
+            <hr>
+            <header><br>
+              <h5>Preparation</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="col-4">
+                <p>Preparation</p>
+              </div>
+              <div class="col-8">
+                <form>
+                    <input type="range" name ="preparation" min="0" max="10" />
+              </div>
+            </div>
+        
+            <br>
+            <hr>
+        
+            <!-- name für übergabe noch hinzufügen -->
+            <header><br>
+              <h5">Additional Feedback for a groupmember: (optional)</h5><br><br>
+            </header>
+        
+            <div class="row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Additional Feedback</span>
+                </div>
+                <textarea class="form-control" aria-label="Additional Feedback"></textarea>
+              </div>
+            </div>
+        </div>
+        
+        
+        <br>
+        <div class="text-center">
+        <button class="btn btn-success badge-pill" type="submit" name="submit" value="Submit Rating">Submit Rating</button>
+        </div>
+        <br><br>
+        </form>
+</div>
+</div>
+</div>
+</div>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+      <div class="container">
+        Copyright &copy; Rate Presentations - 2019
+      </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/app.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  
+
+</body>
+
+</html>
