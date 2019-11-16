@@ -27,10 +27,31 @@ var two = new Vue({
     }
 });
 
+
 new Vue({
-  el: '#app',
-  vuetify: new Vuetify(),
-  data: () => ({
-    rating: 3
-  }),
+  el: 'teacherNavigation',
+  data: {
+    currentComponent: null,
+    componentsArray: ['Add Students', 'Create Groups', 'Rate Groups', 'View Ratings']
+  },
+  components: {
+    'Add Students': {
+      template: '#addstudents'
+    },
+    'Create Groups': {
+      template: '#creategroups'
+    },
+    'Rate Groups': {
+      template: '<h3>Rate Groups Component!</h3>'
+    },
+    'View Ratings': {
+      template: '<h3>View Ratings Component!</h3>'
+    }
+  },
+  methods: {
+    swapComponent: function(component)
+    {
+      this.currentComponent = component;
+    }
+  }
 })
