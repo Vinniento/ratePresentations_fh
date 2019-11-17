@@ -102,11 +102,15 @@
         <form action="add_students.php" method="post" class="justify-content-center">
                 <div class="form-group">
                   <label for="firstname">First Name:</label>
-                  <input type="text" class="form-control" id="firstname" placeholder="John">
+                  <input type="text" class="form-control" name ="firstname" id="firstname" placeholder="John">
                 </div>
                 <div class="form-group">
                   <label for="lastname">Last Name:</label>
-                  <input type="text" class="form-control" id="lastname" placeholder="Doe">
+                  <input type="text" class="form-control" name ="lastname" id="lastname" placeholder="Doe">
+                </div>
+                <div class="form-group">
+                  <label for="email">E-Mail:</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="johndoe@test.com">
                 </div>
             <div style="padding-bottom: 10px">
                 <button type="submit" value="Add Student" class="btn btn-primary badge-pill" style="width: 13rem;">Add Student</button>

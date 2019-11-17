@@ -2,8 +2,7 @@
 try
 {
     //create connection to database
-    $conn = new PDO("mysql:host=localhost; dbname=ratepresentations", "oliver", "nlkj");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include("db_connection.php");
 
     try {
 
@@ -15,7 +14,7 @@ try
                 `firstname` varchar(50) not null,
                 `lastname` varchar(50) not null,
                 `email` varchar(70) not null,
-                `pwd` varchar (50) not null,
+                `pwd` varchar (50), /*TODO not null */
                 `isteacher` boolean not null,
                 PRIMARY KEY (`Person_ID`)
               );";

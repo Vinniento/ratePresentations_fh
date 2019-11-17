@@ -10,8 +10,7 @@ $pass_form = htmlspecialchars($_POST['pwd']);
 try
 {
     //create connection to database
-    $conn = new PDO("mysql:host=localhost; dbname=ratepresentations", "oliver", "nlkj");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        include("db_connection.php");
 
     try 
     {
