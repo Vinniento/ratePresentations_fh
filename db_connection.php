@@ -29,17 +29,17 @@ try {
         //  Groups
      
     
-        $create = "CREATE TABLE if not exists `groups` ( 
-          `group_ID` INT NOT NULL AUTO_INCREMENT , 
-          `group_name` VARCHAR(100) NOT NULL , 
-          PRIMARY KEY (`group_ID`)
-          ) ENGINE = InnoDB;";
+        $create = "CREATE TABLE if not exists `groups` (
+            `group_ID` int not null auto_increment,
+            `name` varchar(70) not null,
+            PRIMARY KEY (`groups_ID`)
+          );";
         $conn->exec($create);
         echo "<script>alert('Table \"groups\" created successfully  ')</script>";
           //presentation
       
     
-        $create = "CREATE TABLE if not exists `presentations` (
+        $create = "CREATE TABLE if not exists `presentation` (
             `presentation_ID` int not null auto_increment,
             `name` varchar(70) not null,
             `code` varchar(70) not null,
@@ -61,38 +61,30 @@ try {
         
     
         $create = "CREATE TABLE if not exists `ratings` (
-            `rating_ID` int not null auto_increment,
+            `ratings_ID` int not null auto_increment,
             `name` varchar(70) not null,
             `rating_int` int not null,
             `rating_str` varchar(70) not null,
-            PRIMARY KEY (`rating_ID`)
+            PRIMARY KEY (`ratings_ID`)
           );";
         $conn->exec($create);
         echo "<script>alert('Table \"ratings\" created successfully  ')</script>";
-
 
         //person--> groups
         $create = "CREATE TABLE if not exists `person_to_groups` (
             `person_ID` int not null ,
             `group_ID` int not null ,
-            PRIMARY KEY (`person_ID`,`group_ID`),
-            CONSTRAINT FK_Person_ID FOREIGN KEY (person_ID)
-            REFERENCES persons(person_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_Group_ID FOREIGN KEY (group_ID)
-            REFERENCES groups(group_ID) ON DELETE CASCADE ON UPDATE CASCADE
+            PRIMARY KEY (`person_ID`,`group_ID`)
           );";
            $conn->exec($create);
            echo "<script>alert('Table \"person_to_groups\" created successfully  ')</script>";
 
+
         //groups--> presention
-        $create = "CREATE TABLE if not exists `presentations_to_groups` (
+        $create = "CREATE TABLE if not exists `presentation_to_groups` (
             `presentation_ID` int not null ,
             `group_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`group_ID`)
-            CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
-            REFERENCES presentations(presentation_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_Group_ID FOREIGN KEY (group_ID)
-            REFERENCES groups(group_ID) ON DELETE CASCADE ON UPDATE CASCADE
           );";
            $conn->exec($create);
            echo "<script>alert('Table \"presentation_to_groups\" created successfully  ')</script>";
@@ -102,10 +94,6 @@ try {
             `presentation_ID` int not null ,
             `person_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`person_ID`)
-            CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
-            REFERENCES presentation(presentation_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_Person_ID FOREIGN KEY (person_ID)
-            REFERENCES persons(person_ID) ON DELETE CASCADE ON UPDATE CASCADE
           );";
            $conn->exec($create);
            echo "<script>alert('Table \"presentation_to_person\" created successfully  ')</script>";
@@ -116,10 +104,6 @@ try {
             `presentation_ID` int not null ,
             `criteria_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`criteria_ID`)
-            CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
-            REFERENCES presentation(presentation_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
-            REFERENCES criteria(criteria_ID) ON DELETE CASCADE ON UPDATE CASCADE
           );";
            $conn->exec($create);
            echo "<script>alert('Table \"presentation_to_criteria\" created successfully  ')</script>";
@@ -130,10 +114,6 @@ try {
             `criteria_ID` int not null ,
             `ratings_ID` int not null ,
             PRIMARY KEY (`criteria_ID`,`ratings_ID`)
-            CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
-            REFERENCES criteria(criteria_ID) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_rating_ID FOREIGN KEY (rating_ID)
-            REFERENCES ratings(rating_ID) ON DELETE CASCADE ON UPDATE CASCADE
           );";
            $conn->exec($create);
            echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
