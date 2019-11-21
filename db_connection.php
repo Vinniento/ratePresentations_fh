@@ -35,17 +35,18 @@ try {
             PRIMARY KEY (`groups_ID`)
           );";
         $conn->exec($create);
-        echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+        echo "<script>alert('Table \"groups\" created successfully  ')</script>";
           //presentation
       
     
         $create = "CREATE TABLE if not exists `presentation` (
             `presentation_ID` int not null auto_increment,
             `name` varchar(70) not null,
+            `code` varchar(70) not null,
             PRIMARY KEY (`presentation_ID`)
           );";
         $conn->exec($create);
-        echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+        echo "<script>alert('Table \"presentation\" created successfully  ')</script>";
         //criteria
      
     
@@ -55,7 +56,7 @@ try {
             PRIMARY KEY (`criteria_ID`)
           );";
         $conn->exec($create);
-        echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+        echo "<script>alert('Table \"criteria\" created successfully  ')</script>";
         //ratings
         
     
@@ -67,7 +68,7 @@ try {
             PRIMARY KEY (`ratings_ID`)
           );";
         $conn->exec($create);
-        echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+        echo "<script>alert('Table \"ratings\" created successfully  ')</script>";
 
         //person--> groups
         $create = "CREATE TABLE if not exists `person_to_groups` (
@@ -76,7 +77,7 @@ try {
             PRIMARY KEY (`person_ID`,`group_ID`)
           );";
            $conn->exec($create);
-           echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+           echo "<script>alert('Table \"person_to_groups\" created successfully  ')</script>";
 
 
         //groups--> presention
@@ -86,7 +87,7 @@ try {
             PRIMARY KEY (`presentation_ID`,`group_ID`)
           );";
            $conn->exec($create);
-           echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+           echo "<script>alert('Table \"presentation_to_groups\" created successfully  ')</script>";
 
             //person--> presention
         $create = "CREATE TABLE if not exists `presentation_to_person` (
@@ -95,7 +96,7 @@ try {
             PRIMARY KEY (`presentation_ID`,`person_ID`)
           );";
            $conn->exec($create);
-           echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+           echo "<script>alert('Table \"presentation_to_person\" created successfully  ')</script>";
 
 
              //criteria--> presention
@@ -105,7 +106,7 @@ try {
             PRIMARY KEY (`presentation_ID`,`criteria_ID`)
           );";
            $conn->exec($create);
-           echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+           echo "<script>alert('Table \"presentation_to_criteria\" created successfully  ')</script>";
 
            
              //criteria--> ratings
@@ -115,7 +116,7 @@ try {
             PRIMARY KEY (`criteria_ID`,`ratings_ID`)
           );";
            $conn->exec($create);
-           echo "<script>alert('Table \"Person\" created successfully  ')</script>";
+           echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
 
 } catch (PDOException $exception) {
     echo $create . "<br>" . $exception->getMessage();
