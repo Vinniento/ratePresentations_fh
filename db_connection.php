@@ -93,7 +93,7 @@ try {
             `presentation_ID` int not null ,
             `group_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`group_ID`),
-            CONSTRAINT FK_Group_ID FOREIGN KEY (group_ID)
+            CONSTRAINT FK_Group_ID_a FOREIGN KEY (group_ID)
             REFERENCES groups(group_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
@@ -110,11 +110,11 @@ try {
             `presentation_ID` int not null ,
             `person_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`person_ID`),
-            CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
+            CONSTRAINT FK_Presentation_ID_b FOREIGN KEY (presentation_ID)
             REFERENCES presentation(presentation_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
-            CONSTRAINT FK_Person_ID FOREIGN KEY (person_ID)
+            CONSTRAINT FK_Person_ID_a FOREIGN KEY (person_ID)
             REFERENCES persons(person_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE
@@ -128,7 +128,7 @@ try {
             `presentation_ID` int not null ,
             `criteria_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`criteria_ID`),
-            CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
+            CONSTRAINT FK_Presentation_ID_c FOREIGN KEY (presentation_ID)
             REFERENCES presentation(presentation_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
@@ -146,7 +146,7 @@ try {
             `criteria_ID` int not null ,
             `ratings_ID` int not null ,
             PRIMARY KEY (`criteria_ID`,`ratings_ID`)
-            CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
+            CONSTRAINT FK_Criteria_ID_b FOREIGN KEY (criteria_ID)
             REFERENCES criteria(criteria_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
