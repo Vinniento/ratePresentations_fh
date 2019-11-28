@@ -111,7 +111,7 @@ try {
             `person_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`person_ID`),
             CONSTRAINT FK_Presentation_ID_b FOREIGN KEY (presentation_ID)
-            REFERENCES presentation(presentation_ID) 
+            REFERENCES presentations(presentation_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
             CONSTRAINT FK_Person_ID_a FOREIGN KEY (person_ID)
@@ -129,7 +129,7 @@ try {
             `criteria_ID` int not null ,
             PRIMARY KEY (`presentation_ID`,`criteria_ID`),
             CONSTRAINT FK_Presentation_ID_c FOREIGN KEY (presentation_ID)
-            REFERENCES presentation(presentation_ID) 
+            REFERENCES presentations(presentation_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
             CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
@@ -144,13 +144,13 @@ try {
              //criteria--> ratings
         $create = "CREATE TABLE if not exists `ratings_to_criteria` (
             `criteria_ID` int not null ,
-            `ratings_ID` int not null ,
-            PRIMARY KEY (`criteria_ID`,`ratings_ID`)
-            CONSTRAINT FK_Criteria_ID_b FOREIGN KEY (criteria_ID)
+            `rating_ID` int not null ,
+            PRIMARY KEY (`criteria_ID`,`rating_ID`),
+            CONSTRAINT FK_Criteria_ID_zz FOREIGN KEY (criteria_ID)
             REFERENCES criteria(criteria_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE,
-            CONSTRAINT FK_rating_ID FOREIGN KEY (rating_ID)
+            CONSTRAINT FK_rating_ID_zz FOREIGN KEY (rating_ID)
             REFERENCES ratings(rating_ID) 
             ON DELETE CASCADE 
             ON UPDATE CASCADE
