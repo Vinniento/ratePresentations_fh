@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +32,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="index.html">Rate Presentations</a>
+      <a class="navbar-brand js-scroll-trigger" href="index.php">Rate Presentations</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -45,7 +49,7 @@
             <a class="nav-link js-scroll-trigger" href="#helpus">Help Us</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
               <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>

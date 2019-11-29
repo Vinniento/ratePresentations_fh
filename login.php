@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['person_id'])) {
+ // header("location: index.php");
+}
+if(isset($_SESSION['login_failed'])){
+  echo "<script>alert('username/password wrong, try again ')</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +55,7 @@
             <a class="nav-link js-scroll-trigger" href="index.html">Help Us</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
                 <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>
@@ -72,7 +81,7 @@
                         <span class="input-group-text" id="basic-addon1">E-Mail:</span>
                       </div>
                       <!--<input type="email" class="form-control" placeholder="yourname@example.com" aria-label="E-Mail" aria-describedby="basic-addon1">-->
-                      <input type="email" class="form-control" name="email" value="teacher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1">
+                      <input type="email" class="form-control" name="email" value="teacher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1" required>
                     </div>
                 <!--<column class="float-left"><label for="mail">E-Mail:</label></column>
                 <input type="text" id="mail" name="mail" value= "testuser" required class="float-right"><br><br>-->
@@ -82,7 +91,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Password:</span>
                       </div>
-                      <input type="password" id="password" name ="pwd" value="test" class="form-control" placeholder="A Strong Password" aria-label="Password" aria-describedby="basic-addon1">
+                      <input type="password" id="password" name ="pwd" value="test" class="form-control" placeholder="A Strong Password" aria-label="Password" aria-describedby="basic-addon1" required>
                     </div>
                   <!--<column class="float-left"><label for="password">Password:</label></column>
                   <input type="password"  id="password" name="pwd" value= "nlkj" required class="float-right"><br><br>-->

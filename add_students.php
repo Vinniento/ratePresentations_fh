@@ -2,9 +2,9 @@
 //TODO wenn ein fehler ist --> $message zurück echoen und das ausgeben?
 /* var_dump($_POST); */ 
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = ($_POST['email']); //strtolower
+$firstname = htmlspecialchars($_POST['firstname']);
+$lastname = htmlspecialchars($_POST['lastname']);
+$email = htmlspecialchars(($_POST['email'])); //strtolower
 
 
 include("db_connection.php");

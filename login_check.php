@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-/*TODO Hinzufügen von "is submit set usw"
-*/
+if(isset($_POST['email']) && $_POST['email'] != '') {
 
 $email_form = htmlspecialchars($_POST['email']);
 $pass_form = htmlspecialchars($_POST['pwd']);
-
+}
+else{
+    header("location: login.php");
+}
 try
 {
     //create connection to database
@@ -27,13 +29,12 @@ try
             //gets row as associative array
             $users = $statement->fetch(PDO::FETCH_ASSOC);
             //print_r($users);
-            
-            //if ($email_form === $users['email'] && password_verify($pass_form, $users['pwd']) == true){
-                if ($email_form === htmlspecialchars($users['email']) && $pass_form === htmlspecialchars($users['pwd'])){
+            //TODO password verify
+            if ($email_form === htmlspecialchars($users['email']) && $pass_form === $users['pwd']/*password_verify($pass_form, $users['pwd'])*/){
 
                 //$_COOKIE["user_id"] = $users["person_id"];
-                $_SESSION['email'] = $email_form;
-                $_SESSION['pwd'] = $pass_form;
+                $_SESSION['person_id'] = $users['person_id'];
+                $_SESSION['email'] = $users['email'];
 			    $_SESSION['isteacher'] = $users['isteacher'];
 
                 if($users['isteacher']) {
@@ -45,18 +46,15 @@ try
             else {
 
             }
-          
-           
+              
     }
     catch(PDOException $error) {
+        $_SESSION['login_failed'];
+        header("location: login.php");
         echo $error;
         }
 }
-
     catch(PDOException $error) {
     echo $error;
-    }
-    finally {
-        
     }
 ?>
