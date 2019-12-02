@@ -102,7 +102,7 @@ if(isset($_SESSION['login_failed'])){
               </form>
               <br>
               <div>
-              <button class="btn btn-success">Create new Account for Teachers</button>
+              <a class="btn btn-success" href="createaccount.html">Create new Account for Teachers</a>
               </div>
           <br>              
         </div>
