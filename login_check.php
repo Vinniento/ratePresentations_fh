@@ -44,7 +44,7 @@ try
                 }
             }
             else {
-
+                header("location: login.php");
             }
               
     }
