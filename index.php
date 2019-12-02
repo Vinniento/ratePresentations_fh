@@ -25,6 +25,11 @@ session_start();
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
+   <!-- Custom styles for this template -->
+   <link href="css/grayscale.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="login.js"></script>
 </head>
 
 <body id="page-top">

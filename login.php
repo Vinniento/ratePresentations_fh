@@ -1,12 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['person_id'])) {
- // header("location: index.php");
-}
-if(isset($_SESSION['login_failed'])){
-  echo "<script>alert('username/password wrong, try again ')</script>";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +21,8 @@ if(isset($_SESSION['login_failed'])){
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="login.js"></script>
 </head>
 
 <body id="page-top">
@@ -74,30 +67,28 @@ if(isset($_SESSION['login_failed'])){
           <div class="card-body">
             <h2 class="card-title">Login</h2>
             <div class="container">
-              <form action="login_check.php" method="post">
+              <form method="post">
               <row>
                   <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">E-Mail:</span>
                       </div>
-                      <!--<input type="email" class="form-control" placeholder="yourname@example.com" aria-label="E-Mail" aria-describedby="basic-addon1">-->
-                      <input type="email" class="form-control" name="email" value="teacher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1" required>
+                      
+                      <input type="email" class="form-control" name="email" id="email" value="teacdfher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1" required>
                     </div>
-                <!--<column class="float-left"><label for="mail">E-Mail:</label></column>
-                <input type="text" id="mail" name="mail" value= "testuser" required class="float-right"><br><br>-->
+                
               </row>
               <row>
                   <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Password:</span>
                       </div>
-                      <input type="password" id="password" name ="pwd" value="test" class="form-control" placeholder="A Strong Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                      <input type="password" id="password" name ="password" value="test" class="form-control" placeholder="A Strong Password" aria-label="Password" aria-describedby="basic-addon1" required>
                     </div>
-                  <!--<column class="float-left"><label for="password">Password:</label></column>
-                  <input type="password"  id="password" name="pwd" value= "nlkj" required class="float-right"><br><br>-->
+                
               </row>
                 <div>
-                <button class="btn btn-success" type="submit" name="submit" value="Login">Login</button>
+                <button class="btn btn-success" type="submit" id ="submit" name="submit" value="Login">Login</button>
                 </div>
               </form>
               <br>
