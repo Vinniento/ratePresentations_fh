@@ -32,7 +32,7 @@ new Vue({
   el: 'teacherNavigation',
   data: {
     currentComponent: null,
-    componentsArray: ['Add Students', 'Create Groups', 'Rate Groups', 'View Ratings']
+    componentsArray: ['Add Students', 'Create Groups', 'Rate Groups', 'View Ratings', 'Create Rating']
   },
   components: {
     'Add Students': {
@@ -46,6 +46,9 @@ new Vue({
     },
     'View Ratings': {
       template: '<h3>View Ratings Component!</h3>'
+    },
+    'Create Rating': {
+      template: '<h3>Create Ratings Component!</h3>'
     }
   },
   methods: {
@@ -55,3 +58,34 @@ new Vue({
     }
   }
 })
+
+new Vue({
+  el: '#createRating',
+  data: {
+    ranges: [],
+    texts: []
+  },
+  methods: {
+    addRange: function() {
+      var elem = document.createElement('tr');
+      this.ranges.push({
+        question: "",
+        slider: ""
+      });
+    },
+    addText: function() {
+      var elem = document.createElement('tr');
+      this.texts.push({
+        feedback: "",
+        text: ""
+      });
+      Array.prototype.push.apply(ranges, texts)
+    },
+    removeRange: function(index) {
+      this.ranges.splice(index, 1)
+    },
+    removeText: function(index) {
+      this.texts.splice(index, 1)
+    }
+  }
+});
