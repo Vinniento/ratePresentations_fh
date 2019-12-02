@@ -7,23 +7,24 @@ catch(Exception $ex){
     echo $ex;
 
 }
-finally{
+try{
   //header("location: login_check.php");
 //persons    
 $create = "CREATE TABLE if not exists `persons` (
   `person_ID` int not null auto_increment,
   `firstname` varchar(50) not null,
   `lastname` varchar(50) not null,
-  `email` varchar(70) not null,
+  `email` varchar(70) not null unique,
   `pwd` varchar (50) not null,
   `isteacher` boolean not null,
+  UNIQUE (email),
   PRIMARY KEY (`Person_ID`)
 );";
 $conn->exec($create);
 
 
-
-$query = "INSERT into persons 
+//zu test zwecken
+/*$query = "INSERT into persons 
   (firstname, lastname, email, pwd, isteacher) 
   values
   ('teacher', 'test', 'teacher@test.com', 'test', true),
@@ -32,7 +33,7 @@ $query = "INSERT into persons
   $statement->execute();
  // echo "<script>alert('Successfully inserted into persons ')</script>";
 // echo "<script>alert('Table \"Person\" created successfully  ')</script>";
-//  Groups
+//  Groups*/
 
 
 $create = "CREATE TABLE if not exists `groups` ( 
@@ -163,5 +164,8 @@ $create = "CREATE TABLE if not exists `ratings_to_criteria` (
 );";
  $conn->exec($create);
 //  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
+}
+catch (PDOException $ex){
+  echo $ex;
 }
 ?>
