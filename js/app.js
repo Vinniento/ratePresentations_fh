@@ -63,29 +63,41 @@ new Vue({
   el: '#createRating',
   data: {
     ranges: [],
-    texts: []
+    texts: [],
+    sections: []
   },
   methods: {
     addRange: function() {
-      var elem = document.createElement('tr');
+      var elem = document.createElement("tr");
       this.ranges.push({
         question: "",
         slider: ""
       });
     },
     addText: function() {
-      var elem = document.createElement('tr');
+      var elem = document.createElement("tr");
       this.texts.push({
         feedback: "",
         text: ""
       });
-      Array.prototype.push.apply(ranges, texts)
+      //Array.prototype.push.apply(ranges, texts)
+    },
+    addSection: function() {
+      var elem = document.createElement("tr");
+      this.sections.push({
+        sectionname: "",
+        sectiontest: ""
+      });
+
     },
     removeRange: function(index) {
       this.ranges.splice(index, 1)
     },
     removeText: function(index) {
       this.texts.splice(index, 1)
+    },
+    removeSection: function(index) {
+      this.sections.splice(index, 1)
     }
   }
 });
