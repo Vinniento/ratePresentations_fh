@@ -34,7 +34,7 @@ try {
         $statement = $conn->prepare($query);
         $statement->bindParam(':email', $email_form);
         $statement->execute();
-
+ 
         //gets row as associative array
         $users = $statement->fetch(PDO::FETCH_ASSOC);
         //print_r($users);
