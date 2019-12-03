@@ -55,7 +55,7 @@ try {
             if ($_SESSION['isteacher']) {
                 echo "teacher login successful";
                 return;
-                //header("location: teacher.html"); 
+                //header("location: teacher.php"); 
             } else {
                 echo "student login successful";
                 return;

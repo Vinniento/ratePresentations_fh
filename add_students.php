@@ -21,7 +21,7 @@ try
     if ($result > 0) 
     {
         //echo "<script>alert('Person already exists  ')</script>";
-        header("Location: teacher.html");
+        header("Location: teacher.php");
     }
 }
 catch(Exception $ex) 
@@ -39,6 +39,6 @@ catch (PDOException $exception)
     echo $create . "<br>" . $exception->getMessage();
 }
     echo "added and " . $result . " found in db"
-   //header("Location: teacher.html");
+   //header("Location: teacher.php");
 
 ?>

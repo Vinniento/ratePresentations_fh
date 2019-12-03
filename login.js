@@ -25,13 +25,13 @@ $(document).ready(function(){
                     $("form")[0].reset();
                     $('input[type="text"],input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
                     alert(data);
-                    window.location = "teacher.html";
+                    window.location = "teacher.php";
                     break;
                 case"student login successful":
                     $("form")[0].reset();
                     $('input[type="text"],input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
                     alert(data);
-                    window.location = "student.html";
+                    window.location = "student.php";
                     break;
                 default:
                     alert(data);

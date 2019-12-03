@@ -40,7 +40,7 @@ include "head.php";
               </form>
               <br>
               <div>
-              <a class="btn btn-success" href="createaccount.html">Create new Account for Teachers</a>
+              <a class="btn btn-success" href="createaccount.php">Create new Account for Teachers</a>
               </div>
           <br>              
         </div>

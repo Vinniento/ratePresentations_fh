@@ -15,7 +15,7 @@ if (isset($_POST['firstname']) && isset($_POST['lasttname']) && isset($_POST['ma
     }
 } else {
     echo "pwd falsch!";
-    header("location: teacher.html");
+    header("location: teacher.php");
 }
 
 $isteacher_form = True;

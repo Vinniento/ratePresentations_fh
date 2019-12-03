@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <head>
 
   <meta charset="utf-8">
@@ -64,11 +68,11 @@
               <?php
                 if ($_SESSION['isteacher'] == 1) :
                   ?>
-                <a class="nav-link"><i class="fas fa-user-circle" href="teacher.html">teacher</i></a>
+                <a class="nav-link"><i class="fas fa-user-circle" href="teacher.php">teacher</i></a>
               <?php
                 else :
                   ?>
-                <a class="nav-link"><i class="fas fa-user-circle" href="student.html">student</i></a>
+                <a class="nav-link"><i class="fas fa-user-circle" href="student.php">student</i></a>
               <?php
                 // echo $_SESSION['isteacher'];
                 endif; ?>
