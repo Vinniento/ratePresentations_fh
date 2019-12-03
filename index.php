@@ -54,7 +54,15 @@ session_start();
             <a class="nav-link js-scroll-trigger" href="#helpus">Help Us</a>
           </li>
           <li class="nav-item">
+            <?php 
+             if(isset($_SESSION['email']))  :
+            ?>
+               <a class="nav-link" href="logout.php">Logout</a>
+            <?php
+             else :
+            ?>
               <a class="nav-link" href="login.php">Login</a>
+            <?php endif; ?>
           </li>
           <li class="nav-item">
               <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>
