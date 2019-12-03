@@ -37,7 +37,7 @@ if(isset($_SESSION['login_failed'])){
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Rate Presentations</a>
+        <a class="navbar-brand" href="index.php">Rate Presentations</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -46,13 +46,13 @@ if(isset($_SESSION['login_failed'])){
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">About</a>
+            <a class="nav-link" href="index.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.html">Team</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.html">Help Us</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Help Us</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="login.php">Login</a>
