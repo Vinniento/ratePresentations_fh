@@ -25,8 +25,8 @@ session_start();
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
-   <!-- Custom styles for this template -->
-   <link href="css/grayscale.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="login.js"></script>
@@ -54,21 +54,35 @@ session_start();
             <a class="nav-link js-scroll-trigger" href="#helpus">Help Us</a>
           </li>
           <li class="nav-item">
-            <?php 
-             if(isset($_SESSION['email']))  :
-            ?>
-               <a class="nav-link" href="logout.php">Logout</a>
             <?php
-             else :
-            ?>
+            if (isset($_SESSION['email'])) :
+              ?>
+              <a class="nav-link" href="logout.php">Logout</a>
+            <?php
+            else :
+              ?>
               <a class="nav-link" href="login.php">Login</a>
             <?php endif; ?>
           </li>
           <li class="nav-item">
-              <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>
+            <?php
+            if (isset($_SESSION['email'])) :
+              ?>
+              <?php
+                if ($_SESSION['isteacher'] == 1) :
+                  ?>
+                <a class="nav-link"><i class="fas fa-user-circle" href="teacher.html">teacher</i></a>
+              <?php
+                else :
+                  ?>
+                <a class="nav-link"><i class="fas fa-user-circle" href="student.html">student</i></a>
+              <?php
+                // echo $_SESSION['isteacher'];
+                endif; ?>
+            <?php endif; ?>
           </li>
 
-          
+
         </ul>
       </div>
     </div>
@@ -81,20 +95,20 @@ session_start();
         <div class="card-body">
           <h5 class="card-title">Enter the Code you received here!</h5>
           <div class="container">
-              <form action="login_check.php" method="post">
+            <form action="login_check.php" method="post">
               <row>
-                  <div class="input-group mb-3">
-                      <input type="code" id="uniquecode" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
-                  </div>
-              </row>
-                <div>
-                  <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>
+                <div class="input-group mb-3">
+                  <input type="code" id="uniquecode" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
                 </div>
-              </form>
-              <br>
+              </row>
               <div>
-        </div>
-    </div>
+                <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>
+              </div>
+            </form>
+            <br>
+            <div>
+            </div>
+          </div>
   </header>
 
   <!-- About Section -->
@@ -103,11 +117,11 @@ session_start();
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2 class="text-white mb-4">About the Project</h2>
-          <p class="text-white-50">The goal of our project is to create a website that allows both students and teachers to give feedback to presentations of their colleagues. 
-            Teachers can create their own accounts and add students to groups. After creating a presentation, the students enter a code, to get access to the feedback form. 
-            Both, teachers and students will have to fill out the same form, first for the whole group of the presentation. Then they can give additional feedback to 
-            individuals of the group. The results are then displayed on a different webpage, whereas the left side shows the feedback given by students and the right side the 
-            ones given by teachers. Everything will happen anonymously. When feedback is given to an individual person, this person receives an email with a link that sends 
+          <p class="text-white-50">The goal of our project is to create a website that allows both students and teachers to give feedback to presentations of their colleagues.
+            Teachers can create their own accounts and add students to groups. After creating a presentation, the students enter a code, to get access to the feedback form.
+            Both, teachers and students will have to fill out the same form, first for the whole group of the presentation. Then they can give additional feedback to
+            individuals of the group. The results are then displayed on a different webpage, whereas the left side shows the feedback given by students and the right side the
+            ones given by teachers. Everything will happen anonymously. When feedback is given to an individual person, this person receives an email with a link that sends
             them back to our website, where they can view their feedback.</p>
         </div>
       </div>
@@ -117,11 +131,11 @@ session_start();
   <!-- Projects Section -->
   <section id="projects" class="projects-section bg-light">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="text-black mb-4">Team</h2>
-            </div>
+      <div class="row text-center">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-black mb-4">Team</h2>
         </div>
+      </div>
 
       <!-- Project One Row -->
       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
@@ -158,10 +172,10 @@ session_start();
           </div>
         </div>
       </div>
-    
 
-    <!-- Project Three Row -->
-    <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+
+      <!-- Project Three Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
         <div class="col-lg-6">
           <img class="img-fluid" src="img/image3.jpg" alt="">
         </div>
@@ -177,10 +191,10 @@ session_start();
           </div>
         </div>
       </div>
-    
 
-    <!-- Project Four Row -->
-    <div class="row justify-content-center no-gutters">
+
+      <!-- Project Four Row -->
+      <div class="row justify-content-center no-gutters">
         <div class="col-lg-6">
           <img class="img-fluid" src="img/image4.jpg" alt="">
         </div>
@@ -203,11 +217,11 @@ session_start();
   <section class="contact-section bg-black" id="helpus">
     <div class="container">
 
-        <div class="row text-center">
-            <div class="col-lg-8 mx-auto">
-              <h2 class="text-white mb-4">Help Us Make Our Dream Come True</h2>
-            </div>
-          </div>
+      <div class="row text-center">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">Help Us Make Our Dream Come True</h2>
+        </div>
+      </div>
 
 
       <div class="row">
@@ -280,7 +294,7 @@ session_start();
 
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
-  
+
 
 </body>
 
