@@ -21,7 +21,7 @@ include "head.php";
                         <span class="input-group-text" id="basic-addon1">E-Mail:</span>
                       </div>
                       
-                      <input type="email" class="form-control" name="email" id="email" value="teacdfher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1" required>
+                      <input type="email" class="form-control" name="email" id="email" value="teacher@test.com" aria-label="E-Mail" aria-describedby="basic-addon1" required>
                     </div>
                 
               </row>
