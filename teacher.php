@@ -111,10 +111,11 @@ include "head.php";
     </script>
 
     <script type="text/x-template" id="creategroups">
-        <form action="create_check.php" method="post">
+        <form action="createsurvey.php" method="post">
             <div class="form-group">
                 <label for="groupname">Group Name:</label>
                 <input type="text" class="form-control" id="groupname" placeholder="Your Group!">
+                <button type="submit" value="Create Presentation" class="btn btn-primary badge-pill" style="width: 13rem;">Create Presentation</button>
             </div>
         </form>
     </script>
