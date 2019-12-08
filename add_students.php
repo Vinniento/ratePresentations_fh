@@ -39,23 +39,26 @@ try
             $statement = $conn->prepare( 'INSERT INTO persons (firstname, lastname, email, pwd, isteacher) VALUES (:firstname, :lastname, :email,:pwd, :isteacher)' );
             $statement->execute( array( 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'pwd' =>$pwd, 'isteacher' => 'false' ) );
 
-            $headers = 'From: webmaster@example.com' . '\r\n' .
-            'Reply-To: webmaster@example.com' . '\r\n' .
+            $headers = 'From: edmin.ratepresentations@gmail.com' . '\r\n' .
+            'Reply-To: edmin.ratepresentations@gmail.com' . '\r\n' .
             'X-Mailer: PHP/' . phpversion();
-            $message = 'You have been added as a student:  password ='.$pass;
+            $message = 'You have been added as a student:  password ='. $pass 
+                        . 'Please click on the following link and reset your password: \n
+                        http://localhost:8081/ratepresentations/ratePresentations/change_password.php ';
 
             $subject = 'project work';
 
             mail( $email, $subject, $message, $headers );
-        } catch ( PDOException $exception ) 
- {
+        } 
+        catch ( PDOException $exception ) 
+        {
             echo $create . '<br>' . $exception->getMessage();
         }
-        echo 'added and ' . $result . ' found in db';
+        echo 'added and ' . $result . ' found in db' - $email;
 
     }
-} catch( Exception $ex ) 
- {
+} catch(Exception $ex ) 
+{
     echo 'Error in retrieving existing data for comparison ' . $ex;
 }
 ?>
