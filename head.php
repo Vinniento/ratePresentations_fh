@@ -42,13 +42,13 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="index.php#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Team</a>
+            <a class="nav-link js-scroll-trigger" href="index.php#projects">Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#helpus">Help Us</a>
+            <a class="nav-link js-scroll-trigger" href="index.php#helpus">Help Us</a>
           </li>
           <li class="nav-item">
             <?php
