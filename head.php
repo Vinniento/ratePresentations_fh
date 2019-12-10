@@ -68,11 +68,11 @@ session_start();
               <?php
                 if ($_SESSION['isteacher'] == 1) :
                   ?>
-                <a class="nav-link"><i class="fas fa-user-circle" href="teacher.php">teacher</i></a>
+                <a href="teacher.php" class="nav-link"><i class="fas fa-user-circle" >teacher</i></a>
               <?php
                 else :
                   ?>
-                <a class="nav-link"><i class="fas fa-user-circle" href="student.php">student</i></a>
+                <a href="student.php" class="nav-link"><i class="fas fa-user-circle" >student</i></a>
               <?php
                 // echo $_SESSION['isteacher'];
                 endif; ?>
