@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
 include "head.php";
+if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
+    header("Location: index.php");
+}
 ?>
 
     <header class="masthead">

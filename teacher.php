@@ -3,6 +3,9 @@
   
 <?php
 include "head.php";
+if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
+  header("Location: index.php");
+}
 ?>
 
     <header class="masthead">

@@ -1,12 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION['person_id'])) {
- // header("location: index.php");
-}
-if(isset($_SESSION['login_failed'])){
-  echo "<script>alert('username/password wrong, try again ')</script>";
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
