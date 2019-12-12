@@ -11,7 +11,8 @@ if ( isset( $_POST['firstname'] ) && isset( $_POST['lastname'] ) && isset( $_POS
     $pass = randcode( 8 );
     //mail schicken
 
-    $pwd = password_hash( ( htmlspecialchars( $pass ) ), PASSWORD_BCRYPT );
+    //$pwd = password_hash( ( htmlspecialchars( $pass ) ), PASSWORD_BCRYPT );
+    $pwd=$pass;
     //strtolower
 } else {
 
@@ -42,9 +43,9 @@ try
             $headers = 'From: edmin.ratepresentations@gmail.com' . '\r\n' .
             'Reply-To: edmin.ratepresentations@gmail.com' . '\r\n' .
             'X-Mailer: PHP/' . phpversion();
-            $message = 'You have been added as a student:  password ='. $pass 
-                        . 'Please click on the following link and reset your password: \n
-                        http://localhost:8081/ratepresentations/ratePresentations/change_password.php ';
+            $message = "You have been added as a student:  password = ". $pass 
+                        .  "\n" .' Please click on the following link and reset your password:' . "\n" .
+                        "http://localhost:8081/ratepresentations/change_password.php ";
 
             $subject = 'project work';
 
@@ -54,7 +55,7 @@ try
         {
             echo $create . '<br>' . $exception->getMessage();
         }
-        echo 'added and ' . $result . ' found in db' - $email;
+        echo 'added and ' . $result . ' found in db' . $email;
 
     }
 } catch(Exception $ex ) 
