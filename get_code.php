@@ -15,13 +15,8 @@ try{
      //gets row as associative array
      $codes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-     $students = json_encode($users);
-     echo $students;
-
-
-
-
-
+     $result = json_encode($codes);
+     echo $result;
 
 }catch(PDOException $error){
     echo $error;
