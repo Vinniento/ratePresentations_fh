@@ -9,8 +9,8 @@ try{
   
 
     $query = "SELECT criteria.name FROM  presentations 
-    LEFT JOIN  presentation_to_criteria  ON presentations.presentation_ID = presentation_to_criteria.presentation_ID 
-    LEFT JOIN  criteria  ON presentation_to_criteria.criteria_ID = criteria.criteria_ID  
+    INNER JOIN  presentation_to_criteria  ON presentations.presentation_ID = presentation_to_criteria.presentation_ID 
+    INNER JOIN  criteria  ON presentation_to_criteria.criteria_ID = criteria.criteria_ID  
     WHERE presentations.code = :code";
     $statement = $conn->prepare($query);
     $statement->bindParam(':code', $code);
