@@ -1,28 +1,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Rate Presentations</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/vue"></script>
-</head>
+  
+<?php
+include "head.php";
+?>
 
 <body id="page-top">
 
@@ -57,10 +39,8 @@
     </div>
   </nav>
 
-  <!-- Login -->
-
-
-  <header style="margin-top: 10rem; margin-bottom: 5rem">
+ 
+  <section style="margin-top: 10rem; margin-bottom: 5rem">
       <div class="container h-100 d-flex justify-content-center align-items-center text-center">
         <div class="card bg-secondary" style="width: 80rem;">
           <div class="card-body">
@@ -68,10 +48,25 @@
             <div class="container justify-content-center align-items-center text-center" style="margin-top: 50px; margin-bottom: 50px;">
       <div id="createRating">
         <div class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: 50px;">
-          <button class="btn btn-success badge-pill" @click="addRange" style="margin-right: 20px;">Add Range Slider</button>
-          <button class="btn btn-success badge-pill" @click="addText" style="margin-left: 20px;">Add Text Feedback</button>
-          <button class="btn btn-success badge-pill" @click="addSection" style="margin-left: 20px;">Add a Section</button>       
+        <button class="btn btn-success badge-pill" @click="addSection" style="margin-right: 20px;">Add a Section</button>
+        <button class="btn btn-success badge-pill" @click="addRange" style="margin-right: 20px;">Add Range Slider</button>
+        <button class="btn btn-success badge-pill" @click="addText">Add Text Feedback</button>         
+      </div>
+
+      <!-- Add Section Heading -->
+      <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in sections">
+          <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
+            <textarea class="form-control" rows="1" v-model="row.sectionname" placeholder="Add a new Section!"></textarea>
+          </div>
+          <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+            
+          </div>
+          <div class="col-sm-12 col-md-2"> 
+            <button class="btn btn-success badge-pill" v-on:click="removeSection(index)">Remove</button>
+          </div>
         </div>
+
+        <!-- Add Ranges -->
 
         <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in ranges">
           <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
@@ -85,6 +80,8 @@
           </div>
         </div>
 
+        <!-- Add Additional Text -->
+
         <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in texts">
           <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
             <textarea class="form-control" rows="1" v-model="row.feedback" placeholder="Enter your Question!"></textarea>
@@ -97,33 +94,15 @@
           </div>
         </div>
 
-        <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in sections">
-          <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
-            <textarea class="form-control" rows="1" v-model="row.sectionname" placeholder="Add a new Section!"></textarea>
-          </div>
-          <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
-            <textarea class="form-control" rows="3" v-model="row.sectiontest"></textarea>
-          </div>
-          <div class="col-sm-12 col-md-2"> 
-            <button class="btn btn-success badge-pill" v-on:click="removeSection(index)">Remove</button>
-          </div>
-        </div>
-
-        <!--<div class="row" style="margin-bottom: 15px;" v-for="(row, index) in sections">
-          <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
-            <textarea class="form-control" rows="1" v-model="row.sectionname" placeholder="Enter your Section!"></textarea>
-          </div>
-        <div class="col-sm-12 col-md-2">
-          <button class="btn btn-success badge-pill" v-on:click="removeSection(index)">Remove</button>
-
-        </div>-->
-
         
-
       </div>
     </div>
       </div>
-    </header>
+
+
+      <button class="btn btn-success badge-pill">Create Survey</button>
+      </div>
+    </section>
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
