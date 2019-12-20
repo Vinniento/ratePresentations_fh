@@ -86,7 +86,6 @@ new Vue({
         feedback: "",
         text: ""
       });
-      //Array.prototype.push.apply(ranges, texts)
     },
     addSection: function() {
       var elem = document.createElement("tr");
@@ -107,3 +106,44 @@ new Vue({
     }
   }
 });
+
+new Vue({
+  el: '#test',
+  data () {
+    return {
+      rangename: '',
+      feedbackname: '',
+      contents: []
+    }
+  },
+  methods:{
+    addAnotherRangeInput(){
+      const range = {
+        rangename: this.rangename, //name here
+      }
+      this.contents.push(range)
+      this.rangename='';                
+    },
+    removeRangeInput(range) {
+      this.contents.splice(this.contents.indexOf(range),1);
+    },
+    addAnotherFeedbackInput(){
+      const feedback = {
+        feedbackname: this.feedbackname,
+      }
+      this.contents.push(feedback)
+      this.feedbackname='';
+    },
+    removeFeedbackInput(feedback) {
+      this.contents.splice(this.contents.indexOf(feedback),1);
+    }
+  }
+})
+
+
+
+
+
+
+
+
