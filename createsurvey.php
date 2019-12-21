@@ -110,6 +110,7 @@ include "head.php";
       <button type="button" name="button" @click="addAnotherRangeInput">Add Another Range Question</button>
         Feedback Input Question: <input v-model="feedbackname" type="text" name="" value="">
       <button type="button" name="button" @click="addAnotherFeedbackInput">Add Another Feedback Question</button>
+      <button type="button" name="button" @click="sentdata">send Data</button>
         <ul class="contents">
           <li v-for="range in contents">
             {{range.rangename}} <input type="range" class="custom-range" min="1" max="10" step="1"> <button @click="removeRangeInput(range)">remove</button>
