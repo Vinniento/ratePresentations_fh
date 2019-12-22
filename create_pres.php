@@ -46,7 +46,7 @@ if(isset($_POST['data'])){
 }
 echo $out;
 
-//echo $array[0]."+test"; sdds
+//echo $array[0]."+test"; 
 }else{
 
 echo "error";
