@@ -142,7 +142,8 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                 </p>
 
             </div>
-                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button>
+             <!---   <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button> --->
+             <a class="btn btn-success badge-pill" href="createsurvey.php">Create Survey</a>
                 <br><br>    
                 <div id="view_ratings" style="display:none;"> 
 

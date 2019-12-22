@@ -1,4 +1,5 @@
-<?php    //verbindung teacher ->pres fehlt noch
+<?php   
+session_start();
 include("db_connection.php");
 include( 'random.php' );
 $out="out+ \n";
@@ -36,6 +37,21 @@ if(isset($_POST['data'])){
             $statement->execute( array( 'presentation_ID' => $id['presentation_ID'] ,'criteria_ID' => $id_crit['criteria_ID'] ) );
 
         }
+
+         //lehrer mapping
+        $query = "SELECT person_ID FROM persons WHERE  email = :email";
+        $statement = $conn->prepare($query);
+        $statement->bindParam(':email', $_SESSION['email']);
+        $statement->execute();
+
+        $id_per = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $statement = $conn->prepare( 'INSERT INTO presentation_to_person (presentation_ID,person_ID) VALUES (:presentation_ID,:person_ID)' );
+        $statement->execute( array( 'presentation_ID' => $id['presentation_ID'] ,'person_ID' => $id_per['person_ID'] ) );
+
+
+
+
 
     }catch ( PDOException $exception ) 
         {
