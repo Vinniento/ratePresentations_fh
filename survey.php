@@ -20,7 +20,7 @@ include "head.php";
                         <div class="col-sm-12 col-md-4">
                             <h5 class="header">Group-Rating for:</h5>
                         </div>  
-                        <h5 class="col-sm-12 col-md-4" style="margin-bottom: 15px;">NAME der Gruppe HIER AUS DB für luci</h5>
+                        <h5 class="col-sm-12 col-md-4" style="margin-bottom: 15px;">NAME der Präsentation HIER AUS DB für luci</h5>
                     </div>
                     <hr>
                     <header style="margin-bottom: 15px;"><br>
