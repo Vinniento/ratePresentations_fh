@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include("db_connection.php");
 if(isset($_POST['code']))
 {
     $code=$_POST['code'];
