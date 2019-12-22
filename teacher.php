@@ -154,14 +154,24 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
 
                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_survey" value="Add Group to Survey" onclick="showViewRatings()">Add Group to Survey</button>
                 <br><br>    
-        
-                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate_groups" value="Rate Groups" onclick="showRateGroups()">Rate Groups</button>
+                    Add Groups to Survey - und Datum auch hinzufügen
+
+                    dann weiterer Button mit View Presentations: 
+                    zeile mit presentationsname
+                    dann member darunter - rechts davon anzeigen von dazugehörigem Zugriffscode, Datum der Pres und Rate Button für den Teacher
+
+                    Damit ist dann der rate Groups button ws hinfällig
+                    <br>
+
+                    
+                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate_groups" value="Rate Groups" onclick="showRateGroups()">View Presentations</button>
                     <br><br>
                 
                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
                 <br><br>
-
-                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_ratings" value="Create Ratings" onclick="showViewRatings()">Create Rating</button>
+                Bei View Ratings sollen wieder gleich wie bei dem neuen Button view Presentations das gleiche angezeigt werden, nur statt dem button für rate sollte ein View button dort sein, wo man dann auf die Ergebnisse kommt
+                <br>
+               
                 </div>
 
             </div>
