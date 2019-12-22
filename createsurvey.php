@@ -46,6 +46,23 @@ include "head.php";
           <div class="card-body">
             <h2 class="card-title">Create a new Survey!</h2>
             <div class="container justify-content-center align-items-center text-center" style="margin-top: 50px; margin-bottom: 50px;">
+            <div id="test">
+      <p>Create your Survey!</p>
+        Range Input Question: <input v-model="rangename" type="text" name="" value="">
+      <button type="button" name="button" @click="addAnotherRangeInput">Add Another Range Question</button>
+        Feedback Input Question: <input v-model="feedbackname" type="text" name="" value="">
+      <button type="button" name="button" @click="addAnotherFeedbackInput">Add Another Feedback Question</button>
+      <button type="button" name="button" @click="sentdata">send Data</button>
+        <ul class="contents">
+          <li v-for="range in contents">
+            {{range.rangename}} <input type="range" class="custom-range" min="1" max="10" step="1"> <button @click="removeRangeInput(range)">remove</button>
+          </li>
+          <li v-for="feedback in contents">
+            {{feedback.feedbackname}} <textarea class="form-control" rows="3"></textarea> <button @click="removeFeedbackInput(feedback)">remove</button>
+          </li>
+        </ul>
+    </div>
+      <!--
       <div id="createRating">
         <div class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: 50px;">
         <button class="btn btn-success badge-pill" @click="addSection" style="margin-right: 20px;">Add a Section</button>
@@ -53,7 +70,7 @@ include "head.php";
         <button class="btn btn-success badge-pill" @click="addText">Add Text Feedback</button>         
       </div>
 
-      <!-- Add Section Heading -->
+      <-- Add Section Heading --
       <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in sections">
           <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
             <textarea class="form-control" rows="1" v-model="row.sectionname" placeholder="Add a new Section!"></textarea>
@@ -66,7 +83,7 @@ include "head.php";
           </div>
         </div>
 
-        <!-- Add Ranges -->
+        <-- Add Ranges --
 
         <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in ranges">
           <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
@@ -80,7 +97,7 @@ include "head.php";
           </div>
         </div>
 
-        <!-- Add Additional Text -->
+        <-- Add Additional Text --
 
         <div class="row" style="margin-bottom: 15px;" v-for="(row, index) in texts">
           <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">
@@ -95,7 +112,7 @@ include "head.php";
         </div>
 
         
-      </div>
+      </div> --->
     </div>
       </div>
 
@@ -103,6 +120,8 @@ include "head.php";
       <button class="btn btn-success badge-pill">Create Survey</button>
       </div>
     </section>
+
+    <!---
 
     <div id="test">
       <p>Create your Survey!</p>
@@ -119,7 +138,7 @@ include "head.php";
             {{feedback.feedbackname}} <textarea class="form-control" rows="3"></textarea> <button @click="removeFeedbackInput(feedback)">remove</button>
           </li>
         </ul>
-    </div>
+    </div> -->
 
 
         
