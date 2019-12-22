@@ -8,6 +8,7 @@ if(isset($_POST['data'])){
     $code = randcode(4);
 
     try{
+        //erstelt presention
         $statement = $conn->prepare( 'INSERT INTO presentations (name, code) VALUES (:name, :code)' );
         $statement->execute( array( 'name' => $presname, 'code' => $code ) );
 
@@ -32,16 +33,16 @@ if(isset($_POST['data'])){
             $id_crit = $statement->fetch(PDO::FETCH_ASSOC);
 
             $statement = $conn->prepare( 'INSERT INTO presentation_to_criteria (presentation_ID,criteria_ID) VALUES (:presentation_ID,:criteria_ID)' );
-            $statement->execute( array( 'presentation_ID' => $id ,'criteria_ID' => $id_crit ) );
+            $statement->execute( array( 'presentation_ID' => $id['presentation_ID'] ,'criteria_ID' => $id_crit['criteria_ID'] ) );
 
         }
 
     }catch ( PDOException $exception ) 
         {
-            $out = $out. $create . '\n' . $exception->getMessage();
+            $out = $out. $create ."1+". '\n' . $exception->getMessage();
         } catch(Exception $ex ) 
 {
-    $out = $out.'\n'. 'Error = ' . $ex;
+    $out = $out."2+ ".'\n'. 'Error = ' . $ex;
 }
 echo $out;
 

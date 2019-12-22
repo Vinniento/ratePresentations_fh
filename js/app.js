@@ -125,7 +125,7 @@ new Vue({
       this.contents.push(range);  
       this.nam.push(range.rangename);     
       this.rangename='';                  
-      alert(range.rangename);    
+     // alert(range.rangename);    
     },
     removeRangeInput(range) {
       this.contents.splice(this.contents.indexOf(range),1);
@@ -142,29 +142,15 @@ new Vue({
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
     sentdata(){
-      alert("test");
-      alert(this.nam);
+   //   alert("test");
+    //  alert(this.nam);
       $.post("create_pres.php",{ data: this.nam},
         function(data) {
             switch(data) {
-              /*  case"no such user":
-                    $('input[type="email"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-                    $('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
-                    alert(data);
-                    break;
-                case"email or password wrong":
-                $('input[type="text"],input[type="password"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-                alert(data);
-                case"password successfully changed":
-                    $("form")[0].reset();
-                    $('input[type="text"],input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
-                    alert(data);
-                   // window.location = "ch.php";
-                    break;*/
-                
+           
+    
                 default:
                     alert(data);
-                   /// alert("fehler");
             }
           
         });
