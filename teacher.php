@@ -24,9 +24,10 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                 let response = this.responseText;
                 let students = JSON.parse(this.responseText); //Convert String back into JSON object
                 console.log(students);
-                let col = [];
-                for (let key in students[0]) {
-                    col.push(key);
+                let columns = [];
+                for (let column in students[0]) {
+                    columns.push(column);
+                    
                 }
 
                 // CREATE DYNAMIC TABLE.
@@ -39,7 +40,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                 tr.appendChild(th);
                 for (let i = 0; i < 2; i++) {
                     let th = document.createElement("th"); // TABLE HEADER.
-                    th.innerHTML = col[i];
+                    th.innerHTML = columns[i];
                     tr.appendChild(th);
                 }
 
@@ -47,17 +48,17 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                 for (let i = 0; i < students.length; i++) {
                     tr = table.insertRow(-1);
                     var checkbox = document.createElement('input');
-                    checkbox.type = "checkbox";
+                    checkbox.type = "checkbox"; 
 
-
-                    console.log(students[i][col[0]]);
-
+                    console.log(students[i][columns[0]]);
+                    
                     tr.appendChild(checkbox);
 
                     for (let j = 0; j < 2; j++) {
                         let tabCell = tr.insertCell(-1);
-                        tabCell.innerHTML = students[i][col[j]];
-                        checkbox.setAttribute('name', students[i][col[2]]);
+                        tabCell.innerHTML = students[i][columns[j]];
+                        checkbox.setAttribute('id', students[i][columns[2]]);
+                        
                     }
                 }
                 // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
@@ -71,30 +72,28 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
         con.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Set appropriate request Header
         con.send(); //Request File Content
     }
-/*
-    element.addEventListener("click", formSend());
-
-    function formSend() {
-
-        var blub = "blub";
-
-        var inputValue = 'hello=' + blub;
-
-        let con = new XMLHttpRequest(); //Create Object (verbindungsaufbau)
-        con.open('get', 'create_check.php'); //open the connection
-        con.onreadystatechange = function() { //define Callback function
-            if (con.readyState === 4 && con.status === 200) { //4 -> server ist fertig
+    
 
 
-            }
-
-        };
-        con.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        con.send(inputValue);
-
-    }*/
 </script>
 
+<script>
+
+    function addCheckedStudentsToArray() {
+        alert("hallo");
+            var form = document.getElementById("checked_boxes"),
+            inputs = form.getElementsByTagName("input"),
+            arr = [],
+
+            for (var i = 0, max = inputs.length; i < max; i += 1) {
+
+                if (inputs[i].type === "checkbox" && inputs[i].checked) {
+                    arr.push(inputs[i].value);
+                    alert(arr[i]);
+                    }
+            }
+    }
+</script>
 
 <section style="margin-top: 10rem; margin-bottom: 5rem">
       <div class="container h-100 d-flex justify-content-center align-items-center text-center">
@@ -107,7 +106,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
 
         
             <div class="row"><br>
-                <div class="col s12 m3 l3 center-align">
+                <div class="columns s12 m3 l3 center-align">
                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" onclick="showAddStudents()">Add Students</button>
                     <br>
 
@@ -135,14 +134,15 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
 
                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"  name="create_groups" value="Create Groups" onclick="createTableFromJSON()">Create Groups</button>
                     <br><br>
+            <div id="checked_boxes">
             <div id="create_groups" style="display:none;"> 
-
-                <p>
-                    blub
-                </p>
-
+                    <p>
+                        blub
+                    </p>
+                <button type ="submit" name="addstudenttogroup" onclick="addCheckedStudentsToArray()">Create Group</button>
+                </div>
             </div>
-             <!---   <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button> --->
+                <!---   <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button> --->
              <a class="btn btn-success badge-pill" href="createsurvey.php">Create Survey</a>
                 <br><br>    
                 <div id="create_survey" style="display:none;"> 
@@ -174,7 +174,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                         </div>
                         <br><br>
                         <div class="row">
-                            <div class="col m6 l6">
+                            <div class="columns m6 l6">
                                 <h6>Group Members:</h6>
                                 <p>blabla</p>
                                 <p>blabla</p>
@@ -182,7 +182,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                                 <p>blabla</p>
                                 <p>blabla</p>
                             </div>
-                            <div class="col m6 l6">
+                            <div class="columns m6 l6">
                             <h6>Datum: blablabla</h6>
                             <br><br>
                             <h6>Code: blablabla</h6>
@@ -202,7 +202,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                         </div>
                         <br><br>
                         <div class="row">
-                            <div class="col m6 l6">
+                            <div class="columns m6 l6">
                                 <h6>Group Members:</h6>
                                 <p>blabla</p>
                                 <p>blabla</p>
@@ -210,7 +210,7 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
                                 <p>blabla</p>
                                 <p>blabla</p>
                             </div>
-                            <div class="col m6 l6">
+                            <div class="columns m6 l6">
                             <h6>Datum: blablabla</h6>
                             <br><br>
                             <h6>Code: blablabla</h6>
