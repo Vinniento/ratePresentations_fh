@@ -8,7 +8,7 @@ try{
 
   
 
-    $query = "SELECT criteria.name FROM  presentations 
+    $query = "SELECT criteria.name ,criteria.criteria_ID FROM  presentations 
     INNER JOIN  presentation_to_criteria  ON presentations.presentation_ID = presentation_to_criteria.presentation_ID 
     INNER JOIN  criteria  ON presentation_to_criteria.criteria_ID = criteria.criteria_ID  
     WHERE presentations.code = :code";
