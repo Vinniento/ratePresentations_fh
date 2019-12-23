@@ -27,6 +27,7 @@ try{
     echo $error;
 }
 } else{
-    header("location: index.php");
+  //  header("location: index.php");
+  echo "code falsch definiert";
 }
 ?>

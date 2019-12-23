@@ -19,7 +19,7 @@ include "head.php";
             <form action="get_criterias.php" method="post">
               <row>
                 <div class="input-group mb-3">
-                  <input type="code" id="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                  <input type="code" id="code" name="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
                 </div>
               </row>
               <div>
