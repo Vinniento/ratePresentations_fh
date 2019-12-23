@@ -1,9 +1,11 @@
 <?php
 session_start();
 include("db_connection.php");
+include("random.php");
 if(isset($_POST['code']))
 {
     $code=$_POST['code'];
+    $code=strclear($code);
 try{
 
   

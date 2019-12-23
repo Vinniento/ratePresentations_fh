@@ -12,4 +12,15 @@ function randcode($n)
 
     return $randomString;
 }
+function strclear($s)
+{
+    $newstr='';
+    for($i=0;$i < strlen($s) ;$i++){
+        if($s[$i]!=' ')
+        {
+            $newstr=$newstr.$s[$i];
+        }
+    }
+return $newstr;
+}
 ?>
