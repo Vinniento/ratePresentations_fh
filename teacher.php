@@ -81,9 +81,9 @@ if((!isset($_SESSION['email'])) || $_SESSION['isteacher'] !=1){
 
     function addCheckedStudentsToArray() {
         alert("hallo");
-            var form = document.getElementById("checked_boxes"),
-            inputs = form.getElementsByTagName("input"),
-            arr = [],
+            var form = document.getElementById("checked_boxes");
+            inputs = form.getElementsByTagName("input");
+            arr = [];
 
             for (var i = 0, max = inputs.length; i < max; i += 1) {
 

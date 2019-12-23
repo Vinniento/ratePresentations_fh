@@ -16,14 +16,15 @@ include "head.php";
         <div class="card-body">
           <h5 class="card-title">Enter the Code you received here!</h5>
           <div class="container">
-            <form action="login_check.php" method="post">
+            <form action="get_criterias.php" method="post">
               <row>
                 <div class="input-group mb-3">
-                  <input type="code" id="uniquecode" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                  <input type="code" id="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
                 </div>
               </row>
               <div>
-                <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>
+             <!--   <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>-->
+             <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id ="submit" name="submit" value="Rate">Rate</button>
               </div>
             </form>
             <br>
