@@ -24,7 +24,7 @@ include "head.php";
               </row>
               <div>
              <!--   <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>-->
-             <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id ="submit" name="submit" value="Rate">Rate</button>
+             <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id ="submitbutoon" name="submitbutoon" value="Rate">Rate</button>
               </div>
             </form>
             <br>
