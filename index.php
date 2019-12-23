@@ -1,5 +1,5 @@
 <?php
-//ession_start();
+//session_start();
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ include "head.php";
         <div class="card-body">
           <h5 class="card-title">Enter the Code you received here!</h5>
           <div class="container">
-            <form action="get_criterias.php" method="post">
+            <form action="rating.php" method="post">
               <row>
                 <div class="input-group mb-3">
                   <input type="code" id="code" name="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
