@@ -54,31 +54,31 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br><br>
                                 <div id="checked_boxes">
                                     <div id="create_groups" style="display:none;">
-                                        <p>
-                                            <div id="vue-app">
-                                                <table>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Select</th>
-                                                            <th>Firstname</th>
-                                                            <th>Lastname</th>
-                                                            <th>E-mail</th>
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="(student, index) in students">
-                                                            <td><input type="checkbox" :id="student.email"></td>
-                                                            <td>{{student.firstname}}</td>
-                                                            <td>{{student.lastname}}</td>
-                                                            <td>{{student.email}}</td>
+                                        <input type="text" id="groupname" value="" />
+                                        <div id="vue-app">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Select</th>
+                                                        <th>Firstname</th>
+                                                        <th>Lastname</th>
+                                                        <th>E-mail</th>
 
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(student, index) in students">
+                                                        <td><input type="checkbox" :id="student.email"></td>
+                                                        <td>{{student.firstname}}</td>
+                                                        <td>{{student.lastname}}</td>
+                                                        <td>{{student.email}}</td>
 
-                                            </div>
-                                        </p>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                         <button type="submit" name="addstudenttogroup" onclick="addCheckedStudentsToArray()">Create Group</button>
                                     </div>
                                 </div>
@@ -249,8 +249,21 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         }
         // alert(JSON.stringify(arr, null, 4));
 
-
+        insertGroupIntoDB();
     }
+
+    function insertGroupIntoDB() {
+        var groupname = document.getElementById("groupname").value;
+        $.post("insertGroupIntoDB.php", {
+                groupname: groupname,
+                selectedStudents: arr
+            },
+            function(data) {
+                alert(data);
+            }
+
+        )
+    };
 </script>
 <script>
     var app = new Vue({
