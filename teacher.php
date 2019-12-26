@@ -241,15 +241,14 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         var form = document.getElementById("checked_boxes");
         inputs = form.getElementsByTagName("input");
         arr = [];
-        alert(inputs.length);
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
             if (inputs[i].type === "checkbox" && inputs[i].checked) {
-                arr.push(inputs[i].value);
-                alert(arr[i].id);
+                arr.push(inputs[i].id); 
             }
         }
-        alert(arr.length);
+       // alert(JSON.stringify(arr, null, 4));
+
 
     }
     </script>
