@@ -17,8 +17,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 <div class="container justify-content-center align-items-center text-center" style="margin-top: 50px; margin-bottom: 50px;">
 
 
-                
-  
+
+
 
                     <teacherNavigation>
 
@@ -55,29 +55,29 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <div id="checked_boxes">
                                     <div id="create_groups" style="display:none;">
                                         <p>
-                                        <div id="vue-app">
-        <table>
-            <thead>
-                <tr>
-                    <th>Select</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>E-mail</th>
+                                            <div id="vue-app">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Select</th>
+                                                            <th>Firstname</th>
+                                                            <th>Lastname</th>
+                                                            <th>E-mail</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(student, index) in students">
-                    <td><input type="checkbox" :id="student.email"></td>
-                    <td>{{student.firstname}}</td>
-                    <td>{{student.lastname}}</td>
-                    <td>{{student.email}}</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr v-for="(student, index) in students">
+                                                            <td><input type="checkbox" :id="student.email"></td>
+                                                            <td>{{student.firstname}}</td>
+                                                            <td>{{student.lastname}}</td>
+                                                            <td>{{student.email}}</td>
 
-                </tr>
-            </tbody>
-        </table>
-        
-    </div>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
                                         </p>
                                         <button type="submit" name="addstudenttogroup" onclick="addCheckedStudentsToArray()">Create Group</button>
                                     </div>
@@ -244,37 +244,36 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
             if (inputs[i].type === "checkbox" && inputs[i].checked) {
-                arr.push(inputs[i].id); 
+                arr.push(inputs[i].id);
             }
         }
-       // alert(JSON.stringify(arr, null, 4));
+        // alert(JSON.stringify(arr, null, 4));
 
 
     }
-    </script>
-    <script>
-        var app = new Vue({
+</script>
+<script>
+    var app = new Vue({
 
-            el: '#vue-app',
-            data: {
-                students: []
-            },
-            mounted() {
-                let vm = this;
-                axios
-                    .get('get_students_list.php')
-                    .then(response => {
-                        vm.students = response.data;
-                        console.log(students);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
-            }
-        })
+        el: '#vue-app',
+        data: {
+            students: []
+        },
+        mounted() {
+            let vm = this;
+            axios
+                .get('get_students_list.php')
+                .then(response => {
+                    vm.students = response.data;
+                    console.log(students);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    })
+</script>
 
-        </script>
-      
 </body>
 
 </html>
