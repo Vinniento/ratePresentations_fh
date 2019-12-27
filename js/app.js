@@ -95,7 +95,7 @@ new Vue({
       this.contents.push(range);  
       this.nam.push(range.rangename);     
       this.rangename='';                  
-     // alert(range.rangename);    
+      alert(range.rangename);    
     },
     removeRangeInput(range) {
       this.contents.splice(this.contents.indexOf(range),1);
@@ -107,13 +107,14 @@ new Vue({
       this.contents.push(feedback);
       this.nam.push(feedback.feedbackname);
       this.feedbackname='';
+      alert(feedback.feedbackname);   
     },
     removeFeedbackInput(feedback) {
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
     sentdata(){
-   //   alert("test");
-    //  alert(this.nam);
+      alert("test");
+      alert(this.nam);
       $.post("create_pres.php",{ data: this.nam},
         function(data) {
             switch(data) {

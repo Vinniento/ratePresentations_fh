@@ -23,6 +23,8 @@ if(isset($_POST['data'])){
         
         foreach($arrays as $value)
         {
+
+            
             $statement = $conn->prepare( 'INSERT INTO criteria (name) VALUES (:name)' );
             $statement->execute( array( 'name' => $value ) );
             
