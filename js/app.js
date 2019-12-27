@@ -113,7 +113,7 @@ new Vue({
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
     sentdata(){
-      alert("test");
+      alert("testersu");
       alert(this.nam);
       $.post("create_pres.php",{ data: this.nam},
         function(data) {
