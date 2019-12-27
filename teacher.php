@@ -109,6 +109,26 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br><br>
                                 <div id="view_presentations" style="display:none;">
                                     <br>
+                                    <div id="codeget">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Presention</th>
+                                                        <th>code</th>                                                      
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(code, index) in codes">
+                                                        <td><input type="checkbox" :id="codes.presentations.name"></td>
+                                                        <td>{{code.presentations.name}}</td>
+                                                        <td>{{code.presentations.code}}</td>
+
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                    <!---
                                     <div class="row justify-content-center align-items-center text-center">
                                         <h5>Hier Presentation Name</h5>
                                     </div>
@@ -130,13 +150,14 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate" value="rate">Rate!</button>
                                             <br><br><br>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
                                 <br><br>
                                 <div id="view_ratings" style="display:none;">
                                     <br>
+                                    <!---
                                     <div class="row justify-content-center align-items-center text-center">
                                         <h5>Hier Presentation Name</h5>
                                     </div>
@@ -159,7 +180,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <br><br><br>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <br><br>
@@ -280,6 +301,28 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                     vm.students = response.data;
                     console.log(students);
                     alert(students);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    })
+</script>
+<script>
+    var app = new Vue({
+
+        el: '#codeget',
+        data: {
+            codes: []
+        },
+        mounted() {
+            let vm = this;
+            axios
+                .get('get_code.php')
+                .then(response => {
+                    vm.codes = response.data;
+                    console.log(codes);
+                    alert(codes);
                 })
                 .catch(error => {
                     console.log(error);
