@@ -278,6 +278,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 groupname: groupname,
                 selectedStudents: arr
             },
+            //TODO form zurücksetzen (hackerl weg usw)
             function(data) {
                 switch(data){
                     case"students not selected or groupname not entered":
