@@ -55,10 +55,10 @@ if(isset($_POST['data'])){
 
     }catch ( PDOException $exception ) 
         {
-            $out = $out. $create ."1+". '\n' . $exception->getMessage();
+            $out = $out. $create . '\n' . $exception->getMessage();
         } catch(Exception $ex ) 
 {
-    $out = $out."2+ ".'\n'. 'Error = ' . $ex;
+    $out = $out.'\n'. 'Error = ' . $ex;
 }
 echo $out;
 
