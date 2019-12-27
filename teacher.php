@@ -120,7 +120,6 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="(code, index) in codes">
-                                                        <td><input type="checkbox" :id="codes.presentations.name"></td>
                                                         <td>{{code.presentations.name}}</td>
                                                         <td>{{code.presentations.code}}</td>
 
