@@ -279,6 +279,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .then(response => {
                     vm.students = response.data;
                     console.log(students);
+                    alert(students);
                 })
                 .catch(error => {
                     console.log(error);
