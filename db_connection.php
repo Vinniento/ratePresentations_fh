@@ -38,7 +38,7 @@ $conn->exec($create);
 
 $create = "CREATE TABLE if not exists `groups` ( 
 `group_ID` INT NOT NULL AUTO_INCREMENT , 
-`group_name` VARCHAR(100) NOT NULL , 
+`group_name` VARCHAR(100) NOT NULL unique, 
 PRIMARY KEY (`group_ID`)
 ) ENGINE = InnoDB;";
 $conn->exec($create);

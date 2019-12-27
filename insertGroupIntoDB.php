@@ -24,7 +24,7 @@ if(isset($_POST['selectedStudents']) && isset($_POST['groupname'])){
         foreach($selectedStudents as $student)
         {
             $out=$out."   student[person_ID]=". $student['person_ID'] ."    id_group[group_ID]=".$id_group['group_ID']."   ";
-            $statement = $conn->prepare( 'INSERT INTO person_to_groups (person_ID,groups_ID) VALUES (:person_ID,:group_ID)' );
+            $statement = $conn->prepare( 'INSERT INTO person_to_groups (person_ID,group_ID) VALUES (:person_ID,:group_ID)' );
             $statement->execute( array( 'person_ID' => $student['person_ID'] ,'group_ID' => $id_group['group_ID'] ) );
 
         }
