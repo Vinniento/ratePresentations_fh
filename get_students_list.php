@@ -5,7 +5,7 @@ try {
     include("db_connection.php");
     $isteacher = false;
 
-    $query = "SELECT firstname, lastname, email FROM persons WHERE isteacher = :isteacher";
+    $query = "SELECT person_ID, firstname, lastname, email FROM persons WHERE isteacher = :isteacher";
     $statement = $conn->prepare($query);
     $statement->bindParam(':isteacher', $isteacher);
 

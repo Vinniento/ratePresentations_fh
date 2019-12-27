@@ -69,7 +69,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="(student, index) in students">
-                                                        <td><input type="checkbox" :id="student.email"></td>
+                                                        <td><input type="checkbox" :id="student.person_ID"></td>
                                                         <td>{{student.firstname}}</td>
                                                         <td>{{student.lastname}}</td>
                                                         <td>{{student.email}}</td>
