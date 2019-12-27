@@ -120,8 +120,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="(code, index) in codes">
-                                                        <td>{{code.presentations.name}}</td>
-                                                        <td>{{code.presentations.code}}</td>
+                                                        <td>{{code.name}}</td>
+                                                        <td>{{code.code}}</td>
 
 
                                                     </tr>
@@ -299,7 +299,6 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .then(response => {
                     vm.students = response.data;
                     console.log(students);
-                    alert(students);
                 })
                 .catch(error => {
                     console.log(error);
@@ -321,7 +320,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .then(response => {
                     vm.codes = response.data;
                     console.log(codes);
-                    alert(codes);
+                    alert(codes[0]);
                 })
                 .catch(error => {
                     console.log(error);

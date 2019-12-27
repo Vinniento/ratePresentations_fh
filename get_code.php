@@ -2,7 +2,7 @@
 session_start();
 include("db_connection.php");
 try{
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
 
     $query = "SELECT presentations.name, presentations.code FROM  persons 
     INNER JOIN  presentation_to_person  ON persons.person_ID = presentation_to_person.person_ID 
@@ -17,7 +17,7 @@ try{
      $codes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
      $result = json_encode($codes);
-     echo $result;
+     print_r($result);
 
 }catch(PDOException $error){
     echo $error;
