@@ -279,7 +279,16 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 selectedStudents: arr
             },
             function(data) {
-                alert(data);
+                switch(data){
+                    case"students not selected or groupname not entered":
+                        alert(data);
+                        break;
+                    case"group created and students successfully added":
+                        alert(data);
+                        break;
+                    default:
+                        alert(data);
+                }
             }
 
         )
