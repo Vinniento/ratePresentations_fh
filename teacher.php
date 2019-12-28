@@ -148,7 +148,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
 
                                     <div id="codeget">
-                                        <div calss="table-responsive-sm">
+                                        <div class="table-responsive-sm">
                                             <table  class="table table-striped table-dark table-hover">
                                                 <thead>
                                                     <tr>
