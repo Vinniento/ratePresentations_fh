@@ -28,7 +28,8 @@ if(isset($_POST['code'])){
     alert(out);
    $.post("get_criterias.php",{ code: out},
         function(data) {            
-                    alert(data);
+                    alert(data);  // data = kriterien zum zuggriffscode (als json)
+                    // code zu dynamischen formular hier
             
           
         });
