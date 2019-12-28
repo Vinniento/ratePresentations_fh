@@ -5,40 +5,6 @@
 <?php
 include "head.php";
 ?>
-
-<body id="page-top">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="index.php">Rate Presentations</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-          </button>
-        
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Team</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Help Us</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
-          </li>
-          <li class="nav-item">
-                <a class="nav-link"><i class="fas fa-user-circle" href=""></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
  
   <section style="margin-top: 10rem; margin-bottom: 5rem">
       <div class="container h-100 d-flex justify-content-center align-items-center text-center">
