@@ -1,5 +1,5 @@
 function addCheckedStudentsToArray() {
-    var form = document.getElementById("checked_boxes");
+    var form = document.getElementById("selected_students");
     inputs = form.getElementsByTagName("input");
     arr = [];
 

@@ -52,38 +52,38 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showCreateGroups()">Create Groups</button>
                                 <br><br>
-                                <div id="checked_boxes">
-                                    <div id="create_groups" style="display:none;" >
-                                    <div class="row justify-content-center">
-                                        <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
+                                <div id="selected_students">
+                                    <div id="create_groups" style="display:none;">
+                                        <div class="row justify-content-center">
+                                            <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
                                         </div>
                                         <br>
                                         <div id="display_students">
-                                        <div calss="table-responsive-sm">
-                                            <table class="table table-striped table-dark table-hover">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th>Select</th>
-                                                        <th>Firstname</th>
-                                                        <th>Lastname</th>
-                                                        <th>E-mail</th>
+                                            <div calss="table-responsive-sm">
+                                                <table class="table table-striped table-dark table-hover">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Select</th>
+                                                            <th>Firstname</th>
+                                                            <th>Lastname</th>
+                                                            <th>E-mail</th>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr v-for="(student, index) in students">
-                                                        <td><input type="checkbox" :id="student.person_ID"></td>
-                                                        <td>{{student.firstname}}</td>
-                                                        <td>{{student.lastname}}</td>
-                                                        <td>{{student.email}}</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr v-for="(student, index) in students">
+                                                            <td><input type="checkbox" :id="student.person_ID"></td>
+                                                            <td>{{student.firstname}}</td>
+                                                            <td>{{student.lastname}}</td>
+                                                            <td>{{student.email}}</td>
 
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                         <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="addCheckedStudentsToArray()">Create Group</button>
-                                    <br><br>
+                                        <br><br>
                                     </div>
                                 </div>
                                 <!---   <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button> --->
@@ -91,47 +91,70 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br><br>
                                 <div id="create_survey" style="display:none;">
 
-                                    <p>
-                                        blub
-                                    </p>
                                     <br>
                                 </div>
 
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_survey" value="Add Group to Survey" onclick="showAddGroupsToSurvey()">Add Group to Survey</button>
-                                <div id="checked_boxes">
-                                    <div id="add_groups_to_survey" style="display:none;" >
-                                    <div class="row justify-content-center">
-                                        </div>
-                                        <br>
-                                        <div id="display_groups">
-                                        <div calss="table-responsive-sm">
-                                            <table class="table table-striped table-dark table-hover">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th>Select Group</th>
-                                                        <th>Group Name</th>
-                                                        <th>Presentation Date</th>
-                                                        <th>Which survey?</th>
-                                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr v-for="(group, index) in groups">
-                                                        <td><input type="checkbox" :id="group.group_ID"></td>
-                                                        <td>{{group.group_name}}</td>
-                                                        <td><input type ="text" placeholder="Date format: dd:mm:yyyy"  :id="group.group_ID"></td>
-                                                        <td v-for="survey in surveys">{{survey.name}}</td>
 
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                <div id="add_groups_to_survey" style="display:none;">
+                                    <div class="row justify-content-center">
+
+                                        <br>
+
+                                        <div class="table-responsive-sm">
+                                            <div id="display_groups">
+                                                <div id="selected_groups">
+                                                    <!--<table class="table table-striped table-dark table-hover" class="display: inline-block">-->
+                                                    <br>
+                                                    Presentation Date <input type="date" id="presentation_date" value="">
+                                                    <table class="table table-striped table-dark table-hover">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Select Group</th>
+                                                                <th>Group Name</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(group, index) in groups">
+                                                                <td><input type="checkbox" :id="group.group_ID"></td>
+                                                                <td>{{group.group_name}}</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div id="display_surveys">
+                                                <div id="selected_survey">
+                                                    <!--<table class="table table-striped table-dark table-hover" class="display: inline-block">-->
+                                                    <table class="table table-striped table-dark table-hover">
+
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Select Survey</th>
+                                                                <th>Survey name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="survey in surveys">
+                                                                <td><input type="radio" name ="survey" :id="survey.presentation_ID"></td>
+                                                                <td>{{survey.name}}</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="createPresentation()">Create Presentation</button>
-                                    <br><br>
+                                        <br><br>
+
                                     </div>
+                                    <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="insertPresentationIntoDB()">Create Presentation</button>
                                 </div>
-                                
+
+
                                 <br><br>
                                 Add Groups to Survey - und Datum auch hinzufügen
 
@@ -150,11 +173,11 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                     <div id="codeget">
                                         <div class="table-responsive-sm">
-                                            <table  class="table table-striped table-dark table-hover">
+                                            <table class="table table-striped table-dark table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>Presention</th>
-                                                        <th>code</th>                                                      
+                                                        <th>code</th>
 
                                                     </tr>
                                                 </thead>
@@ -168,7 +191,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </tbody>
                                             </table>
                                         </div>
-                                    <!---
+                                        <!---
                                     <div class="row justify-content-center align-items-center text-center">
                                         <h5>Hier Presentation Name</h5>
                                     </div>
@@ -191,13 +214,13 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <br><br><br>
                                         </div>
                                     </div>-->
-                                </div>
+                                    </div>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
-                                <br><br>
-                                <div id="view_ratings" style="display:none;">
-                                    <br>
-                                    <!---
+                                    <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
+                                    <br><br>
+                                    <div id="view_ratings" style="display:none;">
+                                        <br>
+                                        <!---
                                     <div class="row justify-content-center align-items-center text-center">
                                         <h5>Hier Presentation Name</h5>
                                     </div>
@@ -222,13 +245,13 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     </div>
                                 </div> -->
 
-                            </div>
-                            <br><br>
-                            Bei View Ratings sollen wieder gleich wie bei dem neuen Button view Presentations das gleiche angezeigt werden, nur statt dem button für rate sollte ein View button dort sein, wo man dann auf die Ergebnisse kommt
-                            <br>
+                                    </div>
+                                    <br><br>
+                                    Bei View Ratings sollen wieder gleich wie bei dem neuen Button view Presentations das gleiche angezeigt werden, nur statt dem button für rate sollte ein View button dort sein, wo man dann auf die Ergebnisse kommt
+                                    <br>
 
-                        </div>
-                        <!-- <div>               
+                                </div>
+                                <!-- <div>               
                         <div v-for="component in componentsArray" style="padding-bottom: 10px;">
                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(component)">{{component}}</button>
                         </div>
@@ -250,7 +273,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
 <!-- Bootstrap core JavaScript -->
 <script src="js/app.js"></script>
-<script src ="createGroups.js"></script>
+<script src="createGroups.js"></script>
+<script src="addGroupsToSurvey.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -284,11 +308,13 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         hideAll();
         document.getElementById('view_presentations').style.display = "block";
     }
-    
+
     function showViewRatings() {
         hideAll();
         document.getElementById('view_ratings').style.display = "block";
-    }function showAddGroupsToSurvey() {
+    }
+
+    function showAddGroupsToSurvey() {
         hideAll();
         document.getElementById('add_groups_to_survey').style.display = "block";
     }
@@ -303,8 +329,6 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         //document.getElementById('rate_groups').style.display = "none";
         //document.getElementById('view_ratings').style.display = "none";
     }
-
-    
 </script>
 <script>
     var app = new Vue({
@@ -370,27 +394,28 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 });
         }
     })
-
+</script>
+<script>
     //get criteria
     var app = new Vue({
 
-el: '#display_groups',
-data: {
-    surveys: []
-},
-mounted() {
-    let vm = this;
-    axios
-        .get('get_surveys_list.php')
-        .then(response => {
-            vm.surveys = response.data;
-            console.log(surveys);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
-})
+        el: '#display_surveys',
+        data: {
+            surveys: []
+        },
+        mounted() {
+            let vm = this;
+            axios
+                .get('get_surveys_list.php')
+                .then(response => {
+                    vm.surveys = response.data;
+                    console.log(surveys);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    })
 </script>
 </body>
 
