@@ -12,7 +12,7 @@ try {
     INNER JOIN  groups  ON person_to_groups.group_ID = persons.person_ID  
     WHERE persons.email = :email";*/
 
-    $query = "SELECT * FROM groups";
+    $query = "SELECT group_ID, group_name FROM groups";
     $statement = $conn->prepare($query);
     $statement->execute();
 
