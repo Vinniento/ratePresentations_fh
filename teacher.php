@@ -120,6 +120,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                         <td><input type="checkbox" :id="group.group_ID"></td>
                                                         <td>{{group.group_name}}</td>
                                                         <td><input type ="text" placeholder="Date format: dd:mm:yyyy"  :id="group.group_ID"></td>
+                                                        <td v-for="survey in surveys">{{survey.name}}</td>
 
                                                     </tr>
                                                 </tbody>
@@ -369,6 +370,27 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 });
         }
     })
+
+    //get criteria
+    var app = new Vue({
+
+el: '#display_groups',
+data: {
+    surveys: []
+},
+mounted() {
+    let vm = this;
+    axios
+        .get('get_surveys_list.php')
+        .then(response => {
+            vm.surveys = response.data;
+            console.log(surveys);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+})
 </script>
 </body>
 
