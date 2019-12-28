@@ -146,8 +146,10 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br><br>
                                 <div id="view_presentations" style="display:none;">
                                     <br>
+
                                     <div id="codeget">
-                                            <table>
+                                        <div calss="table-responsive-sm">
+                                            <table  class="table table-striped table-dark table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>Presention</th>
@@ -164,6 +166,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
                                     <!---
                                     <div class="row justify-content-center align-items-center text-center">
                                         <h5>Hier Presentation Name</h5>
