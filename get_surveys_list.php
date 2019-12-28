@@ -22,7 +22,7 @@ try {
      echo $result;
 
     //gets row as associative array
-  //  $allGroups = $statement->fetchAll(PDO::FETCH_ASSOC);
+  //  $allGroups = $statement->fetchAll(PDO::FETCH_ASSOC);sdfghz
 
   //  print_r($allGroups);
     /* $students = json_encode($users);
