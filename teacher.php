@@ -58,7 +58,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                         <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
                                         </div>
                                         <br>
-                                        <div id="vue-app">
+                                        <div id="display_students">
                                         <div calss="table-responsive-sm">
                                             <table class="table table-striped table-dark table-hover">
                                                 <thead class="thead-dark">
@@ -97,7 +97,40 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
                                 </div>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_survey" value="Add Group to Survey" onclick="showViewRatings()">Add Group to Survey</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_survey" value="Add Group to Survey" onclick="showAddGroupsToSurvey()">Add Group to Survey</button>
+                                <div id="checked_boxes">
+                                    <div id="add_groups_to_survey" style="display:none;" >
+                                    <div class="row justify-content-center">
+                                        </div>
+                                        <br>
+                                        <div id="display_groups">
+                                        <div calss="table-responsive-sm">
+                                            <table class="table table-striped table-dark table-hover">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>Select Group</th>
+                                                        <th>Group Name</th>
+                                                        <th>Presentation Date</th>
+                                                        <th>Which survey?</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(group, index) in groups">
+                                                        <td><input type="checkbox" :id="group.group_ID"></td>
+                                                        <td>{{group.group_name}}</td>
+                                                        <td><input type ="text" placeholder="Date format: dd:mm:yyyy"  :id="group.group_ID"></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
+                                        <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="createPresentation()">Create Presentation</button>
+                                    <br><br>
+                                    </div>
+                                </div>
+                                
                                 <br><br>
                                 Add Groups to Survey - und Datum auch hinzufügen
 
@@ -213,6 +246,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
 <!-- Bootstrap core JavaScript -->
 <script src="js/app.js"></script>
+<script src ="createGroups.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -246,10 +280,13 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         hideAll();
         document.getElementById('view_presentations').style.display = "block";
     }
-
+    
     function showViewRatings() {
         hideAll();
         document.getElementById('view_ratings').style.display = "block";
+    }function showAddGroupsToSurvey() {
+        hideAll();
+        document.getElementById('add_groups_to_survey').style.display = "block";
     }
 
     function hideAll() {
@@ -257,52 +294,18 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         document.getElementById('create_groups').style.display = "none";
         document.getElementById('view_presentations').style.display = "none";
         document.getElementById('view_ratings').style.display = "none";
+        document.getElementById('add_groups_to_survey').style.display = "none";
+
         //document.getElementById('rate_groups').style.display = "none";
         //document.getElementById('view_ratings').style.display = "none";
     }
 
-    function addCheckedStudentsToArray() {
-        var form = document.getElementById("checked_boxes");
-        inputs = form.getElementsByTagName("input");
-        arr = [];
-
-        for (var i = 0, max = inputs.length; i < max; i += 1) {
-            if (inputs[i].type === "checkbox" && inputs[i].checked) {
-                arr.push(inputs[i].id);
-            }
-        }
-        // alert(JSON.stringify(arr, null, 4));
-
-        insertGroupIntoDB();
-    }
-
-    function insertGroupIntoDB() {
-        var groupname = document.getElementById("groupname").value;
-        $.post("insertGroupIntoDB.php", {
-                groupname: groupname,
-                selectedStudents: arr
-            },
-            //TODO form zurücksetzen (hackerl weg usw)
-            function(data) {
-                switch(data){
-                    case"students not selected or groupname not entered":
-                        alert(data);
-                        break;
-                    case"group created and students successfully added":
-                        alert(data);
-                        break;
-                    default:
-                        alert(data);
-                }
-            }
-
-        )
-    };
+    
 </script>
 <script>
     var app = new Vue({
 
-        el: '#vue-app',
+        el: '#display_students',
         data: {
             students: []
         },
@@ -343,6 +346,27 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
     })
 </script>
 
+<script>
+    var app = new Vue({
+
+        el: '#display_groups',
+        data: {
+            groups: []
+        },
+        mounted() {
+            let vm = this;
+            axios
+                .get('get_groups_list.php')
+                .then(response => {
+                    vm.groups = response.data;
+                    console.log(groups);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    })
+</script>
 </body>
 
 </html>
