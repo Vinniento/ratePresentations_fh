@@ -10,7 +10,7 @@ if (!(isset($_POST['data']))) {
 
 
     $arrays = $_POST['data'];
-    $presname = randcode(5); //vorerst zum testen später mit echtem namen
+    $presname = $_POST['surveyname']; //vorerst zum testen später mit echtem namen
     $code = randcode(4);
 
     try {
@@ -27,12 +27,12 @@ if (!(isset($_POST['data']))) {
         $id = $statement->fetch(PDO::FETCH_ASSOC);
 
         foreach ($arrays as $value) {
-            $out = $out . "  kriterium namen =  " . $value . "   einfügen";
+            $out = $out . "  kriterium namen =  " . $value . "   einfügen \n";
 
 
             $statement = $conn->prepare('INSERT INTO criteria (name) VALUES (:name)');
             $statement->execute(array('name' => $value));
-            $out = $out . "  kriterium namen =  " . $value . "   eingefügt";
+            $out = $out . "  kriterium namen =  " . $value . "   eingefügt \n";
 
 
             $query = "SELECT criteria_ID FROM criteria WHERE  name = :name";

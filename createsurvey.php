@@ -14,19 +14,21 @@ include "head.php";
             <div class="container justify-content-center align-items-center text-center" style="margin-top: 50px; margin-bottom: 50px;">
             <div id="test">
       <p>Create your Survey!</p>
+      Survey name<input type="text" id="surveyname"  value =""><br>
         Range Input Question: <input v-model="rangename" type="text" name="" value="">
-      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherRangeInput">Add Another Range Question</button><br>
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherRangeInput()">Add Another Range Question</button><br>
         Feedback Input Question: <input v-model="feedbackname" type="text" name="" value=""> 
-      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherFeedbackInput">Add Another Feedback Question</button><br>
-      <button type="button" name="button" class="btn btn-success badge-pill" @click="sentdata">send Data</button><br>
-        <ul class="contents">
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherFeedbackInput()">Add Another Feedback Question</button><br>
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="sendData()">send Data</button><br>
+        <!--<ul class="contents">
           <li v-for="range in contents">
             {{range.rangename}} <input type="range" class="custom-range" min="1" max="10" step="1"> <button @click="removeRangeInput(range)">remove</button>
           </li>
           <li v-for="feedback in contents">
             {{feedback.feedbackname}} <textarea class="form-control" rows="3"></textarea> <button @click="removeFeedbackInput(feedback)">remove</button>
           </li>
-        </ul>
+        </ul>-->
+
     </div>
       <!--
       <div id="createRating">
@@ -119,11 +121,13 @@ include "head.php";
 
   <!-- Bootstrap core JavaScript -->
   <script src="js/app.js"></script>
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+ 
   
 
 </body>

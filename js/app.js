@@ -112,10 +112,11 @@ new Vue({
     removeFeedbackInput(feedback) {
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
-    sentdata(){
+    sendData(){
+      var surveyname = document.getElementById("surveyname").value; 
       alert("testersu");
       alert(this.nam);
-      $.post("create_pres.php",{ data: this.nam},
+      $.post("create_pres.php",{surveyname : surveyname, data: this.nam},
         function(data) {
             switch(data) {
            
