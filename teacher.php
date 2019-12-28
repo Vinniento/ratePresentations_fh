@@ -53,12 +53,15 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showCreateGroups()">Create Groups</button>
                                 <br><br>
                                 <div id="checked_boxes">
-                                    <div id="create_groups" style="display:none;">
-
-                                        <input type="text" id="groupname" value="" />
+                                    <div id="create_groups" style="display:none;" >
+                                    <div class="row justify-content-center">
+                                        <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
+                                        </div>
+                                        <br>
                                         <div id="vue-app">
-                                            <table>
-                                                <thead>
+                                        <div calss="table-responsive-sm">
+                                            <table class="table table-striped table-dark table-hover">
+                                                <thead class="thead-dark">
                                                     <tr>
                                                         <th>Select</th>
                                                         <th>Firstname</th>
@@ -77,9 +80,10 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                     </tr>
                                                 </tbody>
                                             </table>
-
+                                            </div>
                                         </div>
-                                        <button type="submit" name="addstudenttogroup" onclick="addCheckedStudentsToArray()">Create Group</button>
+                                        <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="addCheckedStudentsToArray()">Create Group</button>
+                                    <br><br>
                                     </div>
                                 </div>
                                 <!---   <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="Create Survey" onclick="showViewRatings()">Create Survey</button> --->
