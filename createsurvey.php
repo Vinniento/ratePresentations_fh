@@ -107,7 +107,7 @@ include "head.php";
         </ul>
     </div> -->
 
-    </section>
+
         
 
   <!-- Footer -->
