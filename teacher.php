@@ -139,7 +139,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                         </thead>
                                                         <tbody>
                                                             <tr v-for="survey in surveys">
-                                                                <td><input type="radio" name ="survey" :id="survey.presentation_ID"></td>
+                                                                <td><input type="radio" name="survey" :id="survey.presentation_ID"></td>
                                                                 <td>{{survey.name}}</td>
 
                                                             </tr>
@@ -182,37 +182,15 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!---
-                                    <div class="row justify-content-center align-items-center text-center">
-                                        <h5>Hier Presentation Name</h5>
                                     </div>
-                                    <br><br>
-                                    <div class="row">
-                                        <div class="columns m6 l6">
-                                            <h6>Group Members:</h6>
-                                            <p>blabla</p>
-                                            <p>blabla</p>
-                                            <p>blabla</p>
-                                            <p>blabla</p>
-                                            <p>blabla</p>
-                                        </div>
-                                        <div class="columns m6 l6">
-                                            <h6>Datum: blablabla</h6>
-                                            <br><br>
-                                            <h6>Code: blablabla</h6>
-                                            <br><br>
-                                            <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate" value="rate">Rate!</button>
-                                            <br><br><br>
-                                        </div>
-                                    </div>-->
-                                    </div>
+                                </div>
 
-                                    <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
-                                    <br><br>
-                                    <div id="view_ratings" style="display:none;">
-                                        <br>
-                                        <!---
-                                    <div class="row justify-content-center align-items-center text-center">
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
+                                <br><br>
+                                <div id="view_ratings" style="display:none;">
+                                    <br>
+
+                                    <div >
                                         <h5>Hier Presentation Name</h5>
                                     </div>
                                     <br><br>
@@ -234,15 +212,15 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <br><br><br>
                                         </div>
                                     </div>
-                                </div> -->
-
-                                    </div>
-                                    <br><br>
-                                    Bei View Ratings sollen wieder gleich wie bei dem neuen Button view Presentations das gleiche angezeigt werden, nur statt dem button für rate sollte ein View button dort sein, wo man dann auf die Ergebnisse kommt
-                                    <br>
-
                                 </div>
-                                <!-- <div>               
+
+                            
+                            <br><br>
+                            Bei View Ratings sollen wieder gleich wie bei dem neuen Button view Presentations das gleiche angezeigt werden, nur statt dem button für rate sollte ein View button dort sein, wo man dann auf die Ergebnisse kommt
+                            <br>
+                            </div>
+                        </div>
+                        <!-- <div>               
                         <div v-for="component in componentsArray" style="padding-bottom: 10px;">
                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(component)">{{component}}</button>
                         </div>
@@ -318,7 +296,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         document.getElementById('add_groups_to_survey').style.display = "none";
 
         //document.getElementById('rate_groups').style.display = "none";
-        //document.getElementById('view_ratings').style.display = "none";
+        document.getElementById('view_ratings').style.display = "none";
     }
 </script>
 <script>
