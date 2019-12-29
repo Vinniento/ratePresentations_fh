@@ -154,15 +154,6 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="insertPresentationIntoDB()">Create Presentation</button>
                                 </div>
 
-
-                                <br><br>
-                                Add Groups to Survey - und Datum auch hinzufügen
-
-                                dann weiterer Button mit View Presentations:
-                                zeile mit presentationsname
-                                dann member darunter - rechts davon anzeigen von dazugehörigem Zugriffscode, Datum der Pres und Rate Button für den Teacher
-
-                                Damit ist dann der rate Groups button ws hinfällig
                                 <br>
 
 
