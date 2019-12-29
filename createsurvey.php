@@ -15,19 +15,21 @@ include "head.php";
             <div id="test">
       <p>Create your Survey!</p>
       Survey name<input type="text" id="surveyname"  value =""><br>
+        Section Heading: - Funktion sollte noch hinzugefügt werden<input v-model="sectionheading" type="text" name="" value="">
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherSectionHeading()">Add Another Section Heading</button><br>
         Range Input Question: <input v-model="rangename" type="text" name="" value="">
       <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherRangeInput()">Add Another Range Question</button><br>
         Feedback Input Question: <input v-model="feedbackname" type="text" name="" value=""> 
       <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherFeedbackInput()">Add Another Feedback Question</button><br>
       <button type="button" name="button" class="btn btn-success badge-pill" @click="sendData()">send Data</button><br>
-        <!--<ul class="contents">
+        <ul class="contents">
           <li v-for="range in contents">
             {{range.rangename}} <input type="range" class="custom-range" min="1" max="10" step="1"> <button @click="removeRangeInput(range)">remove</button>
           </li>
           <li v-for="feedback in contents">
             {{feedback.feedbackname}} <textarea class="form-control" rows="3"></textarea> <button @click="removeFeedbackInput(feedback)">remove</button>
           </li>
-        </ul>-->
+        </ul>
 
     </div>
       <!--
@@ -110,7 +112,7 @@ include "head.php";
     </div> -->
 
 
-        
+    </section>
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
