@@ -29,7 +29,7 @@ function insertPresentationIntoDB() {
 
     $.post("mapping_groups_and_pres.php", {
             selected_groups: selected_groups,
-            selected_survey: selected_pres,
+            selected_pres: selected_survey,
             presentation_date: presentation_date
         },
         //TODO form zurücksetzen (hackerl weg usw)
