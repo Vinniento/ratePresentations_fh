@@ -223,6 +223,21 @@ $create = "CREATE TABLE if not exists `sections_to_criteria` (
  $conn->exec($create);
 //  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
 
+$create = "CREATE TABLE if not exists `forms_to_person` (
+  `form_ID` int not null ,
+  `person_ID` int not null ,
+  PRIMARY KEY (`form_ID`,`person_ID`),
+  CONSTRAINT FK_Presentation_ID_b FOREIGN KEY (form_ID)
+  REFERENCES forms(form_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE,
+  CONSTRAINT FK_Person_ID_a FOREIGN KEY (person_ID)
+  REFERENCES persons(person_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
+);";
+ $conn->exec($create);
+// echo "<script>alert('Table \"presentation_to_person\" created successfully  ')</script>";
 
 
 
