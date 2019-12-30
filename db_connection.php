@@ -56,6 +56,14 @@ $conn->exec($create);
 //  echo "<script>alert('Table \"presentation\" created successfully  ')</script>";
 //criteria
 
+$create = "CREATE TABLE if not exists `forms` (
+  `form_ID` int not null auto_increment,
+  `name` varchar(70) not null,
+  PRIMARY KEY (`forms_ID`)
+);";
+$conn->exec($create);
+//  echo "<script>alert('Table \"presentation\" created successfully  ')</script>";
+//criteria
 
 $create = "CREATE TABLE if not exists `criteria` (
   `criteria_ID` int not null auto_increment,
@@ -131,12 +139,12 @@ $create = "CREATE TABLE if not exists `presentation_to_person` (
 
 
    //criteria--> presention
-$create = "CREATE TABLE if not exists `presentation_to_criteria` (
-  `presentation_ID` int not null ,
+$create = "CREATE TABLE if not exists `forms_to_criteria` (
+  `form_ID` int not null ,
   `criteria_ID` int not null ,
-  PRIMARY KEY (`presentation_ID`,`criteria_ID`),
-  CONSTRAINT FK_Presentation_ID_c FOREIGN KEY (presentation_ID)
-  REFERENCES presentations(presentation_ID) 
+  PRIMARY KEY (`form_ID`,`criteria_ID`),
+  CONSTRAINT FK_form_ID_c FOREIGN KEY (form_ID)
+  REFERENCES forms(form_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
   CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
@@ -164,6 +172,60 @@ $create = "CREATE TABLE if not exists `ratings_to_criteria` (
 );";
  $conn->exec($create);
 //  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
+
+
+$create = "CREATE TABLE if not exists `forms_to_presentation` (
+  `presentation_ID` int not null ,
+  `form_ID` int not null ,
+  PRIMARY KEY (`presentation_ID`,`form_ID`),
+  CONSTRAINT FK_presentation_ID_zzxxx FOREIGN KEY (presentation_ID)
+  REFERENCES presentation(presentation_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE,
+  CONSTRAINT FK_form_ID_zzxxx FOREIGN KEY (form_ID)
+  REFERENCES forms(form_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
+);";
+ $conn->exec($create);
+//  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
+
+
+
+
+
+
+
+
+
+$create = "CREATE TABLE if not exists `sections ` (
+  `section_ID` int not null auto_increment,
+  `name` varchar(70) not null,
+  PRIMARY KEY (`section_ID`)
+);";
+$conn->exec($create);
+
+
+
+$create = "CREATE TABLE if not exists `sections_to_criteria` (
+  `criteria_ID` int not null ,
+  `section_ID` int not null ,
+  PRIMARY KEY (`criteria_ID`,`section_ID`),
+  CONSTRAINT FK_Criteria_ID_zzxx FOREIGN KEY (criteria_ID)
+  REFERENCES criteria(criteria_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE,
+  CONSTRAINT FK_section_ID_zzxx FOREIGN KEY (section_ID)
+  REFERENCES sections(section_ID) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
+);";
+ $conn->exec($create);
+//  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
+
+
+
+
 }
 catch (PDOException $ex){
   echo $ex;
