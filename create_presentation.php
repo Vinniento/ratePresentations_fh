@@ -1,11 +1,12 @@
 <?php
-    print_r($_POST['selected_groups']);
+   /* print_r($_POST['selected_groups']);
     echo($_POST['selected_form']);
     echo "\n";
-    echo($_POST['presentation_date']);
+    echo($_POST['presentation_date']);*/
 
 session_start();
 include("db_connection.php");
+include("random.php");
 $message = "";
 
 //TODO Date is automatically set? Weil wenn man nichts eingibt, gehts tdm
@@ -17,72 +18,56 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
     $form = $_POST['selected_form'];
     $groups = $_POST['selected_groups']; // array
     $presentation_date = $_POST['presentation_date'];
+    $code =randcode(5);
+    $presname;//=randcode(5);// zu test zwecken muss später durch echten wert ersetz werden
    
 
     try {
 
         
             foreach ($groups as $group) {
+                $presname=$group."presentation";
 
                 //create presentation
-                //TODO hier fehlt noch der presentation_name
-                $statement = $conn->prepare('INSERT INTO presentations (name) VALUES (:name)');
-                $statement->execute(array('name' => $presentation_name['prese_ID']));
+                $statement = $conn->prepare('INSERT INTO presentations (name, code, date) VALUES (:name, :code, :date)');
+                $statement->execute(array('name' => $presname,'code' => $code,'date' => $presentation_date));
 
-
-                //maps groups to presentations
-                $query = "SELECT group_ID FROM groups WHERE  group_name = :group_name";
-                    $statement = $conn->prepare($query);
-                    $statement->bindParam(':group_name', $);
-                    $statement->execute();
-                    $criteria_id = $statement->fetch(PDO::FETCH_ASSOC);
-
-    
-                $statement = $conn->prepare('INSERT INTO criteria (name) VALUES (:name)');
-                $statement->execute(array('name' => $value));
-                $message = $message . "  kriterium namen =  " . $value . "   eingefügt \n";
-    
-    
-                $query = "SELECT criteria_ID FROM criteria WHERE  name = :name";
+                $query = "SELECT presentation_ID FROM presentations WHERE  name = :name";
                 $statement = $conn->prepare($query);
-                $statement->bindParam(':name', $value);
+                $statement->bindParam(':name', $presname);
                 $statement->execute();
-    
-                $criteria_id = $statement->fetch(PDO::FETCH_ASSOC);
-                $message = $message . "  kriterium namen =  " . $value . "   selectiert" . "id= " . $criteria_id['criteria_ID'] . "   form id= " . $form_id['form_ID'] . "  ";
-    
-                $statement = $conn->prepare('INSERT INTO forms_to_criteria (form_ID,criteria_ID) VALUES (:form_ID,:criteria_ID)');
-                $statement->execute(array('form_ID' => $form_id['form_ID'], 'criteria_ID' => $criteria_id['criteria_ID']));
-                $message = $message . "  kriterium namen =  " . $value . "   gemapt";
+
+                $PRESS_id = $statement->fetch(PDO::FETCH_ASSOC);
+
+                //maps form to presentations
+                $statement = $conn->prepare('INSERT INTO forms_to_presentations (presentation_ID, form_ID) VALUES (:presentation_ID, :form_ID)');
+                $statement->execute(array('presentation_ID' => $PRESS_id['PRESS_id'], 'form_ID' => $form));
+            
+                //group form to presentations
+                $statement = $conn->prepare('INSERT INTO presentations_to_groups (presentation_ID, group_ID) VALUES (:presentation_ID, :group_ID)');
+                $statement->execute(array('presentation_ID' => $PRESS_id['PRESS_id'], 'group_ID' => $group));
+
+                //PERSONS form to presentations
+                $query = "SELECT person_ID FROM persons WHERE  email = :email";
+                $statement = $conn->prepare($query);
+                $statement->bindParam(':email', $_SESSION['email']);
+                $statement->execute();
+        
+                $person_id = $statement->fetch(PDO::FETCH_ASSOC);
+        
+                $statement = $conn->prepare('INSERT INTO presentations_to_persons (presentation_ID,person_ID) VALUES (:presentation_ID,:person_ID)');
+                $statement->execute(array('form_ID' => $PRESS_id['PRESS_id'], 'person_ID' => $person_id['person_ID']));
             }
-
-
-
-
-        //erstellt form
-        $statement = $conn->prepare('INSERT INTO forms (name) VALUES (:name)');
-        $insertSuccess = $statement->execute(array('name' => $formname));
-        $message = $message . "  1.) Form name inserted = ";
-
-
-        $query = "SELECT form_ID FROM forms WHERE  name = :name";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':name', $formname);
-        $statement->execute();
-
-        $form_id = $statement->fetch(PDO::FETCH_ASSOC);
-       
-
-       
-
+            $message="presentation was successfully created";
 
     } catch (PDOException $exception) {
-        $message = $message . $create . '\n' . $exception->getMessage();
+        $message = 'DB Error' . $exception->getMessage();
     } catch (Exception $ex) {
-        $message = $message . '\n' . 'Error = ' . $ex;
+        $message =  'Error = ' . $ex;
     }
     finally{
     echo $message;
     }
     //echo $array[0]."+test"; 
 }
+?>

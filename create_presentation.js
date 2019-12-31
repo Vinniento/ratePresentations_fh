@@ -42,7 +42,7 @@ function insertPresentationIntoDB() {
                     break;
                     
                 default:
-                    alert();
+                    alert(data);
             }
         }
 
