@@ -122,7 +122,7 @@ $create = "CREATE TABLE if not exists `presentations_to_groups` (
 //   echo "<script>alert('Table \"presentation_to_groups\" created successfully  ')</script>";
 
   //person--> presention
-$create = "CREATE TABLE if not exists `presentation_to_person` (
+$create = "CREATE TABLE if not exists `presentations_to_persons` (
   `presentation_ID` int not null ,
   `person_ID` int not null ,
   PRIMARY KEY (`presentation_ID`,`person_ID`),
@@ -175,7 +175,7 @@ $create = "CREATE TABLE if not exists `ratings_to_criteria` (
 //  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
 
 
-$create = "CREATE TABLE if not exists `forms_to_presentation` (
+$create = "CREATE TABLE if not exists `forms_to_presentations` (
   `presentation_ID` int not null ,
   `form_ID` int not null ,
   PRIMARY KEY (`presentation_ID`,`form_ID`),
@@ -224,7 +224,7 @@ $create = "CREATE TABLE if not exists `sections_to_criteria` (
  $conn->exec($create);
 //  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
 
-$create = "CREATE TABLE if not exists `forms_to_person` (
+$create = "CREATE TABLE if not exists `forms_to_persons` (
   `form_ID` int not null ,
   `person_ID` int not null ,
   PRIMARY KEY (`form_ID`,`person_ID`),
