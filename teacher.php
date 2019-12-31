@@ -139,7 +139,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                         </thead>
                                                         <tbody>
                                                             <tr v-for="form in forms">
-                                                                <td><input type="radio" name="form" :id="form.presentation_ID"></td>
+                                                                <td><input type="radio" name="form" :id="form.form_ID"></td>
                                                                 <td>{{form.name}}</td>
 
                                                             </tr>
@@ -167,8 +167,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <table class="table table-striped table-dark table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>Presention</th>
-                                                        <th>code</th>
+                                                        <th>Presentation</th>
+                                                        <th>Rating-Code</th>
 
                                                     </tr>
                                                 </thead>
@@ -243,7 +243,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 <!-- Bootstrap core JavaScript -->
 <script src="js/app.js"></script>
 <script src="createGroups.js"></script>
-<script src="addGroupsToForm.js"></script>
+<script src="create_presentation.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

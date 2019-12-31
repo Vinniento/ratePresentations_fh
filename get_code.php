@@ -5,8 +5,8 @@ try{
     $email = $_SESSION['email'];
 
     $query = "SELECT presentations.name, presentations.code FROM  persons 
-    INNER JOIN  presentation_to_person  ON persons.person_ID = presentation_to_person.person_ID 
-    INNER JOIN  presentations  ON presentation_to_person.presentation_ID = presentations.presentation_ID  
+    INNER JOIN  presentations_to_persons  ON persons.person_ID = presentations_to_persons.person_ID 
+    INNER JOIN  presentations  ON presentations_to_persons.presentation_ID = presentations.presentation_ID  
     WHERE persons.email = :email";
     $statement = $conn->prepare($query);
     $statement->bindParam(':email', $email);
