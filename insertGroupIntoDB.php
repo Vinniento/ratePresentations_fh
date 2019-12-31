@@ -23,7 +23,7 @@ try {
 
         foreach($selectedStudents as $student)
         {
-            $statement = $conn->prepare( 'INSERT INTO person_to_groups (person_ID,group_ID) VALUES (:person_ID,:group_ID)' );
+            $statement = $conn->prepare( 'INSERT INTO persons_to_groups (person_ID,group_ID) VALUES (:person_ID,:group_ID)' );
             $statement->execute( array( 'person_ID' => $student ,'group_ID' => $id_group['group_ID'] ) );
         }
         $message = "group created and students successfully added";

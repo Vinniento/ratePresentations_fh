@@ -6,7 +6,7 @@ try {
     $email=  $_SESSION['email'];
     
     $query = "SELECT forms.name, forms.forms_ID FROM  forms 
-    INNER JOIN  presentation_to_person  ON forms.forms_ID = forms_to_person.forms_ID 
+    INNER JOIN  presentations_to_persons  ON forms.forms_ID = forms_to_person.forms_ID 
     INNER JOIN  persons  ON persons.person_ID = persons.person_ID  
     WHERE persons.email = :email";
     $statement = $conn->prepare($query);
