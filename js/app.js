@@ -1,41 +1,4 @@
-// new Vue({
-//   el: 'teacherNavigation',
-//   data: {
-//     currentComponent: null,
-//     componentsArray: ['Add Students', 'Create Groups', 'Create Survey', 'Add Group to Survey', 'Rate Groups', 'View Ratings', 'Create Rating']
-//   },
-//   components: {
-//     'Add Students': {
-//       template: '#addstudents'
-//     },
-//     'Create Groups': {
-//       template: '#creategroups'
-//     },
-//     'Create Survey': {
-//       template: '<h3>link to create survey formuluar!</h3>'
-//     },
-//     'Add Group to Survey': {
-//       template: '<h3>add group to survey here</h3>'
-//     },
-//     'Rate Groups': {
-//       template: '<h3>Rate Groups Component - show list of all groups and click on them to rate as a teacher!</h3>'
-//     },
-//     'View Ratings': {
-//       template: '<h3>View Ratings Component!</h3>'
-//     },
-//     'Create Rating': {
-//       template: '<h3>Create Ratings Component!</h3>'
-//     }
-//   },
-//   methods: {
-//     swapComponent: function(component)
-//     {
-//       this.currentComponent = component;
-//     }
-//   }
-// })
-
-new Vue({
+/*new Vue({
   el: '#createRating',
   data: {
     ranges: [],
@@ -75,7 +38,7 @@ new Vue({
       this.sections.splice(index, 1)
     }
   }
-});
+}); */
 
 new Vue({
   el: '#test',
@@ -113,14 +76,13 @@ new Vue({
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
     sendData(){
-      var surveyname = document.getElementById("surveyname").value; 
-      alert("testersu");
+      var formname = document.getElementById("formname").value; 
+      alert(formname);
+      alert("testuser");
       alert(this.nam);
-      $.post("create_pres.php",{surveyname : surveyname, data: this.nam},
+      $.post("insert_form_into_DB.php",{formname : formname, data: this.nam},
         function(data) {
             switch(data) {
-           
-    
                 default:
                     alert(data);
             }
