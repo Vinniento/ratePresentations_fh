@@ -5,8 +5,8 @@ try {
     include("db_connection.php");
     $email=  $_SESSION['email'];
     
-    $query = "SELECT presentations.name, presentations.presentation_ID FROM  presentations 
-    INNER JOIN  presentation_to_person  ON presentations.presentation_ID = presentation_to_person.presentation_ID 
+    $query = "SELECT forms.name, forms.forms_ID FROM  forms 
+    INNER JOIN  presentation_to_person  ON forms.forms_ID = forms_to_person.forms_ID 
     INNER JOIN  persons  ON persons.person_ID = persons.person_ID  
     WHERE persons.email = :email";
     $statement = $conn->prepare($query);

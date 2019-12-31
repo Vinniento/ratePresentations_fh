@@ -24,13 +24,13 @@ $conn->exec($create);
 
 
 //zu test zwecken
-/*$query = "INSERT into persons 
+/* $query = "INSERT into persons 
   (firstname, lastname, email, pwd, isteacher) 
   values
   ('teacher', 'test', 'teacher@test.com', 'test', true),
   ('student', 'test', 'student@test.com', 'test', false) ";
   $statement = $conn->prepare($query);
-  $statement->execute();
+  $statement->execute(); */
  // echo "<script>alert('Successfully inserted into persons ')</script>";
 // echo "<script>alert('Table \"Person\" created successfully  ')</script>";
 //  Groups*/
@@ -91,11 +91,11 @@ $create = "CREATE TABLE if not exists `person_to_groups` (
   `person_ID` int not null ,
   `group_ID` int not null ,
   PRIMARY KEY (`person_ID`,`group_ID`),
-  CONSTRAINT FK_Person_ID FOREIGN KEY (person_ID)
+  CONSTRAINT FK_Person_ID_person_to_groups FOREIGN KEY (person_ID)
   REFERENCES persons(person_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_Group_ID FOREIGN KEY (group_ID)
+  CONSTRAINT FK_Group_ID_person_to_groups FOREIGN KEY (group_ID)
   REFERENCES groups(group_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -108,11 +108,11 @@ $create = "CREATE TABLE if not exists `presentations_to_groups` (
   `presentation_ID` int not null ,
   `group_ID` int not null ,
   PRIMARY KEY (`presentation_ID`,`group_ID`),
-  CONSTRAINT FK_Group_ID_a FOREIGN KEY (group_ID)
+  CONSTRAINT FK_Group_ID_presentations_to_groups FOREIGN KEY (group_ID)
   REFERENCES groups(group_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_Presentation_ID FOREIGN KEY (presentation_ID)
+  CONSTRAINT FK_Presentation_ID_presentations_to_groups FOREIGN KEY (presentation_ID)
   REFERENCES presentations(presentation_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -125,11 +125,11 @@ $create = "CREATE TABLE if not exists `presentation_to_person` (
   `presentation_ID` int not null ,
   `person_ID` int not null ,
   PRIMARY KEY (`presentation_ID`,`person_ID`),
-  CONSTRAINT FK_Presentation_ID_b FOREIGN KEY (presentation_ID)
+  CONSTRAINT FK_Presentation_ID_presentation_to_person FOREIGN KEY (presentation_ID)
   REFERENCES presentations(presentation_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_Person_ID_a FOREIGN KEY (person_ID)
+  CONSTRAINT FK_Person_ID_presentation_to_person FOREIGN KEY (person_ID)
   REFERENCES persons(person_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -143,11 +143,11 @@ $create = "CREATE TABLE if not exists `forms_to_criteria` (
   `form_ID` int not null ,
   `criteria_ID` int not null ,
   PRIMARY KEY (`form_ID`,`criteria_ID`),
-  CONSTRAINT FK_form_ID_c FOREIGN KEY (form_ID)
+  CONSTRAINT FK_form_ID_forms_to_criteria FOREIGN KEY (form_ID)
   REFERENCES forms(form_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_Criteria_ID FOREIGN KEY (criteria_ID)
+  CONSTRAINT FK_Criteria_ID_forms_to_criteria FOREIGN KEY (criteria_ID)
   REFERENCES criteria(criteria_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -161,11 +161,11 @@ $create = "CREATE TABLE if not exists `ratings_to_criteria` (
   `criteria_ID` int not null ,
   `rating_ID` int not null ,
   PRIMARY KEY (`criteria_ID`,`rating_ID`),
-  CONSTRAINT FK_Criteria_ID_zz FOREIGN KEY (criteria_ID)
+  CONSTRAINT FK_Criteria_ID_ratings_to_criteria FOREIGN KEY (criteria_ID)
   REFERENCES criteria(criteria_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_rating_ID_zz FOREIGN KEY (rating_ID)
+  CONSTRAINT FK_rating_ID_ratings_to_criteria FOREIGN KEY (rating_ID)
   REFERENCES ratings(rating_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -178,11 +178,11 @@ $create = "CREATE TABLE if not exists `forms_to_presentation` (
   `presentation_ID` int not null ,
   `form_ID` int not null ,
   PRIMARY KEY (`presentation_ID`,`form_ID`),
-  CONSTRAINT FK_presentation_ID_zzxxx FOREIGN KEY (presentation_ID)
-  REFERENCES presentation(presentation_ID) 
+  CONSTRAINT FK_presentation_ID_forms_to_presentation FOREIGN KEY (presentation_ID)
+  REFERENCES presentations(presentation_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE,
-  CONSTRAINT FK_form_ID_zzxxx FOREIGN KEY (form_ID)
+  CONSTRAINT FK_form_ID_forms_to_presentation FOREIGN KEY (form_ID)
   REFERENCES forms(form_ID) 
   ON DELETE CASCADE 
   ON UPDATE CASCADE
@@ -198,7 +198,7 @@ $create = "CREATE TABLE if not exists `forms_to_presentation` (
 
 
 
-$create = "CREATE TABLE if not exists `sections ` (
+$create = "CREATE TABLE if not exists `sections` (
   `section_ID` int not null auto_increment,
   `name` varchar(70) not null,
   PRIMARY KEY (`section_ID`)
