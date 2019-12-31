@@ -50,6 +50,7 @@ $create = "CREATE TABLE if not exists `presentations` (
   `presentation_ID` int not null auto_increment,
   `name` varchar(70) not null,
   `code` varchar(70) not null,
+  `date` varchar(70) not null,
   PRIMARY KEY (`presentation_ID`)
 );";
 $conn->exec($create);
