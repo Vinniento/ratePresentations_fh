@@ -50,19 +50,24 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
             $statement->bindParam(':name', $presentation_name);
             $statement->execute();
 
-            $presentation_ID = $statement->fetch(PDO::FETCH_ASSOC);
+            $presentation = $statement->fetchAll(PDO::FETCH_ASSOC);
+            echo "last presentation id = " . $presentation[count($presentation)-1]['presentation_ID'];
+            $last_presentation_id = $presentation[count($presentation)-1]['presentation_ID']; 
+           // echo "einträge = " . count($presentation_ID);
+            
+
 
             //maps form to presentations
             $statement = $conn->prepare('INSERT INTO forms_to_presentations (presentation_ID, form_ID) VALUES (:presentation_ID, :form_ID)');
-            $statement->execute(array('presentation_ID' => $presentation_ID['presentation_ID'], 'form_ID' => $form));
+            $statement->execute(array('presentation_ID' => $last_presentation_id, 'form_ID' => $form));
 
             //group form to presentations
             $statement = $conn->prepare('INSERT INTO presentations_to_groups (presentation_ID, group_ID) VALUES (:presentation_ID, :group_ID)');
-            $statement->execute(array('presentation_ID' => $presentation_ID['presentation_ID'], 'group_ID' => $group_ID));
+            $statement->execute(array('presentation_ID' => $last_presentation_id, 'group_ID' => $group_ID));
             sleep(2);
 
             $statement = $conn->prepare('INSERT INTO presentations_to_persons (presentation_ID,person_ID) VALUES (:presentation_ID,:person_ID)');
-            $statement->execute(array('presentation_ID' => $presentation_ID['presentation_ID'], 'person_ID' => $person_ID['person_ID']));
+            $statement->execute(array('presentation_ID' => $last_presentation_id, 'person_ID' => $person_ID['person_ID']));
         }
         $message = "presentation was successfully created";
     } catch (PDOException $exception) {
