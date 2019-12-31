@@ -59,7 +59,7 @@ $conn->exec($create);
 $create = "CREATE TABLE if not exists `forms` (
   `form_ID` int not null auto_increment,
   `name` varchar(70) not null,
-  PRIMARY KEY (`forms_ID`)
+  PRIMARY KEY (`form_ID`)
 );";
 $conn->exec($create);
 //  echo "<script>alert('Table \"presentation\" created successfully  ')</script>";
