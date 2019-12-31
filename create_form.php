@@ -10,13 +10,13 @@ include "head.php";
       <div class="container h-100 d-flex justify-content-center align-items-center text-center">
         <div class="card bg-secondary" style="width: 80rem;">
           <div class="card-body">
-            <h2 class="card-title">Create a new Survey!</h2>
+            <h2 class="card-title">Create a new Form!</h2>
             <div class="container justify-content-center align-items-center text-center" style="margin-top: 50px; margin-bottom: 50px;">
             <div id="test">
-      <p>Create your Survey!</p>
-      Survey name<input type="text" id="surveyname"  value =""><br>
-        Section Heading: - Funktion sollte noch hinzugefügt werden<input v-model="sectionheading" type="text" name="" value="">
-      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherSectionHeading()">Add Another Section Heading</button><br>
+      <p>Create your Form!</p>
+      Form name<input type="text" id="formname"  value =""><br>
+      <!--  Section Heading: - Funktion sollte noch hinzugefügt werden<input v-model="sectionheading" type="text" name="" value="">
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherSectionHeading()">Add Another Section Heading</button><br>-->
         Range Input Question: <input v-model="rangename" type="text" name="" value="">
       <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherRangeInput()">Add Another Range Question</button><br>
         Feedback Input Question: <input v-model="feedbackname" type="text" name="" value=""> 

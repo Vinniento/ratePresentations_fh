@@ -88,7 +88,7 @@ $conn->exec($create);
 
 
 //person--> groups
-$create = "CREATE TABLE if not exists `person_to_groups` (
+$create = "CREATE TABLE if not exists `persons_to_groups` (
   `person_ID` int not null ,
   `group_ID` int not null ,
   PRIMARY KEY (`person_ID`,`group_ID`),
