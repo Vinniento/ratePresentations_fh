@@ -15,7 +15,7 @@ if (!(isset($_POST['data']))) {
         //erstellt form
         $statement = $conn->prepare('INSERT INTO forms (name) VALUES (:name)');
         $insertSuccess = $statement->execute(array('name' => $formname));
-        $message = $message . "  1.) Form name inserted = ";
+        $message.= "  1.) Form name inserted = ";
 
 
         $query = "SELECT form_ID FROM forms WHERE  name = :name";
@@ -23,17 +23,18 @@ if (!(isset($_POST['data']))) {
         $statement->bindParam(':name', $formname);
         $statement->execute();
 
-        $form_id = $statement->fetch(PDO::FETCH_ASSOC);
-       
+        $form_id = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $last_form_id = $form_id[count($form_id)-1]['form_ID'];
 
+        print_r($last_form_id);
         //insert all criteria and map the form to them
         foreach ($arrays as $value) {
-            $message = $message . "  kriterium namen =  " . $value . "   einfügen \n";
+           $message .= "  kriterium namen =  " . $value . "   einfügen \n";
 
 
             $statement = $conn->prepare('INSERT INTO criteria (name) VALUES (:name)');
             $statement->execute(array('name' => $value));
-            $message = $message . "  kriterium namen =  " . $value . "   eingefügt \n";
+           $message .= "  kriterium namen =  " . $value . "   eingefügt \n";
 
 
             $query = "SELECT criteria_ID FROM criteria WHERE  name = :name";
@@ -41,16 +42,17 @@ if (!(isset($_POST['data']))) {
             $statement->bindParam(':name', $value);
             $statement->execute();
 
-            $criteria_id = $statement->fetch(PDO::FETCH_ASSOC);
-            $message = $message . "  kriterium namen =  " . $value . "   selectiert" . "id= " . $criteria_id['criteria_ID'] . "   form id= " . $form_id['form_ID'] . "  ";
+            $criteria_id = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $last_criteria_id = $criteria_id[count($criteria_id)-1]['criteria_ID'];
+           $message .= "  kriterium namen =  " . $value . "   selectiert" . "id= " . $last_criteria_id . "   form id= " . $last_form_id . "  ";
 
             $statement = $conn->prepare('INSERT INTO forms_to_criteria (form_ID,criteria_ID) VALUES (:form_ID,:criteria_ID)');
-            $statement->execute(array('form_ID' => $form_id['form_ID'], 'criteria_ID' => $criteria_id['criteria_ID']));
-            $message = $message . "  kriterium namen =  " . $value . "   gemapt";
+            $statement->execute(array('form_ID' => $last_form_id, 'criteria_ID' => $last_criteria_id));
+            $message .= "  kriterium namen =  " . $value . "   gemapt";
         }
 
 
-        $message = $message . "  3.) fertig  ";
+        $message .= "  3.) Kriterien eingefügt  ";
 
         //maps teacher to form
         $query = "SELECT person_ID FROM persons WHERE  email = :email";
@@ -61,14 +63,14 @@ if (!(isset($_POST['data']))) {
         $person_id = $statement->fetch(PDO::FETCH_ASSOC);
 
         $statement = $conn->prepare('INSERT INTO forms_to_persons (form_ID,person_ID) VALUES (:form_ID,:person_ID)');
-        $statement->execute(array('form_ID' => $form_id['form_ID'], 'person_ID' => $person_id['person_ID']));
-        $message = $message . "  5.) fertig  ";
+        $statement->execute(array('form_ID' => $last_form_id, 'person_ID' => $person_id['person_ID']));
+        $message .= "  5.) fertig  ";
 
 
     } catch (PDOException $exception) {
-        $message = $message . $create . '\n' . $exception->getMessage();
+        $message .= $create . '\n' . $exception->getMessage();
     } catch (Exception $ex) {
-        $message = $message . '\n' . 'Error = ' . $ex;
+        $message .= '\n' . 'Error = ' . $ex;
     }
     finally{
     echo $message;
