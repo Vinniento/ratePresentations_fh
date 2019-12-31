@@ -15,8 +15,8 @@ include "head.php";
             <div id="test">
       <p>Create your Form!</p>
       Form name<input type="text" id="formname"  value =""><br>
-      <!--  Section Heading: - Funktion sollte noch hinzugefügt werden<input v-model="sectionheading" type="text" name="" value="">
-      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherSectionHeading()">Add Another Section Heading</button><br>-->
+      Section Heading: - Funktion sollte noch hinzugefügt werden<input v-model="sectionheading" type="text" name="" value="">
+      <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherSectionHeading()">Add Another Section Heading</button><br>
         Range Input Question: <input v-model="rangename" type="text" name="" value="">
       <button type="button" name="button" class="btn btn-success badge-pill" @click="addAnotherRangeInput()">Add Another Range Question</button><br>
         Feedback Input Question: <input v-model="feedbackname" type="text" name="" value=""> 
