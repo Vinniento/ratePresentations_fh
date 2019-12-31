@@ -17,7 +17,7 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
     $form = $_POST['selected_form'];
     $groups = $_POST['selected_groups']; // array
     $presentation_date = $_POST['presentation_date'];
-    $code = randcode(5);
+    
     $presentation_name = ""; //=randcode(5);// zu test zwecken muss später durch echten wert ersetz werden
 
 
@@ -31,7 +31,8 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
         $person_ID = $statement->fetch(PDO::FETCH_ASSOC);
         
         foreach ($groups as $group_ID) {
-            
+            //TODO  CODE UNIQUE MACHEN
+            $code = randcode(5);
             $query = "SELECT group_name FROM groups WHERE  group_ID = :group_ID";
             $statement = $conn->prepare($query);
             $statement->bindParam(':group_ID', $group_ID);
@@ -39,7 +40,7 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
 
             $group_name = $statement->fetch(PDO::FETCH_ASSOC);
 
-            $presentation_name = $group_name['group_name'] . ".presentation";
+            $presentation_name = $group_name['group_name'];
 
             //create presentation
             $statement = $conn->prepare('INSERT INTO presentations (name, code, date) VALUES (:name, :code, :date)');
