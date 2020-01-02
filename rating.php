@@ -45,7 +45,7 @@ if (isset($_POST['code'])) {
                 <thead class="thead-dark">
                     <tr>
                         <th>Rate criteria</th>
-                        
+                        <th>value</th>
                     </tr>
                 </thead>
               <!---  <tbody>
@@ -58,9 +58,7 @@ if (isset($_POST['code'])) {
                 <tbody>
                     <tr v-for="(criteria, index) in criterias">
                         <td>{{criteria.name}}</td>
-                        
-
-
+                        <td><input type="range" name="conclusion" :id="criteria.criteria_ID" min="0" max="10" /></td>
                     </tr>
                 </tbody>
             </table>
