@@ -35,7 +35,7 @@ if (isset($_POST['code'])) {
         });*/
 </script>
 
-
+<br><br><br><br><br><br><br><br><br>
 <div class="table-responsive-sm">
     <div id="display_criteria">
         <div id="selected_criteria">
