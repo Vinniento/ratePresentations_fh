@@ -61,28 +61,21 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                         <div class="table-responsive-sm">
                             <div id="display_criteria">
                                 <div id="selected_criteria">
-                                    <!--<table class="table table-striped table-dark table-hover" class="display: inline-block">-->
                                     <table class="table table-striped table-dark table-hover">
-
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Rate criteria</th>
                                                 <th>value</th>
                                             </tr>
                                         </thead>
-                                        <!---  <tbody>
-                    <tr v-for="criteria in criterias">
-                        <td><input type="radio" name="criteria" :id="criteria.criteria_ID"></td>
-                        <td>{{criteria.name}}</td>
-
-                    </tr>
-                </tbody>-->
+        
                                         <tbody>
                                             <tr v-for="(criteria, index) in criterias">
                                                 <td>{{criteria.name}}</td>
                                                 <td><input type="range" name="conclusion" :id="criteria.criteria_ID" min="0" max="10" /></td>
                                             </tr>
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
