@@ -94,13 +94,14 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
         el: '#display_criteria',
         data: {
-            forms: []
+            criterias: []
         },
         mounted() {
             var div = document.getElementById("dom-target");
             var codel = div.textContent;
             var out = String(codel).trim();
-
+            console.log("ausgabe vom Vue vom rating.php");
+            console.log(out);
             let vm = this;
             axios
                 .post("get_criterias.php", {
@@ -109,13 +110,22 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                     }
                 })
                 .then(response => {
-                    
+                
                     vm.criterias = response.data;
                     console.log(vm.criterias);
                 })
                 .catch(error => {
                     console.log(error);
                 });
+              /*  $.post("get_criterias.php",{ code: out},
+                function(data) {     
+                    vm.criterias = data;       
+                    console.log(vm.criterias); */
+                    // data = kriterien zum zuggriffscode (als json)
+                    // code zu dynamischen formular hier
+            
+          
+        });
         }
     })
 </script>
