@@ -120,12 +120,13 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
               /*  $.post("get_criterias.php",{ code: out},
                 function(data) {     
                     vm.criterias = data;       
-                    console.log(vm.criterias); */
-                    // data = kriterien zum zuggriffscode (als json)
-                    // code zu dynamischen formular hier
-            
-          
-        });
+                    console.log(vm.criterias); 
+        });*/
+
+
+
+
+
         }
     })
 </script>
