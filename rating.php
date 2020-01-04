@@ -111,7 +111,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                 .then(response => {
                     
                     vm.criterias = response.data;
-                    console.log(criterias);
+                    console.log(vm.criterias);
                 })
                 .catch(error => {
                     console.log(error);
