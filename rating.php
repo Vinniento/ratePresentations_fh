@@ -103,7 +103,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
             let vm = this;
             axios
-                .get("get_criterias.php", {
+                .post("get_criterias.php", {
                     params: {
                         code: out
                     }
