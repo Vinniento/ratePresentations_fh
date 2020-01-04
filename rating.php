@@ -67,9 +67,9 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         
                                         <tbody>
                                             
-                                            <tr v-for="(criteria, index) in criterias">  
-                                                <td>{{criteria.name}}</td>
-                                                <td><input type="range" name="conclusion" :id="criteria.criteria_ID" min="0" max="10" /></td>
+                                            <tr v-for="criteria in criterias">  
+                                               <td>{{criteria.name}}</td>
+                                                <td><input type="range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" max="10" /></td>
                                             </tr>
                                         </tbody>
 
