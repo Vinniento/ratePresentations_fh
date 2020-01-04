@@ -13,16 +13,12 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     echo htmlspecialchars($output);
     ?>
 </div>
+<!--
 <script>
-    /*
-    function strcut()
-    {
-
-    }
     var div = document.getElementById("dom-target");
     var code = div.textContent;
     var out = String(code).trim();
-    var testout ="sting anfang hier -->";
+    var testout ="sting anfang hier --";
     testout.concat(code,"<-- string ende");
     alert(out);
    $.post("get_criterias.php",{ code: out},
@@ -31,8 +27,8 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                     // code zu dynamischen formular hier
             
           
-        });*/
-</script>
+        });
+</script>-->
 
 
 <!---chris code:-->
@@ -70,7 +66,8 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                         </thead>
         
                                         <tbody>
-                                            <tr v-for="(criteria, index) in criterias">
+                                            
+                                            <tr v-for="(criteria, index) in criterias">  
                                                 <td>{{criteria.name}}</td>
                                                 <td><input type="range" name="conclusion" :id="criteria.criteria_ID" min="0" max="10" /></td>
                                             </tr>
@@ -101,7 +98,8 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         },
         mounted() {
             var div = document.getElementById("dom-target");
-            var out = String(code).trim();
+            var codel = div.textContent;
+            var out = String(codel).trim();
 
             let vm = this;
             axios
@@ -111,6 +109,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                     }
                 })
                 .then(response => {
+                    
                     vm.criterias = response.data;
                     console.log(criterias);
                 })
@@ -120,24 +119,6 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         }
     })
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!---chris code:-->
