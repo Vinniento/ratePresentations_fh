@@ -119,7 +119,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                 }); */
                 $.post("get_criterias.php",{ code: out},
                 function(data) {     
-                    vm.criterias = data;       
+                    vm.criterias = data;    
                     console.log(vm.criterias); 
         });
 

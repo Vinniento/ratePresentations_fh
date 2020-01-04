@@ -333,8 +333,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .get('get_code.php')
                 .then(response => {
                     vm.codes = response.data;
-                    console.log(codes);
-                    alert(codes[0]);
+                    console.log("codes:");
+                    console.log(vm.codes);
                 })
                 .catch(error => {
                     console.log(error);
@@ -356,7 +356,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .get('get_groups_list.php')
                 .then(response => {
                     vm.groups = response.data;
-                    console.log(groups);
+                    console.log("groups:");
+                    console.log(vm.groups);
                 })
                 .catch(error => {
                     console.log(error);
@@ -378,7 +379,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .get('get_forms_list.php')
                 .then(response => {
                     vm.forms = response.data;
-                    console.log(forms);
+                    console.log("forms:");
+                    console.log(vm.forms);
                 })
                 .catch(error => {
                     console.log(error);
