@@ -151,9 +151,11 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                         <br><br>
 
                                     </div>
+                                    <br>
                                     <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="insertPresentationIntoDB()">Create Presentation</button>
                                 </div>
 
+                                <br>
                                 <br>
 
 

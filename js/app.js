@@ -58,7 +58,7 @@ new Vue({
       this.contents.push(range);  
       this.nam.push(range.rangename);     
       this.rangename='';                  
-      alert(range.rangename);    
+     // alert(range.rangename);    
     },
     removeRangeInput(range) {
       this.contents.splice(this.contents.indexOf(range),1);
@@ -70,16 +70,16 @@ new Vue({
       this.contents.push(feedback);
       this.nam.push(feedback.feedbackname);
       this.feedbackname='';
-      alert(feedback.feedbackname);   
+    //  alert(feedback.feedbackname);   
     },
     removeFeedbackInput(feedback) {
       this.contents.splice(this.contents.indexOf(feedback),1);
     },
     sendData(){
       var formname = document.getElementById("formname").value; 
-      alert(formname);
+     /* alert(formname);
       alert("testuser");
-      alert(this.nam);
+      alert(this.nam);*/
       $.post("insert_form_into_DB.php",{formname : formname, data: this.nam},
         function(data) {
             switch(data) {
