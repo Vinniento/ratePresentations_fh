@@ -13,22 +13,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     echo htmlspecialchars($output);
     ?>
 </div>
-<!--
-<script>
-    var div = document.getElementById("dom-target");
-    var code = div.textContent;
-    var out = String(code).trim();
-    var testout ="sting anfang hier --";
-    testout.concat(code,"<-- string ende");
-    alert(out);
-   $.post("get_criterias.php",{ code: out},
-        function(data) {            
-                    alert(data);  // data = kriterien zum zuggriffscode (als json)
-                    // code zu dynamischen formular hier
-            
-          
-        });
-</script>-->
+
 
 
 <!---chris code:-->
@@ -45,18 +30,18 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                             <div class="col-sm-12 col-md-4">
                                 <h5 class="header">Group-Rating </h5>
                             </div>
-                           
+
                         </div>
                         <hr>
                         <header style="margin-bottom: 15px;"><br>
-                            
+
                         </header>
                         <!---chris code ende-->
 
 
                         <div class="table-responsive-sm">
                             <div id="display_criteria">
-                                <div id="selected_criteria">
+                                <div id="rated_criteria">
                                     <table class="table table-striped table-dark table-hover">
                                         <thead class="thead-dark">
                                             <tr>
@@ -64,11 +49,11 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                                 <th>value</th>
                                             </tr>
                                         </thead>
-        
+
                                         <tbody>
-                                            
-                                            <tr v-for="criteria in criterias">  
-                                               <td>{{criteria.name}}</td>
+
+                                            <tr v-for="criteria in criterias">
+                                                <td>{{criteria.name}}</td>
                                                 <td><input type="range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" max="10" /></td>
                                             </tr>
                                         </tbody>
@@ -80,7 +65,10 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
 
                         <!---chris code:-->
-                        <button class="btn btn-success badge-pill">Submit Rating</button>
+                        <button class="btn btn-success badge-pill" style="width: 13rem;" onclick="addCheckedStudentsToArray()">Submit Rating</button>
+
+
+
                     </form>
                 </div>
             </div>
@@ -103,26 +91,15 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
             console.log("ausgabe vom Vue vom rating.php");
             console.log(out);
             let vm = this;
-          /*  axios
-                .post("get_criterias.php", {
-                    params: {
-                        code: out
-                    }
-                })
-                .then(response => {
-                
-                    vm.criterias = response;
-                    console.log(vm.criterias);
-                })
-                .catch(error => {
-                    console.log(error);
-                }); */
-            $.post("get_criterias.php",{ code: out},
-                function(data) {     
-                    vm.criterias =JSON.parse(data);   
 
-                    console.log(vm.criterias); 
-        });
+            $.post("get_criterias.php", {
+                    code: out
+                },
+                function(data) {
+                    vm.criterias = JSON.parse(data);
+
+                    console.log(vm.criterias);
+                });
 
 
 
@@ -130,6 +107,29 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
         }
     })
+
+    function add_sliders_to_array() {
+        var form = document.getElementById("rated_criteria");
+        inputs = form.getElementsByTagName("input");
+        arr = [];
+        arr2 = [];
+
+        for (var i = 0, max = inputs.length; i < max; i += 1) {
+            arr.push(inputs[i].id);
+            arr2.push(inputs[i].value);
+        }
+
+        $.post("rating_check.php", {
+            criteria: arr,
+            criteria_value,arr2
+            },
+
+            function(data) {
+
+            }
+
+        )
+    }
 </script>
 
 
