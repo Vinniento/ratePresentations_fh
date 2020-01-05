@@ -9,7 +9,7 @@ if (!(isset($_POST['criteria']) && isset($_POST['criteria_value']))) {
 
 
 
-    echo $message;
+    echo "ja";
 }
 
 

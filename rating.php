@@ -65,7 +65,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
 
                         <!---chris code:-->
-                        <button class="btn btn-success badge-pill" style="width: 13rem;" onclick="addCheckedStudentsToArray()">Submit Rating</button>
+                        <button  onclick="add_sliders_to_array()">Submit Rating</button>
 
 
 
@@ -109,6 +109,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     })
 
     function add_sliders_to_array() {
+        alert("test");
         var form = document.getElementById("rated_criteria");
         inputs = form.getElementsByTagName("input");
         arr = [];
