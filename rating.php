@@ -103,7 +103,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
             console.log("ausgabe vom Vue vom rating.php");
             console.log(out);
             let vm = this;
-           /* axios
+          /*  axios
                 .post("get_criterias.php", {
                     params: {
                         code: out
@@ -111,15 +111,16 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                 })
                 .then(response => {
                 
-                    vm.criterias = response.data;
+                    vm.criterias = response;
                     console.log(vm.criterias);
                 })
                 .catch(error => {
                     console.log(error);
                 }); */
-                $.post("get_criterias.php",{ code: out},
+            $.post("get_criterias.php",{ code: out},
                 function(data) {     
-                    vm.criterias = data;    
+                    vm.criterias =JSON.parse(data);   
+
                     console.log(vm.criterias); 
         });
 
