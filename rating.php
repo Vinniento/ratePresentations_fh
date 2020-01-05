@@ -125,6 +125,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
             },
 
             function(data) {
+                alert(data);
 
             }
 
