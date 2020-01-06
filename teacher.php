@@ -170,6 +170,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 <thead>
                                                     <tr>
                                                         <th>Presentation</th>
+                                                        <th>Date of Presentation
                                                         <th>Rating-Code</th>
 
                                                     </tr>
@@ -177,6 +178,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 <tbody>
                                                     <tr v-for="(code, index) in codes">
                                                         <td>{{code.name}}</td>
+                                                        <td>{{code.date}}</td>
                                                         <td>{{code.code}}</td>
 
 
