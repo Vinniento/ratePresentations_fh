@@ -35,6 +35,3 @@ if (!(isset($_POST['criteria']) && isset($_POST['criteria_value']))) {
     echo "finished without error";
 }
 ?>
-<html>
-
-</html>

@@ -107,22 +107,21 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
         }
     })
+ 
 
     function add_sliders_to_array() {
-        alert("test");
         var form = document.getElementById("rated_criteria");
         inputs = form.getElementsByTagName("input");
-        arr = [];
-        arr2 = [];
+        var arr = new Array();
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
-            arr.push(inputs[i].id);
-            arr2.push(inputs[i].value);
+            arr[inputs[i].id] = inputs[i].value ;
+            //arr[inputs[i].id] = inputs[i].value;
+            alert(arr[inputs[i].id]);
         }
 
         $.post("rating_check.php", {
-            criteria: arr,
-            criteria_value,arr2
+            criteria: arr
             },
 
             function(data) {
