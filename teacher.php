@@ -25,7 +25,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                         <div class="row"><br>
                             <div class="columns s12 m3 l3 center-align">
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" onclick="showAddStudents()">Add Students</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" onclick="showElement('add_students')">Add Students</button>
                                 <br>
 
                                 <div id="add_students" style="display:none;">
@@ -50,7 +50,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                 <br>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showCreateGroups()">Create Groups</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showElement('create_groups')">Create Groups</button>
                                 <br><br>
                                 <div id="selected_students">
                                     <div id="create_groups" style="display:none;">
@@ -94,7 +94,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
                                 </div>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_form" value="Add Group to form" onclick="showAddGroupsToForm()">Add Group to form</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_form" value="Add Group to form" onclick="showElement('add_groups_to_form')">Add Group to form</button>
 
                                 <div id="add_groups_to_form" style="display:none;">
                                     <div class="row justify-content-center">
@@ -159,7 +159,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br>
 
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_presentations" value="View Presentations" onclick="showViewPresentations()">View Presentations</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_presentations" value="View Presentations" onclick="showElement('view_presentations')">View Presentations</button>
                                 <br><br>
                                 <div id="view_presentations" style="display:none;">
                                     <br>
@@ -187,7 +187,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     </div>
                                 </div>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showViewRatings()">View Ratings</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showElement('view_ratings')">View Ratings</button>
                                 <br><br>
                                 <div id="view_ratings" style="display:none;">
                                     <br>
@@ -230,6 +230,28 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                         <div :is="currentComponent"></div>
                         <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(null)">Close</button>
                     </div> -->
+
+                    <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate_presentation" value="Rate Presentation" onclick="showElement('rate_presentation')">Rate a Presentation</button>
+                                <br><br>
+                                <div id="rate_presentation" style="display:none;">
+                                    <br>
+
+                                    <form action="rating.php" method="post">
+              <row>
+                <div class="input-group mb-3">
+                  <input type="code" id="code" name="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                </div>
+              </row>
+              <div>
+             <!--   <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>-->
+             <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id ="submitbutoon" name="submitbutoon" value="Rate">Rate</button>
+              </div>
+            </form>
+                                </div>
+
+
+
+
                     </teacherNavigation>
 
 </section>
@@ -265,29 +287,9 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
     </script>
 
 <script>
-    function showAddStudents() {
+    function showElement(element){
         hideAll();
-        document.getElementById('add_students').style.display = "block";
-    }
-
-    function showCreateGroups() {
-        hideAll();
-        document.getElementById('create_groups').style.display = "block";
-    }
-
-    function showViewPresentations() {
-        hideAll();
-        document.getElementById('view_presentations').style.display = "block";
-    }
-
-    function showViewRatings() {
-        hideAll();
-        document.getElementById('view_ratings').style.display = "block";
-    }
-
-    function showAddGroupsToForm() {
-        hideAll();
-        document.getElementById('add_groups_to_form').style.display = "block";
+        document.getElementById(element).style.display = "block";
     }
 
     function hideAll() {
@@ -296,8 +298,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         document.getElementById('view_presentations').style.display = "none";
         document.getElementById('view_ratings').style.display = "none";
         document.getElementById('add_groups_to_form').style.display = "none";
-
-        //document.getElementById('rate_groups').style.display = "none";
+        document.getElementById('rate_presentation').style.display = "none";
         document.getElementById('view_ratings').style.display = "none";
     }
 </script>

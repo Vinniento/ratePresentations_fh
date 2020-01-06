@@ -55,7 +55,7 @@ try
         {
             echo $create . '<br>' . $exception->getMessage();
         }
-        echo 'added and ' . $result . ' found in db' . $email;
+        header('Location: teacher.php' );
 
     }
 } catch(Exception $ex ) 
