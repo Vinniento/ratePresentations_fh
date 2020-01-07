@@ -3,22 +3,21 @@ session_start();
 include("db_connection.php");
 include("random.php");
 $message = "";
-if (!(isset($_POST['criteria']) && isset($_POST['criteria_value']))) {
+if (!(isset($_POST['criteria']) )) {
     echo "error";
 } else {
-    $array_ids = $_POST['criteria'];
-    $array_values = $_POST['criteria_value'];
-    if(count($array_ids)!=count($array_values)){
-        echo "error";
-    }
+    $array = $_POST['criteria'];
+   // $array_values = $_POST['criteria_value'];
+   
 
 
-    for ($i = 0;$i<count($array_ids); $i++) {
+    //for ($i = 0;$i<count($array_ids); $i++)
+    foreach($array as $criteria_id => $crieriacvalue){
         $name_rating=randcode(8);
 
         //generate rating
         $statement = $conn->prepare('INSERT INTO ratings (name, rating_int, rating_str) VALUES (:name, :rating_int, :rating_str)');
-        $statement->execute(array('name' => $$name_rating, 'rating_int' => $array_values[$i],  'rating_str' => "Int rating kein Text"));
+        $statement->execute(array('name' => $name_rating, 'rating_int' => $crieriacvalue,  'rating_str' => "Int rating kein Text"));
         //select rating id
         $query = "SELECT rating_ID FROM ratings WHERE  name = :name";
         $statement = $conn->prepare($query);
@@ -30,7 +29,7 @@ if (!(isset($_POST['criteria']) && isset($_POST['criteria_value']))) {
         //mapping raing kriterium
 
         $statement = $conn->prepare('INSERT INTO ratings_to_criteria (criteria_ID, rating_ID) VALUES (:criteria_ID,:rating_ID)');
-        $statement->execute(array('criteria_ID' => $array_ids[$i], 'rating_ID' => $last_rating_id));
+        $statement->execute(array('criteria_ID' => $criteria_id, 'rating_ID' => $last_rating_id));
     }
     echo "finished without error";
 }
