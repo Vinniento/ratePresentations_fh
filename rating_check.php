@@ -7,17 +7,13 @@ if (!(isset($_POST['criteria']) )) {
     echo "error";
 } else {
     $array = $_POST['criteria'];
-   // $array_values = $_POST['criteria_value'];
    
-
-
-    //for ($i = 0;$i<count($array_ids); $i++)
-    foreach($array as $criteria_id => $crieriacvalue){
+    foreach($array as $criteria_id => $crieria_value){
         $name_rating=randcode(8);
 
         //generate rating
         $statement = $conn->prepare('INSERT INTO ratings (name, rating_int, rating_str) VALUES (:name, :rating_int, :rating_str)');
-        $statement->execute(array('name' => $name_rating, 'rating_int' => $crieriacvalue,  'rating_str' => "Int rating kein Text"));
+        $statement->execute(array('name' => $name_rating, 'rating_int' => $crieria_value,  'rating_str' => "Int rating kein Text"));
         //select rating id
         $query = "SELECT rating_ID FROM ratings WHERE  name = :name";
         $statement = $conn->prepare($query);
