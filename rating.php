@@ -117,7 +117,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         for (var i = 0, max = inputs.length; i < max; i += 1) {
             arr[inputs[i].id] = inputs[i].value ;
             //arr[inputs[i].id] = inputs[i].value;
-            alert(arr[inputs[i].id]);
+          //  alert(arr[inputs[i].id]);
         }
 
         $.post("rating_check.php", {
