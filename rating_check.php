@@ -34,9 +34,9 @@ if (!(isset($_POST['criteria']) )) {
     }
     echo "finished without error " .$message;
 } catch (PDOException $exception) {
-    $message ="error".$exception->getMessage();
+    $message = $message."error".$exception->getMessage();
 } catch (Exception $ex) {
-    $message ="error".$ex->getMessage();
+    $message = $message."error".$ex->getMessage();
 }
 finally{
 echo $message;

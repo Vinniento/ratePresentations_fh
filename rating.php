@@ -112,7 +112,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     function add_sliders_to_array() {
         var form = document.getElementById("rated_criteria");
         inputs = form.getElementsByTagName("input");
-        var arr = new Array();
+        var arr = new Object();
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
             arr[inputs[i].id] = inputs[i].value ;
