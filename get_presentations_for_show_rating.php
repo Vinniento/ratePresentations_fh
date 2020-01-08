@@ -22,9 +22,9 @@ try{
     $statement->execute();
 
      //gets row as associative array
-     $criterias = $statement->fetchAll(PDO::FETCH_ASSOC);
+     $presentations = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-     $result = json_encode($criterias);
+     $result = json_encode($presentations);
      echo $result;
 
 }catch(PDOException $error){

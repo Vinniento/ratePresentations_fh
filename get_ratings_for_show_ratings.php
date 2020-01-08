@@ -20,9 +20,9 @@ try{
     $statement->execute();
 
      //gets row as associative array
-     $criterias = $statement->fetchAll(PDO::FETCH_ASSOC);
+     $ratings = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-     $result = json_encode($criterias);
+     $result = json_encode($ratings);
      echo $result;
 
 }catch(PDOException $error){
