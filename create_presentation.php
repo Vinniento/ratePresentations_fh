@@ -52,7 +52,7 @@ if (!(isset($_POST['selected_groups']) && isset($_POST['selected_form']) && isse
             $statement->execute();
 
             $presentation = $statement->fetchAll(PDO::FETCH_ASSOC);
-            echo "last presentation id = " . $presentation[count($presentation)-1]['presentation_ID'];
+            
             $last_presentation_id = $presentation[count($presentation)-1]['presentation_ID']; 
            // echo "einträge = " . count($presentation_ID);
             
