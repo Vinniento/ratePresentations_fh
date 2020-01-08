@@ -8,8 +8,6 @@ if(isset($_POST['id']))
   //  $code=strclear($code);
 try{
 
-  
-
     $query = "SELECT criteria.name, criteria.criteria_ID FROM  presentations 
     INNER JOIN  forms_to_presentations  ON presentations.presentation_ID = forms_to_presentations.presentation_ID 
     INNER JOIN  forms  ON forms_to_presentations.form_ID = forms.form_ID 
@@ -23,9 +21,9 @@ try{
 
      //gets row as associative array
      $criterias = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+     
      $result = json_encode($criterias);
-     echo $result;
+     print_r($result);
 
 }catch(PDOException $error){
     echo $error;

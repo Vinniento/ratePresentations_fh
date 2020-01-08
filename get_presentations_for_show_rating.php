@@ -10,7 +10,7 @@ try{
 
   
 
-    $query = "SELECT presentations.presentation_ID, presentations.name FROM  persons 
+    $query = "SELECT presentations.presentation_ID, presentations.name, presentations.date FROM  persons 
     INNER JOIN  persons_to_groups  ON persons.person_ID = persons_to_groups.person_ID 
     INNER JOIN  groups  ON persons_to_groups.group_ID = groups.group_ID 
     INNER JOIN  presentations_to_groups  ON groups.group_ID = presentations_to_groups.group_ID   
