@@ -54,11 +54,13 @@ new Vue({
     addAnotherRangeInput(){      
       const range = {
         rangename: this.rangename, //name here
+        type: "range"
+        
       }      
       this.contents.push(range);  
       this.nam.push(range.rangename);     
       this.rangename='';                  
-     // alert(range.rangename);    
+      console.log(range); 
     },
     removeRangeInput(range) {
       this.contents.splice(this.contents.indexOf(range),1);
@@ -66,10 +68,12 @@ new Vue({
     addAnotherFeedbackInput(){
       const feedback = {
         feedbackname: this.feedbackname,
+        type: "feedback"
       }
       this.contents.push(feedback);
       this.nam.push(feedback.feedbackname);
       this.feedbackname='';
+      console.log(feedback); 
     //  alert(feedback.feedbackname);   
     },
     removeFeedbackInput(feedback) {

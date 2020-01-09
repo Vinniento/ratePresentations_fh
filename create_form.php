@@ -24,10 +24,13 @@ include "head.php";
       <button type="button" name="button" class="btn btn-success badge-pill" @click="sendData()">send Data</button><br>
         <ul class="contents">
           <li v-for="range in contents">
-            {{range.rangename}} <input type="range" class="custom-range" min="1" max="10" step="1"> <button @click="removeRangeInput(range)">remove</button>
-          </li>
-          <li v-for="feedback in contents">
-            {{feedback.feedbackname}} <textarea class="form-control" rows="3"></textarea> <button @click="removeFeedbackInput(feedback)">remove</button>
+          {{range.rangename}} type = {{range.type}}
+
+            <input v-if="range.type === 'range'" type="range" class="custom-range" min="1" max="10" step="1"/>
+            
+            <textarea class="form-control" rows="3" v-else></textarea>
+
+            <button @click="removeRangeInput(range)">remove</button>
           </li>
         </ul>
 
