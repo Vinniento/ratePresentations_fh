@@ -14,9 +14,6 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     ?>
 </div>
 
-
-
-<!---chris code:-->
 <section style="margin-top: 10rem; margin-bottom: 5rem">
     <div class="container h-100 d-flex justify-content-center align-items-center text-center">
         <div class="card bg-secondary" style="width: 80rem;">
@@ -28,18 +25,31 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                     <form action="###" method="post">
                         <div class="row" style="margin-bottom: 15px;">
                             <div class="col-sm-12 col-md-4">
-                                <h5 class="header">Group-Rating </h5>
+                                <h5 class="header">Group-Rating</h5>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <h5 class="header"> HIER SOLL DER NAME VON DER GRUPPE GELADEN WERDEN</h5>
                             </div>
 
                         </div>
                         <hr>
-                        <header style="margin-bottom: 15px;"><br>
-
-                        </header>
-                        <!---chris code ende-->
 
 
-                        <div class="table-responsive-sm">
+                        <ul class="contents" v-for="criteria in criterias">
+                            <div class="row" style="margin-bottom: 15px;" v-if="range.type === 'range'">
+                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
+                                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
+                            </div>
+                            <div class="row" style="margin-bottom: 15px;" v-else>
+                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{range.feedbackname}}</div>
+                                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" rows="3"></textarea></div>
+                                
+                            </div>
+                        </ul>
+
+
+
+                       <!--  <div class="table-responsive-sm">
                             <div id="display_criteria">
                                 <div id="rated_criteria">
                                     <table class="table table-striped table-dark table-hover">
@@ -61,11 +71,11 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <!---chris code:-->
-                        <button  onclick="add_sliders_to_array()">Submit Rating</button>
+                        <button onclick="add_sliders_to_array()">Submit Rating</button>
 
 
 
@@ -107,7 +117,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
         }
     })
- 
+
 
     function add_sliders_to_array() {
         var form = document.getElementById("rated_criteria");
@@ -115,13 +125,13 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         var arr = new Object();
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
-            arr[inputs[i].id] = inputs[i].value ;
+            arr[inputs[i].id] = inputs[i].value;
             //arr[inputs[i].id] = inputs[i].value;
-          //  alert(arr[inputs[i].id]);
+            //  alert(arr[inputs[i].id]);
         }
 
         $.post("rating_check.php", {
-            criteria: arr
+                criteria: arr
             },
 
             function(data) {

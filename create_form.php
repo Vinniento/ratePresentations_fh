@@ -49,7 +49,7 @@ include "head.php";
             <ul class="contents" v-for="range in contents">
               <div class="row" style="margin-bottom: 15px;" v-if="range.type === 'range'">
                 <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{range.rangename}}</div>
-                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" min="0" max="10" step="1"></div>
+                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" min="0" value="5" max="10" step="1"></div>
                 <button @click="removeRangeInput(range)" class="btn btn-success badge-pill">remove</button>
               </div>
               <div class="row" style="margin-bottom: 15px;" v-else>
