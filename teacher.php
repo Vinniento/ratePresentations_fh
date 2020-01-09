@@ -53,7 +53,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showElement('create_groups')">Create Groups</button>
                                 <br><br>
                                 <div id="selected_students">
-                                    <div id="create_groups" style="display:none;">
+                                    <div id="create_groups" style="display:none;" class="table-responsive-sm">
                                         <div class="row justify-content-center">
                                             <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
                                         </div>
@@ -125,6 +125,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                     </table>
                                                 </div>
                                             </div>
+
 
                                             <div id="display_forms">
                                                 <div id="selected_form">
@@ -233,23 +234,23 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                         <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(null)">Close</button>
                     </div> -->
 
-                    <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate_presentation" value="Rate Presentation" onclick="showElement('rate_presentation')">Rate a Presentation</button>
-                                <br><br>
-                                <div id="rate_presentation" style="display:none;">
-                                    <br>
+                        <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="rate_presentation" value="Rate Presentation" onclick="showElement('rate_presentation')">Rate a Presentation</button>
+                        <br><br>
+                        <div id="rate_presentation" style="display:none;">
+                            <br>
 
-                                    <form action="rating.php" method="post">
-              <row>
-                <div class="input-group mb-3">
-                  <input type="code" id="code" name="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
-                </div>
-              </row>
-              <div>
-             <!--   <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>-->
-             <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id ="submitbutoon" name="submitbutoon" value="Rate">Rate</button>
-              </div>
-            </form>
+                            <form action="rating.php" method="post">
+                                <row>
+                                    <div class="input-group mb-3">
+                                        <input type="code" id="code" name="code" class="form-control" placeholder="Code" aria-label="Code" aria-describedby="basic-addon1">
+                                    </div>
+                                </row>
+                                <div>
+                                    <!--   <a href="rate_form.html" class="btn btn-block btn-success badge-pill js-scroll-trigger">Rate!</a>-->
+                                    <button class="btn btn-block btn-success badge-pill js-scroll-trigger" type="submit" id="submitbutoon" name="submitbutoon" value="Rate">Rate</button>
                                 </div>
+                            </form>
+                        </div>
 
 
 
@@ -289,7 +290,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
     </script>
 
 <script>
-    function showElement(element){
+    function showElement(element) {
         hideAll();
         document.getElementById(element).style.display = "block";
     }
