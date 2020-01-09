@@ -87,7 +87,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     </div>
                                 </div>
 
-                                <a class="btn btn-success badge-pill" href="create_form.php">Create form</a>
+                                <a class="btn btn-success badge-pill" style="width: 13rem;" href="create_form.php">Create form</a>
                                 <br><br>
                                 <div id="create_form" style="display:none;">
 
