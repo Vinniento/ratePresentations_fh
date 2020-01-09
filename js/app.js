@@ -84,7 +84,7 @@ new Vue({
      /* alert(formname);
       alert("testuser");
       alert(this.nam);*/
-      $.post("insert_form_into_DB.php",{formname : formname, data: this.nam},
+      $.post("insert_form_into_DB.php",{formname : formname, data: this.contents},
         function(data) {
             switch(data) {
                 default:

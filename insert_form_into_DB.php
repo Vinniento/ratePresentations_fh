@@ -10,7 +10,7 @@ if (!(isset($_POST['data']))) {
 
     $arrays = $_POST['data'];
     $formname = $_POST['formname']; //vorerst zum testen später mit echtem namen
-
+    print_r($arrays);
     try {
         //erstellt form
         $statement = $conn->prepare('INSERT INTO forms (name) VALUES (:name)');
