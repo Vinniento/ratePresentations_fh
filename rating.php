@@ -34,20 +34,30 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                         </div>
                         <hr>
 
-
+                        <div id="display_criteria">
+                            <div id="rated_criteria">
                         <ul class="contents" v-for="criteria in criterias">
-                            <div class="row" style="margin-bottom: 15px;" v-if="range.type === 'range'">
+
+                            <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '49'">
                                 <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
                                 <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
                             </div>
                             <div class="row" style="margin-bottom: 15px;" v-else>
-                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{range.feedbackname}}</div>
+                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
                                 <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" rows="3"></textarea></div>
                                 
                             </div>
+                            
                         </ul>
 
+                        
 
+
+                            
+                            </div>
+
+
+                        </div>
 
                        <!--  <div class="table-responsive-sm">
                             <div id="display_criteria">
