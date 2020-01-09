@@ -44,10 +44,9 @@ new Vue({
   el: '#test',
   data () {
     return {
-      rangename: '',
       feedbackname: '',
-      contents: [],
-      nam:[]
+      rangename: '',
+      contents: []
     }
   },
   methods:{
@@ -57,8 +56,7 @@ new Vue({
         type: "range"
         
       }      
-      this.contents.push(range);  
-      this.nam.push(range.rangename);     
+      this.contents.push(range);    
       this.rangename='';                  
       console.log(range); 
     },
@@ -71,7 +69,6 @@ new Vue({
         type: "feedback"
       }
       this.contents.push(feedback);
-      this.nam.push(feedback.feedbackname);
       this.feedbackname='';
       console.log(feedback); 
     //  alert(feedback.feedbackname);   

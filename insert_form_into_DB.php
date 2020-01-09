@@ -9,8 +9,8 @@ if (!(isset($_POST['data']))) {
 
 
     $arrays = $_POST['data'];
-    $formname = $_POST['formname']; //vorerst zum testen später mit echtem namen
-    print_r($arrays);
+    $formname = htmlspecialchars($_POST['formname']); //vorerst zum testen später mit echtem namen
+    
     try {
         //erstellt form
         $statement = $conn->prepare('INSERT INTO forms (name) VALUES (:name)');
@@ -26,29 +26,34 @@ if (!(isset($_POST['data']))) {
         $form_id = $statement->fetchAll(PDO::FETCH_ASSOC);
         $last_form_id = $form_id[count($form_id)-1]['form_ID'];
 
-        print_r($last_form_id);
         //insert all criteria and map the form to them
         foreach ($arrays as $value) {
-           $message .= "  kriterium namen =  " . $value . "   einfügen \n";
+            echo "Formname = " . $formname . "\n";
+            print_r($value) . "\n";
 
+        $isfeedback = $value['type'] == "range" ? 0 : 1;
+        $criteria_name = $isfeedback == 1 ? $value['feedbackname'] : $value['rangename'];
+        echo "ISFEEDBACK = " . $isfeedback;
+         $message .= "  kriterium namen =  " . $criteria_name . "   einfügen \n";
+          
+            $statement = $conn->prepare('INSERT INTO criteria (name, isfeedback) VALUES (:name, :isfeedback)');
+            $statement->execute(array('name' => $criteria_name, 'isfeedback' => $isfeedback));
 
-            $statement = $conn->prepare('INSERT INTO criteria (name) VALUES (:name)');
-            $statement->execute(array('name' => $value));
-           $message .= "  kriterium namen =  " . $value . "   eingefügt \n";
+           $message .= "  kriterium namen =  " . $criteria_name . "   eingefügt \n";
 
 
             $query = "SELECT criteria_ID FROM criteria WHERE  name = :name";
             $statement = $conn->prepare($query);
-            $statement->bindParam(':name', $value);
+            $statement->bindParam(':name', $criteria_name);
             $statement->execute();
 
             $criteria_id = $statement->fetchAll(PDO::FETCH_ASSOC);
             $last_criteria_id = $criteria_id[count($criteria_id)-1]['criteria_ID'];
-           $message .= "  kriterium namen =  " . $value . "   selectiert" . "id= " . $last_criteria_id . "   form id= " . $last_form_id . "  ";
+           $message .= "  kriterium namen =  " . $criteria_name . "   selectiert" . "id= " . $last_criteria_id . "   form id= " . $last_form_id . "  ";
 
             $statement = $conn->prepare('INSERT INTO forms_to_criteria (form_ID,criteria_ID) VALUES (:form_ID,:criteria_ID)');
             $statement->execute(array('form_ID' => $last_form_id, 'criteria_ID' => $last_criteria_id));
-            $message .= "  kriterium namen =  " . $value . "   gemapt";
+            $message .= "  kriterium namen =  " . $criteria_name . "   gemapt";
         }
 
 

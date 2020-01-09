@@ -69,7 +69,7 @@ $conn->exec($create);
 $create = "CREATE TABLE if not exists `criteria` (
   `criteria_ID` int not null auto_increment,
   `name` varchar(70) not null,
-  `istext` boolean,
+  `isfeedback` boolean,
   PRIMARY KEY (`criteria_ID`)
 );";
 $conn->exec($create);
