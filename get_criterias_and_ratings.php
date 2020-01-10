@@ -6,7 +6,6 @@ if (isset($_GET['id'])) {
     $pres_id = $_GET['id'];
     //  $code=strclear($code);
     $array=array();
-    echo "<script type='text/javascript'>alert('$pres_id');</script>";    
     try {
 
         $query = "SELECT criteria.name, criteria.criteria_ID FROM  presentations 
