@@ -36,9 +36,10 @@ try
         header( 'Location: teacher.php' );
     } else {
         try {
+            $pwd_encrypdet=  password_hash($pwd, PASSWORD_BCRYPT);
 
             $statement = $conn->prepare( 'INSERT INTO persons (firstname, lastname, email, pwd, isteacher) VALUES (:firstname, :lastname, :email,:pwd, :isteacher)' );
-            $statement->execute( array( 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'pwd' =>$pwd, 'isteacher' => 'false' ) );
+            $statement->execute( array( 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'pwd' =>$pwd_encrypdet, 'isteacher' => 'false' ) );
 
             $headers = 'From: edmin.ratepresentations@gmail.com' . '\r\n' .
             'Reply-To: edmin.ratepresentations@gmail.com' . '\r\n' .

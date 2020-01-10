@@ -7,10 +7,10 @@ if (isset($_POST['email1']) && $_POST['email1'] != '') {
 
     $email_form = $_POST['email1'];
     //TODO encrypt password zum vergleichen
-    $old_pwd_form = ($_POST['oldpwd1']);
-    $new_pwd_form = ($_POST['newpwd1']);
-     //$old_pwd_form = password_hash(htmlspecialchars(($_POST['oldpwd1'])), PASSWORD_BCRYPT);
-   // $new_pwd_form = password_hash(htmlspecialchars(($_POST['newpwd1'])), PASSWORD_BCRYPT);
+   // $old_pwd_form = ($_POST['oldpwd1']);
+    //$new_pwd_form = ($_POST['newpwd1']);
+    $old_pwd_form = password_hash(htmlspecialchars(($_POST['oldpwd1'])), PASSWORD_BCRYPT);
+    $new_pwd_form = password_hash(htmlspecialchars(($_POST['newpwd1'])), PASSWORD_BCRYPT);
 }
 try {
     //create connection to database
@@ -36,7 +36,7 @@ try {
         }
        
         //TODO password verify
-        if ($email_form === htmlspecialchars($users['email']) && $old_pwd_form === $users['pwd'])/*password_verify($pass_form, $users['pwd']))*/ {
+        if ($email_form === htmlspecialchars($users['email']) && password_verify($pass_form, $users['pwd']))/*password_verify($pass_form, $users['pwd']))*/ {
             $update_password = "UPDATE persons 
                 SET pwd = :newpwd
                 WHERE 
