@@ -6,6 +6,7 @@ if (isset($_POST['id'])) {
     $pres_id = $_POST['id'];
     //  $code=strclear($code);
     $array=array();
+    echo "<script type='text/javascript'>alert('$pres_id');</script>";    
     try {
 
         $query = "SELECT criteria.name, criteria.criteria_ID FROM  presentations 
@@ -48,6 +49,7 @@ if (isset($_POST['id'])) {
         
         echo "error".$ex->getMessage();
     }
+    
 } else {
 }
 
