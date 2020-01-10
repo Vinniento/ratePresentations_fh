@@ -15,7 +15,7 @@ $create = "CREATE TABLE if not exists `persons` (
   `firstname` varchar(50) not null,
   `lastname` varchar(50) not null,
   `email` varchar(70) not null unique,
-  `pwd` varchar (50) not null,
+  `pwd` varchar (70) not null,
   `isteacher` boolean not null,
   UNIQUE (email),
   PRIMARY KEY (`Person_ID`)

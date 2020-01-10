@@ -44,7 +44,7 @@ try {
         }
        
         //TODO password verify
-        if ($email_form === htmlspecialchars($users['email']) && $pass_form === $users['pwd'])/*password_verify($pass_form, $users['pwd']))*/ {
+        if ($email_form === htmlspecialchars($users['email']) && password_verify($pass_form, $users['pwd']))/*password_verify($pass_form, $users['pwd']))*/ {
 
             //$_COOKIE["user_id"] = $users["person_id"];
             $_SESSION['person_id'] = $users['person_id'];
