@@ -2,8 +2,8 @@
 session_start();
 include("db_connection.php");
 include("random.php");
-if (isset($_POST['id'])) {
-    $pres_id = $_POST['id'];
+if (isset($_GET['id'])) {
+    $pres_id = $_GET['id'];
     //  $code=strclear($code);
     $array=array();
     echo "<script type='text/javascript'>alert('$pres_id');</script>";    

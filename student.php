@@ -43,7 +43,32 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
 
                                         </div>
                                 </div>
+<!-- ---------------------------------------------------- -->
+<div id="displaycriterias">
+                                <p>Click a presentation to view your ratings</p>
+                                    <br>
 
+                                    <div class="table-responsive-sm">
+                                            <table class="table table-striped table-dark table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Presentation</th>
+                                                        <th>Date of Presentation</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(presentation, index) in presentations">
+                                                        <td>{{presentation.name}}</td>
+                                                        <td>{{presentation.date}}</td>
+
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                </div>
                                 <<!-- ---------------------------------------------------- -->
 <div id="displayratings">
                                 <p>Click a presentation to view your ratings</p>
@@ -59,7 +84,7 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="(presentation, index) in ratings">
+                                                    <tr v-for="(presentation, index) in presentations">
                                                         <td>{{presentation.name}}</td>
                                                         <td>{{presentation.date}}</td>
 
@@ -115,17 +140,17 @@ function openRating(id) {
                     params: {
                         id: 90
                     }
+
                 })
-                .then(function (response) {
-                    console.log(response);
+                .then(response => {
+                    vm.ratings = response.data;
+                    console.log(vm.ratings);
                 })
-                .catch(function (error) {
+                .catch(error => {
                     console.log(error);
                 });
         }
     })
-
-    
 </script>
   </body>
   
