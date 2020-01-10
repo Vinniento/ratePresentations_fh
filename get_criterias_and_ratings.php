@@ -51,6 +51,7 @@ if (isset($_POST['id'])) {
     }
     
 } else {
+    echo "error kein id empfangen";
 }
 
 ?>
