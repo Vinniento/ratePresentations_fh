@@ -36,58 +36,22 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 
                         <div id="display_criteria">
                             <div id="rated_criteria">
-                        <ul class="contents" v-for="criteria in criterias">
+                                <ul class="contents" v-for="criteria in criterias">
 
-                            <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '0'">
-                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
-                                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
+                                    <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '0'">
+                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
+                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px;" v-else>
+                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
+                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" :name="criteria.criteria_ID" :id="criteria.criteria_ID"  rows="3"></textarea></div>
+
+                                    </div>
+                                </ul>
                             </div>
-                            <div class="row" style="margin-bottom: 15px;" v-else>
-                                <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
-                                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" rows="3"></textarea></div>
-                                
-                            </div>
-                            
-                        </ul>
-
-                        
-
-
-                            
-                            </div>
-
-
                         </div>
-
-                       <!--  <div class="table-responsive-sm">
-                            <div id="display_criteria">
-                                <div id="rated_criteria">
-                                    <table class="table table-striped table-dark table-hover">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>Rate criteria</th>
-                                                <th>value</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-
-                                            <tr v-for="criteria in criterias">
-                                                <td>{{criteria.name}}</td>
-                                                <td><input type="range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" max="10" /></td>
-                                            </tr>
-                                        </tbody>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div> -->
-
-
                         <!---chris code:-->
                         <button onclick="add_sliders_to_array()">Submit Rating</button>
-
-
 
                     </form>
                 </div>
@@ -133,15 +97,23 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         var form = document.getElementById("rated_criteria");
         inputs = form.getElementsByTagName("input");
         var arr = new Object();
+        var arr2 = new Object();
 
         for (var i = 0, max = inputs.length; i < max; i += 1) {
             arr[inputs[i].id] = inputs[i].value;
             //arr[inputs[i].id] = inputs[i].value;
             //  alert(arr[inputs[i].id]);
         }
+        inputs = form.getElementsByTagName("textarea");
+        for (var i = 0, max = inputs.length; i < max; i += 1) {
+            arr2[inputs[i].id] = inputs[i].value;
+            //arr[inputs[i].id] = inputs[i].value;
+            //  alert(arr[inputs[i].id]);
+        }
 
         $.post("rating_check.php", {
-                criteria: arr
+                criteria: arr,
+                text: arr2
             },
 
             function(data) {
