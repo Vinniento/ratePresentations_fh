@@ -20,7 +20,7 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings"
                         value="View Ratings">View my Presentations</button>
                     <br><br>
-                    <div id="displaypresentations">
+                    <div id="app">
                         <br>
 
                         <div class="table-responsive-sm">
@@ -36,18 +36,18 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                     <tr v-for="(presentation, index) in presentations">
                                         <td>{{presentation.name}}</td>
                                         <td>{{presentation.date}}</td>
-                                        <td><button :id="presentation.presentation_ID"
-                                                onclick="openRating(this.id)">View Rating</button></td>
+                                        <td><button :id="presentation.presentation_ID" v-on:click="getCriteria($event)">View
+                                                Rating</button></td>
 
 
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        </div>
+                  
                     <!-- ---------------------------------------------------- -->
 
-                    <div id="displayratings">
+                
 
 
                         <div v-for="(criteria, index) in ratings">
@@ -56,25 +56,27 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                 <p>{{rating["AVG(ratings.rating_int)"]}}</p>
                             </div>
                         </div>
-
-
-                    </div>
+                        </div>
                     <br>
+
+
+
+
+
+                    <!-- --------------------------------------- -->
+
+
                     <script>
-                    function openRating(id) {
-
-                        alert(id);
-                    }
-
                     var app = new Vue({
 
-                        el: '#displaypresentations',
+                        el: '#app',
                         data: {
-                            presentations: []
+                            presentations: [],
+                            ratings: []
                         },
                         mounted() {
                             let vm = this;
-                            axios
+                                axios
                                 .get('get_presentations_for_show_rating.php')
                                 .then(response => {
                                     vm.presentations = response.data;
@@ -83,36 +85,34 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                 .catch(error => {
                                     console.log(error);
                                 });
-                        }
-                    })
-                    </script>
-
-                    <script>
-                    var app = new Vue({
-
-                        el: '#displayratings',
-                        data: {
-                            ratings: []
                         },
-                        mounted() {
-                            let vm = this;
-                            axios
+                        methods: {
+                           
+                            getCriteria(event){
+                                var pres_id = event.currentTarget.id;
+                                this.ratings = [];
+                                axios
                                 .get('get_criterias_and_ratings.php', {
                                     params: {
-                                        id: 2
+                                        id: pres_id
                                     }
 
                                 })
                                 .then(response => {
-                                    vm.ratings = response.data;
-                                    console.log(vm.ratings);
+                                    this.ratings = response.data;
+                                    console.log(this.ratings);
                                 })
                                 .catch(error => {
                                     console.log(error);
-                                });
+                                })
+                                
+                            }
                         }
+
+
                     })
                     </script>
+
                     </body>
 
 </html>
