@@ -46,7 +46,7 @@ try
             'X-Mailer: PHP/' . phpversion();
             $message = "You have been added as a student:  password = ". $pass 
                         .  "\n" .' Please click on the following link and reset your password:' . "\n" .
-                        "http://localhost:8081/ratepresentations/change_password.php ";
+                        "http://localhost:8081/ratepresentations/ratePresentations/change_password.php ";
 
             $subject = 'project work';
 
