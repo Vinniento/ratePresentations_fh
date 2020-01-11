@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
 
         $statement->execute();
 
-        //gets row as associative array
+        //gets row as associative array t
         $criterias = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
