@@ -35,12 +35,12 @@ include "head.php";
                 
               </row>
                 <div>
-                <button class="btn btn-success badge-pill" type="submit" id ="submit" name="submit" value="Login">Login</button>
+                <button class="btn btn-success" type="submit" id ="submit" name="submit" value="Login">Login</button>
                 </div>
               </form>
               <br>
               <div>
-              <a class="btn btn-success badge-pill" href="createaccount.php">Create new Account for Teachers</a>
+              <a class="btn btn-success" href="createaccount.php">Create new Account for Teachers</a>
               </div>
           <br>              
         </div>

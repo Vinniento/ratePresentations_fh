@@ -9,20 +9,17 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
 ?>
 
 <header class="masthead">
-    <div class="container w-100 h-100 d-flex justify-content-center align-items-center text-center" style="width: 60rem;">
+    <div class="container w-100 h-100 d-flex justify-content-center align-items-center text-center"
+        style="width: 60rem;">
         <div class="card bg-secondary" style="width: 70rem;">
             <div class="card-body">
                 <br>
                 <div class="row justify-content-center">
-                    <h3 class="card-title">Student Area</h3>
-                </div>
-                <br>
-                <div class="row justify-content-center">
+                    <h3 class="card-title">Student bereich</h3>
+
                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings"
                         value="View Ratings">View my Presentations</button>
-                </div>
-                    
-                <div class="row justify-content-center">
+                    <br><br>
                     <div id="app">
                         <br>
 
@@ -37,10 +34,9 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                 </thead>
                                 <tbody>
                                     <tr v-for="(presentation, index) in presentations">
-                                    <br>
                                         <td>{{presentation.name}}</td>
                                         <td>{{presentation.date}}</td>
-                                        <td><button :id="presentation.presentation_ID" class="btn btn-success badge-pill" v-on:click="getCriteria($event)">View
+                                        <td><button :id="presentation.presentation_ID" v-on:click="getCriteria($event)">View
                                                 Rating</button></td>
 
 
@@ -48,7 +44,6 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                 </tbody>
                             </table>
                         </div>
-                        
                   
                     <!-- ---------------------------------------------------- -->
 
@@ -61,9 +56,8 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                                 <p>{{rating["AVG(ratings.rating_int)"]}}</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <br>
+                        </div>
+                    <br>
 
 
 
