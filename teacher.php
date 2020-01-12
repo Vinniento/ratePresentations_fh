@@ -61,41 +61,42 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                         @click="showElement('create_groups')">Create Groups</button>
                                     <br><br>
                                     <div id="selected_students">
-                                        <div id="create_groups" style="display:none;" class="table-responsive-sm">
-                                            <div class="row justify-content-center">
-                                                <input type="text" class="form-control" id="groupname" value=""
-                                                    placeholder="Enter Groupname here!" style="width:16rem;" />
+                                            <div id="create_groups" style="display:none;" class="table-responsive-sm">
+
+                                                <div class="row justify-content-center">
+                                                    <input type="text" class="form-control" id="groupname" value=""
+                                                        placeholder="Enter Groupname here!" style="width:16rem;" />
+                                                </div>
+                                                <br>
+
+                                                <div calss="table-responsive-sm">
+                                                    <table class="table table-striped table-dark table-hover">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Select</th>
+                                                                <th>Firstname</th>
+                                                                <th>Lastname</th>
+                                                                <th>E-mail</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(student, index) in students">
+                                                                <td><input type="checkbox" :id="student.person_ID"></td>
+                                                                <td>{{student.firstname}}</td>
+                                                                <td>{{student.lastname}}</td>
+                                                                <td>{{student.email}}</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <button type="submit" value="addstudenttogroup"
+                                                    class="btn btn-primary badge-pill" style="width: 13rem;"
+                                                    onclick="addCheckedStudentsToArray()">Create Group</button>
+                                                <br><br>
                                             </div>
-                                            <br>
-
-                                            <div calss="table-responsive-sm">
-                                                <table class="table table-striped table-dark table-hover">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th>Select</th>
-                                                            <th>Firstname</th>
-                                                            <th>Lastname</th>
-                                                            <th>E-mail</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="(student, index) in students">
-                                                            <td><input type="checkbox" :id="student.person_ID"></td>
-                                                            <td>{{student.firstname}}</td>
-                                                            <td>{{student.lastname}}</td>
-                                                            <td>{{student.email}}</td>
-
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <button type="submit" value="addstudenttogroup"
-                                                class="btn btn-primary badge-pill" style="width: 13rem;"
-                                                onclick="addCheckedStudentsToArray()">Create Group</button>
-                                            <br><br>
-                                        </div>
                                     </div>
 
                                     <a class="btn btn-success badge-pill" style="width: 13rem;"
@@ -108,7 +109,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"
                                         name="add_group_to_form" value="Add Group to form"
-                                        @click="showElement('add_groups_to_form')">Add Group to form</button>
+                                        @click="showElement('add_groups_to_form')">Create Presentation</button>
 
                                     <div id="add_groups_to_form" style="display:none;">
                                         <div class="row justify-content-center">
@@ -251,7 +252,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
                                 </div>
                             </div>
-                         
+
                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"
                                 name="rate_presentation" value="Rate Presentation"
                                 @click="showElement('rate_presentation')">Rate a Presentation</button>
