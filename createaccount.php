@@ -67,7 +67,7 @@
                 <br>
                 
                   <div>
-                  <button class="btn btn-success" type="submit" name="submit" value="Login">Create Account</button>
+                  <button class="btn btn-success badge-pill" type="submit" name="submit" value="Login">Create Account</button>
                   <input type="hidden" name="submit" value="validate"><br><br>
                   </div>
                 </form>
