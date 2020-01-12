@@ -13,7 +13,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     echo htmlspecialchars($output);
     ?>
 </div>
-
+<template id="display_criteria">
 <section style="margin-top: 10rem; margin-bottom: 5rem">
     <div class="container h-100 d-flex justify-content-center align-items-center text-center">
         <div class="card bg-secondary" style="width: 80rem;">
@@ -28,13 +28,13 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                 <h5 class="header">Group-Rating</h5>
                             </div>
                             <div class="col-sm-12 col-md-4">
-                                <h5 class="header"> HIER SOLL DER NAME VON DER GRUPPE GELADEN WERDEN</h5>
+                                <h5 class="header"> {{pres_name}}</h5>
                             </div>
 
                         </div>
                         <hr>
 
-                        <div id="display_criteria">
+                        <div >
                             <div id="rated_criteria">
                                 <ul class="contents" v-for="criteria in criterias">
 
@@ -65,6 +65,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         </div>
     </div>
 </section>
+</template>
 <!---chris code ende-->
 <script>
 //get criteria
@@ -72,13 +73,13 @@ var app = new Vue({
 
     el: '#display_criteria',
     data: {
-        criterias: []
+        criterias: [],
+        pres_name: ''
     },
     mounted() {
         var div = document.getElementById("dom-target");
         var codel = div.textContent;
         var out = String(codel).trim();
-        console.log("ausgabe vom Vue vom rating.php");
         console.log(out);
         let vm = this;
 
@@ -89,6 +90,13 @@ var app = new Vue({
                 vm.criterias = JSON.parse(data);
 
                 console.log(vm.criterias);
+            }), 
+            $.post("get_presentationname.php", {
+                code: out
+            },
+            function(data) {
+                vm.pres_name = data;
+                console.log(vm.pres_name);
             });
 
 

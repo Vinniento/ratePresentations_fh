@@ -317,7 +317,7 @@ var app = new Vue({
             .get('get_students_list.php')
             .then(response => {
                 vm.students = response.data;
-                console.log(students);
+                console.log(vm.students);
             })
             .catch(error => {
                 console.log(error);
