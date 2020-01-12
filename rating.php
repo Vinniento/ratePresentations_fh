@@ -39,10 +39,9 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                     <ul class="contents" v-for="criteria in criterias">
 
                                         <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '0'">
-                                            <div class="col-sm-8 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
-                                            </div>
-                                            <div class="col-sm-8 col-md-5" style="margin-bottom: 15px;"><input type="range" class="custom-range"  :id="criteria.criteria_ID" min="0" value="5" max="10" step="1" v-model="criteria.name" ></div>
-                                            <div class="col-sm-2 col-md-1"><input type="number"  min="0" value="5" max="10" step="1"  class="topcoat-text-input center" v-model="criteria.name"></div>
+                                            <div class="col-sm-8 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
+                                            <div class="col-sm-8 col-md-5" style="margin-bottom: 15px;"><input type="range" class="custom-range"  :id="criteria.criteria_ID" min="0" value="5" max="10" step="1" v-model="criteria.radius" ></div>
+                                            <div class="col-sm-2 col-md-1"><input type="number"  min="0" value="5" max="10" step="1"  class="topcoat-text-input center" v-model="criteria.radius"></div>
                                         </div>
                                         <div class="row" style="margin-bottom: 15px;" v-else>
                                             <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
@@ -73,7 +72,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
         data: {
             criterias: [],
             pres_name: '',
-            radius:5
+            radius:[]
         },
         mounted() {
             var div = document.getElementById("dom-target");
