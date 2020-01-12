@@ -251,15 +251,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
                                 </div>
                             </div>
-                            <!-- <div>               
-                        <div v-for="component in componentsArray" style="padding-bottom: 10px;">
-                            <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(component)">{{component}}</button>
-                        </div>
-                        <br>
-                        <div :is="currentComponent"></div>
-                        <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" @click="swapComponent(null)">Close</button>
-                    </div> -->
-
+                         
                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"
                                 name="rate_presentation" value="Rate Presentation"
                                 @click="showElement('rate_presentation')">Rate a Presentation</button>
@@ -308,21 +300,6 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 <!-- Plugin JavaScript -->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-
-
-<script type="text/x-template" id="creategroups">
-    <form action="createform.php" method="post">
-            <div class="form-group">
-                <label for="groupname">Group Name:</label>
-                <input type="text" class="form-control" id="groupname" placeholder="Your Group!">
-                <button type="submit" value="Create Presentation" class="btn btn-primary badge-pill" style="width: 13rem;">Create Presentation</button>
-            </div>
-        </form>
-    </script>
-
-<script>
-
-</script>
 <script>
 var app = new Vue({
 

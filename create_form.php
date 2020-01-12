@@ -21,14 +21,14 @@ include "head.php";
                             <input type="text" id="formname" value="">
                         </div><br>
 
-                        <div class="input-group justify-content-center">
+                        <!--<div class="input-group justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Section Heading:</span>
                             </div>
                             <input v-model="sectionheading" type="text" class="form-control" name="" value="">
                         </div><br>
                         <button type="button" name="button" class="btn btn-success badge-pill"
-                            @click="addAnotherSectionHeading()">Add Another Section Heading</button><br><br>
+                            @click="addAnotherSectionHeading()">Add Another Section Heading</button><br><br>-->
 
                         <div class="input-group justify-content-center">
                             <div class="input-group-prepend">
