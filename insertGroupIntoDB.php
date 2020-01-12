@@ -3,16 +3,29 @@ session_start();
 include("db_connection.php");
 $message="";
 try {
-    if(!(isset($_POST['selectedStudents']) && isset($_POST['groupname']))){
+    if(!(isset($_POST['selectedStudents']) || !isset($_POST['groupname']))){
         
         $message = "students not selected or groupname not entered";
     }
+
     else{
+
+        $query = "SELECT group_name FROM groups WHERE  group_name = :group_name";
+        $statement = $conn->prepare($query);
+        $statement->bindParam(':group_name', $_POST['groupname']);
+        $statement->execute();
+
+        if($statement->rowCount() > 0) {
+         $message = "group name exists already";
+         return; }
+
+
         $groupName = $_POST['groupname'];//vorerst zum testen später mit echtem namen
         $selectedStudents = $_POST['selectedStudents'];
         $statement = $conn->prepare( 'INSERT INTO groups (group_name) VALUES (:group_name)');
         $statement->bindParam(':group_name', $groupName);
         $statement->execute();
+        
         
         $query = "SELECT group_ID FROM groups WHERE  group_name = :group_name";
         $statement = $conn->prepare($query);
