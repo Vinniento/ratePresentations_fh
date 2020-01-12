@@ -154,7 +154,6 @@ include "head.php";
 
 
         <div class="row">
-
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="card py-4 h-100">
                     <div class="card-body text-center">
@@ -173,19 +172,19 @@ include "head.php";
                         <h4 class="text-uppercase m-0">Email</h4>
                         <hr class="my-4">
                         <div class="small text-black-50">
-                            <a href="#">WHICH DOMAIN???</a>
+                            <a href="mailto:edmin.ratepresentations@gmail.com">edmin.ratepresentations@gmail.com</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-3 mb-md-0">
+            <div class="col-md-4 mb-4 mb-md-0">
                 <div class="card py-4 h-100">
                     <div class="card-body text-center">
                         <i class="fab fa-bitcoin text-primary mb-2"></i>
-                        <h4 class="text-uppercase m-0">Help us</h4>
+                        <h4 class="text-uppercase m-0">Help Us</h4>
                         <hr class="my-4">
-                        <div class="small text-black-50">Bitcoin Wallet: ZZZ</div>
+                        <div class="small text-black-50">Bitcoin Wallet:<p></p>334TkzzELYtLcozVkjehBksTnhybPuHhDQ</div>
                     </div>
                 </div>
             </div>
