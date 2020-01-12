@@ -41,13 +41,13 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                         <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '0'">
                                             <div class="col-sm-8 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
                                             </div>
-                                            <div class="col-sm-8 col-md-5" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1" v-model="radius"></div>
-                                            <div class="col-sm-2 col-md-1"><input type="number" min="0" value="5" max="10" step="1" id="range" class="topcoat-text-input center" v-model="radius"></div>
+                                            <div class="col-sm-8 col-md-5" style="margin-bottom: 15px;"><input type="range" class="custom-range"  :id="criteria.criteria_ID" min="0" value="5" max="10" step="1" v-model="criteria.name" ></div>
+                                            <div class="col-sm-2 col-md-1"><input type="number"  min="0" value="5" max="10" step="1"  class="topcoat-text-input center" v-model="criteria.name"></div>
                                         </div>
                                         <div class="row" style="margin-bottom: 15px;" v-else>
                                             <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
                                             </div>
-                                            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" :name="criteria.criteria_ID" :id="criteria.criteria_ID" rows="3"></textarea></div>
+                                            <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control"  :id="criteria.criteria_ID" rows="3"></textarea></div>
 
                                         </div>
                                     </ul>
@@ -97,12 +97,8 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                         vm.pres_name = data;
                         console.log(vm.pres_name);
                     });
-
-
-
-
-
         }
+
     })
 
 
