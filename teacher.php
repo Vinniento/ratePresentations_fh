@@ -25,7 +25,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                         <div id= "teacher">
                         <div class="row"><br>
                             <div class="columns s12 m3 l3 center-align">
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" onclick="showElement('add_students')">Add Students</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" @click="showElement('add_students')">Add Students</button>
                                 <br>
 
                                 <div id="add_students" style="display:none;">
@@ -50,7 +50,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                 <br>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" onclick="showElement('create_groups')">Create Groups</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="create_groups" value="Create Groups" @click="showElement('create_groups')">Create Groups</button>
                                 <br><br>
                                 <div id="selected_students">
                                     <div id="create_groups" style="display:none;" class="table-responsive-sm">
@@ -94,7 +94,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                     <br>
                                 </div>
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_form" value="Add Group to form" onclick="showElement('add_groups_to_form')">Add Group to form</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="add_group_to_form" value="Add Group to form" @click="showElement('add_groups_to_form')">Add Group to form</button>
 
                                 <div id="add_groups_to_form" style="display:none;">
                                     <div class="row justify-content-center">
@@ -160,7 +160,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <br>
 
 
-                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_presentations" value="View Presentations" onclick="showElement('view_presentations')">View Presentations</button>
+                                <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_presentations" value="View Presentations" @click="showElement('view_presentations'); getPresentations();">View Presentations</button>
                                 <br><br>
                                 <div id="view_presentations" style="display:none;">
                                     <br>
@@ -177,10 +177,10 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="(code, index) in codes">
-                                                        <td>{{code.name}}</td>
-                                                        <td>{{code.date}}</td>
-                                                        <td>{{code.code}}</td>
+                                                    <tr v-for="(presentation, index) in presentations">
+                                                        <td>{{presentation.name}}</td>
+                                                        <td>{{presentation.date}}</td>
+                                                        <td>{{presentation.code}}</td>
 
 
                                                     </tr>
@@ -290,20 +290,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
     </script>
 
 <script>
-    function showElement(element) {
-        hideAll();
-        document.getElementById(element).style.display = "block";
-    }
 
-    function hideAll() {
-        document.getElementById('add_students').style.display = "none";
-        document.getElementById('create_groups').style.display = "none";
-        document.getElementById('view_presentations').style.display = "none";
-        document.getElementById('view_ratings').style.display = "none";
-        document.getElementById('add_groups_to_form').style.display = "none";
-        document.getElementById('rate_presentation').style.display = "none";
-        document.getElementById('view_ratings').style.display = "none";
-    }
 </script>
 <script>
     var app = new Vue({
@@ -311,7 +298,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
         el: '#teacher',
         data: {
             students: [],
-            codes: [],
+            presentations: [],
             groups: [],
             forms: [],
 
@@ -327,16 +314,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 .catch(error => {
                     console.log(error);
                 }),
-                axios
-                .get('get_code.php')
-                .then(response => {
-                    vm.codes = response.data;
-                    console.log("codes:");
-                    console.log(vm.codes);
-                })
-                .catch(error => {
-                    console.log(error);
-                }),
+                
 
                 axios
                 .get('get_groups_list.php')
@@ -357,12 +335,37 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 })
                 .catch(error => {
                     console.log(error);
+                });
+        }, 
+        methods: {
+            getPresentations(){
+                axios
+                .get('get_code.php')
+                .then(response => {
+                    this.presentations = response.data;
+                    console.log("codes:");
+                    console.log(vm.presentations);
                 })
-                ;
-
-
-
+                .catch(error => {
+                    console.log(error);
+                })
+            },
+            hideAll() {
+        document.getElementById('add_students').style.display = "none";
+        document.getElementById('create_groups').style.display = "none";
+        document.getElementById('view_presentations').style.display = "none";
+        document.getElementById('view_ratings').style.display = "none";
+        document.getElementById('add_groups_to_form').style.display = "none";
+        document.getElementById('rate_presentation').style.display = "none";
+        document.getElementById('view_ratings').style.display = "none";
+    },
+            showElement(element) {
+        this.hideAll();
+        document.getElementById(element).style.display = "block";
+    }
+    
         }
+
     })
 </script>
 
