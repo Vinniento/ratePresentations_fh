@@ -22,7 +22,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                     <teacherNavigation>
 
-
+                        <div id= "teacher">
                         <div class="row"><br>
                             <div class="columns s12 m3 l3 center-align">
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" value="Add Students" onclick="showElement('add_students')">Add Students</button>
@@ -58,7 +58,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                             <input type="text" class="form-control" id="groupname" value="" placeholder="Enter Groupname here!" style="width:16rem;" />
                                         </div>
                                         <br>
-                                        <div id="display_students">
+                                        
                                             <div calss="table-responsive-sm">
                                                 <table class="table table-striped table-dark table-hover">
                                                     <thead class="thead-dark">
@@ -81,7 +81,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
+                                        
                                         <button type="submit" value="addstudenttogroup" class="btn btn-primary badge-pill" style="width: 13rem;" onclick="addCheckedStudentsToArray()">Create Group</button>
                                         <br><br>
                                     </div>
@@ -102,7 +102,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                         <br>
 
                                         <div class="table-responsive-sm">
-                                            <div id="display_groups">
+                                           
                                                 <div id="selected_groups">
                                                     <!--<table class="table table-striped table-dark table-hover" class="display: inline-block">-->
                                                     <br>
@@ -123,11 +123,11 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                                
                                             </div>
 
 
-                                            <div id="display_forms">
+                                            
                                                 <div id="selected_form">
                                                     <!--<table class="table table-striped table-dark table-hover" class="display: inline-block">-->
                                                     <table class="table table-striped table-dark table-hover">
@@ -147,7 +147,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                         <br><br>
 
@@ -165,7 +165,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                 <div id="view_presentations" style="display:none;">
                                     <br>
 
-                                    <div id="codeget">
+                                   
                                         <div class="table-responsive-sm">
                                             <table class="table table-striped table-dark table-hover">
                                                 <thead>
@@ -187,7 +187,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings" value="View Ratings" onclick="showElement('view_ratings')">View Ratings</button>
@@ -252,7 +252,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                             </form>
                         </div>
 
-
+                        </div>
 
 
                     </teacherNavigation>
@@ -308,9 +308,13 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 <script>
     var app = new Vue({
 
-        el: '#display_students',
+        el: '#teacher',
         data: {
-            students: []
+            students: [],
+            codes: [],
+            groups: [],
+            forms: [],
+
         },
         mounted() {
             let vm = this;
@@ -322,20 +326,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 })
                 .catch(error => {
                     console.log(error);
-                });
-        }
-    })
-</script>
-<script>
-    var app = new Vue({
-
-        el: '#codeget',
-        data: {
-            codes: []
-        },
-        mounted() {
-            let vm = this;
-            axios
+                }),
+                axios
                 .get('get_code.php')
                 .then(response => {
                     vm.codes = response.data;
@@ -344,21 +336,9 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 })
                 .catch(error => {
                     console.log(error);
-                });
-        }
-    })
-</script>
+                }),
 
-<script>
-    var app = new Vue({
-
-        el: '#display_groups',
-        data: {
-            groups: []
-        },
-        mounted() {
-            let vm = this;
-            axios
+                axios
                 .get('get_groups_list.php')
                 .then(response => {
                     vm.groups = response.data;
@@ -367,21 +347,8 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 })
                 .catch(error => {
                     console.log(error);
-                });
-        }
-    })
-</script>
-<script>
-    //get criteria
-    var app = new Vue({
-
-        el: '#display_forms',
-        data: {
-            forms: []
-        },
-        mounted() {
-            let vm = this;
-            axios
+                }),
+                axios
                 .get('get_forms_list.php')
                 .then(response => {
                     vm.forms = response.data;
@@ -390,10 +357,15 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
                 })
                 .catch(error => {
                     console.log(error);
-                });
+                })
+                ;
+
+
+
         }
     })
 </script>
+
 </body>
 
 </html>
