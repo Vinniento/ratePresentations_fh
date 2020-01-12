@@ -8,30 +8,41 @@ function addCheckedStudentsToArray() {
             arr.push(inputs[i].id);
         }
     }
-    // alert(JSON.stringify(arr, null, 4));
+    if (arr.length == 0) {
+        alert("no students selected");
+    }
 
     insertGroupIntoDB();
 }
 
 function insertGroupIntoDB() {
     var groupname = document.getElementById("groupname").value;
-    $.post("insertGroupIntoDB.php", {
-            groupname: groupname,
-            selectedStudents: arr
-        },
-        //TODO form zurücksetzen (hackerl weg usw)
-        function(data) {
-            switch(data){
-                case"students not selected or groupname not entered":
-                    alert(data);
-                    break;
-                case"group created and students successfully added":
-                    alert(data);
-                    break;
-                default:
-                    alert(data);
-            }
-        }
+    if (groupname === "") {
+        alert("groupname not entered");
 
-    )
+    } else {
+        $.post("insertGroupIntoDB.php", {
+                groupname: groupname,
+                selectedStudents: arr
+            },
+            //TODO form zurücksetzen (hackerl weg usw)
+            function(data) {
+                switch (data) {
+                    case "groupname not entered":
+                        alert(data);
+                        break;
+                    case "group created and students successfully added":
+                        alert(data);
+                        break;
+                    case "group name exists already":
+                        alert(data);
+                        break;
+                    default:
+                        alert(data);
+                }
+            }
+
+        )
+    }
+
 };
