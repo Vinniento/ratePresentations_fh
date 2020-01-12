@@ -15,11 +15,15 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
             <div class="card-body">
                 <br>
                 <div class="row justify-content-center">
-                    <h3 class="card-title">Student bereich</h3>
-
+                    <h3 class="card-title">Student Area</h3>
+                </div>
+                <br>
+                <div class="row justify-content-center">
                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button" name="view_ratings"
                         value="View Ratings">View my Presentations</button>
-                    <br><br>
+                </div>
+                <br>
+                <div class="row justify-content-center">  
                     <div id="app">
                         <br>
 
@@ -55,6 +59,7 @@ if($_SESSION['isteacher'] !=0 || (!isset($_SESSION['email']))){
                             <div v-for="(rating, index) in criteria">
                                 <p>{{rating["AVG(ratings.rating_int)"]}}</p>
                             </div>
+                        </div>
                         </div>
                         </div>
                     <br>
