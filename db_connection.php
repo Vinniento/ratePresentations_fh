@@ -200,7 +200,7 @@ $create = "CREATE TABLE if not exists `forms_to_presentations` (
 
 
 
-$create = "CREATE TABLE if not exists `sections` (
+/*$create = "CREATE TABLE if not exists `sections` (
   `section_ID` int not null auto_increment,
   `name` varchar(70) not null,
   PRIMARY KEY (`section_ID`)
@@ -223,7 +223,7 @@ $create = "CREATE TABLE if not exists `sections_to_criteria` (
   ON UPDATE CASCADE
 );";
  $conn->exec($create);
-//  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";
+//  echo "<script>alert('Table \"ratings_to_criteria\" created successfully  ')</script>";*/
 
 $create = "CREATE TABLE if not exists `forms_to_persons` (
   `form_ID` int not null ,
