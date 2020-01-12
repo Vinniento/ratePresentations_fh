@@ -213,7 +213,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                                     <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"
                                         name="view_ratings" value="View Ratings"
-                                        onclick="showElement('view_ratings')">View Ratings</button>
+                                        @click="showElement('view_ratings')">View Ratings</button>
                                     <br><br>
                                     <div id="view_ratings" style="display:none;">
                                         <br>
@@ -262,7 +262,7 @@ if ((!isset($_SESSION['email'])) || $_SESSION['isteacher'] != 1) {
 
                             <button style="width: 13rem;" class="btn btn-success badge-pill" type="button"
                                 name="rate_presentation" value="Rate Presentation"
-                                onclick="showElement('rate_presentation')">Rate a Presentation</button>
+                                @click="showElement('rate_presentation')">Rate a Presentation</button>
                             <br><br>
                             <div id="rate_presentation" style="display:none;">
                                 <br>
