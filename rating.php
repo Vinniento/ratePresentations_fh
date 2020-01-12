@@ -39,12 +39,18 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
                                 <ul class="contents" v-for="criteria in criterias">
 
                                     <div class="row" style="margin-bottom: 15px;" v-if="criteria.isfeedback === '0'">
-                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
-                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range" class="custom-range" :name="criteria.criteria_ID" :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
+                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
+                                        </div>
+                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><input type="range"
+                                                class="custom-range" :name="criteria.criteria_ID"
+                                                :id="criteria.criteria_ID" min="0" value="5" max="10" step="1"></div>
                                     </div>
                                     <div class="row" style="margin-bottom: 15px;" v-else>
-                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}</div>
-                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea class="form-control" :name="criteria.criteria_ID" :id="criteria.criteria_ID"  rows="3"></textarea></div>
+                                        <div class="col-sm-12 col-md-4" style="margin-bottom: 15px;">{{criteria.name}}
+                                        </div>
+                                        <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;"><textarea
+                                                class="form-control" :name="criteria.criteria_ID"
+                                                :id="criteria.criteria_ID" rows="3"></textarea></div>
 
                                     </div>
                                 </ul>
@@ -61,68 +67,68 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
 </section>
 <!---chris code ende-->
 <script>
-    //get criteria
-    var app = new Vue({
+//get criteria
+var app = new Vue({
 
-        el: '#display_criteria',
-        data: {
-            criterias: []
-        },
-        mounted() {
-            var div = document.getElementById("dom-target");
-            var codel = div.textContent;
-            var out = String(codel).trim();
-            console.log("ausgabe vom Vue vom rating.php");
-            console.log(out);
-            let vm = this;
+    el: '#display_criteria',
+    data: {
+        criterias: []
+    },
+    mounted() {
+        var div = document.getElementById("dom-target");
+        var codel = div.textContent;
+        var out = String(codel).trim();
+        console.log("ausgabe vom Vue vom rating.php");
+        console.log(out);
+        let vm = this;
 
-            $.post("get_criterias.php", {
-                    code: out
-                },
-                function(data) {
-                    vm.criterias = JSON.parse(data);
-
-                    console.log(vm.criterias);
-                });
-
-
-
-
-
-        }
-    })
-
-
-    function add_sliders_to_array() {
-        var form = document.getElementById("rated_criteria");
-        inputs = form.getElementsByTagName("input");
-        var arr = new Object();
-        var arr2 = new Object();
-
-        for (var i = 0, max = inputs.length; i < max; i += 1) {
-            arr[inputs[i].id] = inputs[i].value;
-            //arr[inputs[i].id] = inputs[i].value;
-            //  alert(arr[inputs[i].id]);
-        }
-        inputs = form.getElementsByTagName("textarea");
-        for (var i = 0, max = inputs.length; i < max; i += 1) {
-            arr2[inputs[i].id] = inputs[i].value;
-            //arr[inputs[i].id] = inputs[i].value;
-            //  alert(arr[inputs[i].id]);
-        }
-
-        $.post("rating_check.php", {
-                criteria: arr,
-                text: arr2
+        $.post("get_criterias.php", {
+                code: out
             },
-
             function(data) {
-                alert(data);
+                vm.criterias = JSON.parse(data);
 
-            }
+                console.log(vm.criterias);
+            });
 
-        )
+
+
+
+
     }
+})
+
+
+function add_sliders_to_array() {
+    var form = document.getElementById("rated_criteria");
+    inputs = form.getElementsByTagName("input");
+    var arr = new Object();
+    var arr2 = new Object();
+
+    for (var i = 0, max = inputs.length; i < max; i += 1) {
+        arr[inputs[i].id] = inputs[i].value;
+        //arr[inputs[i].id] = inputs[i].value;
+        //  alert(arr[inputs[i].id]);
+    }
+    inputs = form.getElementsByTagName("textarea");
+    for (var i = 0, max = inputs.length; i < max; i += 1) {
+        arr2[inputs[i].id] = inputs[i].value;
+        //arr[inputs[i].id] = inputs[i].value;
+        //  alert(arr[inputs[i].id]);
+    }
+
+    $.post("rating_check.php", {
+            criteria: arr,
+            text: arr2
+        },
+
+        function(data) {
+            alert(data);
+
+        }
+
+    )
+}
 </script>
 
 

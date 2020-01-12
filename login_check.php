@@ -1,19 +1,6 @@
 <?php
-//echo "oben";
 
 session_start();
-
-/*if(isset($_POST['email']) && $_POST['email'] != '') {
-
-//$email_form = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-$email_form = $_POST['email'];
-//TODO encrypt password zum vergleichen
-$pass_form = ($_POST['pwd']);
-
-}
-else{
-    echo "something went wrong";
-}*/
 
 if (isset($_POST['email1']) && $_POST['email1'] != '') {
 
@@ -43,8 +30,7 @@ try {
             return;
         }
        
-        //TODO password verify
-        if ($email_form === htmlspecialchars($users['email']) && password_verify($pass_form, $users['pwd']))/*password_verify($pass_form, $users['pwd']))*/ {
+        if ($email_form === htmlspecialchars($users['email']) && password_verify($pass_form, $users['pwd'])) {
 
             //$_COOKIE["user_id"] = $users["person_id"];
             $_SESSION['person_id'] = $users['person_id'];
@@ -65,7 +51,6 @@ try {
         }
     } catch (PDOException $error) {
         $_SESSION['login_failed'];
-        //header("location: login.html");
         echo $error;
     }
 } catch (PDOException $error) {
