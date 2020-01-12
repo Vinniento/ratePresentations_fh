@@ -13,7 +13,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
     echo htmlspecialchars($output);
     ?>
 </div>
-<template id="display_criteria">
+<div id="display_criteria">
     <section style="margin-top: 10rem; margin-bottom: 5rem">
         <div class="container h-100 d-flex justify-content-center align-items-center text-center">
             <div class="card bg-secondary" style="width: 80rem;">
@@ -61,7 +61,7 @@ if (isset($_POST['code']) || (!isset($_SESSION['email'])) || $_SESSION['isteache
             </div>
         </div>
     </section>
-</template>
+</div>
 
 <script>
     //get criteria
